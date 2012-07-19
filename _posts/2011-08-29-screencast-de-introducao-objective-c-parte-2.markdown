@@ -1,15 +1,6 @@
 ---
 layout: post
 title: Screencast de Introdução a Objective-C - Parte 2
-tags:
-- ios
-- iphone
-- objective-c
-- pt_BR
-- screencast
-status: publish
-type: post
-published: true
 ---
 E agora temos a segunda parte do screencast de introdução a Objective-C no ar, nessa segunda parte finalmente chegamos aos componentes do Cocoa e implementamos uma interface básica, usando labels, botões e campos de texto, além de conhecer alguns detalhes importantes como lidar com os teclados e um pouco mais sobre gerenciamento de memória. Mais uma vez, pra acompanhar esse screencast você precisa ter seguido o screencast anterior e ter pelo menos o XCode 4.0.1 instalado no seu Mac ( <a href="https://github.com/mauricio/objetive-c-tutorial">o código fonte está disponível no GitHub</a> )  :
 
