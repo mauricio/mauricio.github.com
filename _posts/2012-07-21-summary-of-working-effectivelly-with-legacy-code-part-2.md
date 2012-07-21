@@ -52,7 +52,7 @@ I think that, maybe, this definition of unit tests is somewhat too restrictive a
 
 ## The legacy code dilemma
 
-Now we move on to the most interesting piece of this chapter, dealing with legacy code. With the definition of legacy code from the [preface]({% post_url 2012-07-21-summary-of-working-effectivelly-with-legacy-code-part-1 %}), comes the hardest thing about working on legacy code:
+Now we move on to the most interesting piece of this chapter, dealing with legacy code. With the definition of legacy code from the [preface](/2012/07/21/summary-of-working-effectivelly-with-legacy-code-part-1.html), comes the hardest thing about working on legacy code:
 
 > When we change code, we should have tests in place. To put tests in place, we often have to change code.
 
