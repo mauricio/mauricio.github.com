@@ -5,6 +5,8 @@ title: Summary of Working Effecivelly with Legacy Code - Part 2
 
 # Chapter 2 - Working with feedback
 
+[Part 1 is available here](/2012/07/21/summary-of-working-effectivelly-with-legacy-code-part-1.html)
+
 This chapter starts with something that's well known to all developers, the two modes we use to make changes in a system, _Edit and Pray_ and _Cover and Modify_. With such suggestive names, you already know what they mean for real.
 
 While unfortunate, the most common behavior in the industry is _Edit and Pray_. Whether it happens because people don't know better, were taught like this or are just being lazy at their jobs, it doesn't really matter. The most common answer you're going to get from people that work like this is that they're being careful while making their changes, as if being careful was enough to do it right. Thing is, even if you are careful, the odds are usually against the developer. He's could be in a busy environment, he could have external problems that are affecting his performance, it could be a friday afternoon right before a long weekend and all he thinks of is about this small vacation. We're all human and this is going to happen a lot, that's why this style of programming is very hard to keep for a long time.

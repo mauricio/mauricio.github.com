@@ -46,3 +46,5 @@ And this is where the real challenge is, making sure the changes you're making a
 Preface and first chapter have already started with some interesting ideas, laying the groundwork for what comes next. And now I feel I should probably go back and revisit more books from college since they will probably be much more useful today that they were at that time.
 
 Stay tuned for the next ones :)
+
+* [Part 2 is available](/2012/07/21/summary-of-working-effectivelly-with-legacy-code-part-2.html)
