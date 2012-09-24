@@ -37,7 +37,7 @@ mono parse.exe ../../SUAppcast.h ../../SUAppcastItem.h ../../SUUpdater.h ../../S
 
 This is the output you will receive:
 
-{% highlight c# linenos %}
+{% highlight csharp linenos %}
 	[BaseType (typeof (NSObject))]
 	interface SUAppcast {
 		[Export ("fetchAppcastFromURL:")]
@@ -191,7 +191,7 @@ The `parse.exe` executable parses the Objective-C header files and generates a C
 
 Now, at **monomac/src** create a file called **sparkle.cs** and declare a namespace on it, I'm going to use **MonoMac.Sparkle**:
 
-{% highlight c# linenos %}
+{% highlight csharp linenos %}
 //
 // sparkle.cs: Definitions for the Sparkle Framework
 //
@@ -211,7 +211,7 @@ First, remove the empty `NSObject` reference and comment the `interface NSObject
 
 Now, let's get to the first class, `SUAppcast`:
 
-{% highlight c# linenos %}
+{% highlight csharp linenos %}
 [BaseType (typeof (NSObject))]
 interface SUAppcast {
 	[Export ("fetchAppcastFromURL:")]
@@ -231,7 +231,7 @@ interface SUAppcast {
 
 Here we have two issues, first, the `SetDelegate` method did not add it's parameter (most likely because it was called **delegate** and it's a keyword in C#) and the `Items` property was translated as an `Items` method that returns an `NSArray` instead of a strongly typed `SUAppcastItem` array, let's fix it:
 
-{% highlight c# linenos %}
+{% highlight csharp linenos %}
 [BaseType (typeof (NSObject))]
 interface SUAppcast {
 	[Export ("fetchAppcastFromURL:")]
@@ -252,7 +252,7 @@ Here we have added the `delegateHandler` parameter to the `SetDelegate` method (
 
 Now, off to the next one:
 
-{% highlight c# linenos %}
+{% highlight csharp linenos %}
 [BaseType (typeof (NSObject))]
 interface SUAppcastItem {
 	[Export ("dict")]
@@ -293,7 +293,7 @@ interface SUAppcastItem {
 
 This one is mostly making all of it's properties, well, properties. Here's how it will be like:
 
-{% highlight c# linenos %}
+{% highlight csharp linenos %}
 [BaseType (typeof (NSObject))]
 interface SUAppcastItem {
 	[Export ("dict")]
@@ -336,7 +336,7 @@ And we're done on this, this one was simple, it was just making sure it looked l
 
 And we're off to the last one! It isn't any different from all the others, it's just making sure our final class looks like a C# class as much as possible. Here's how it looks now:
 
-{% highlight c# linenos %}
+{% highlight csharp linenos %}
 [BaseType (typeof (NSObject))]
 interface SUUpdater {
 	[Static]
@@ -391,7 +391,7 @@ interface SUUpdater {
 
 And it will become this:
 
-{% highlight c# linenos %}
+{% highlight csharp linenos %}
 [BaseType (typeof (NSObject))]
 interface SUUpdater {
 	[Static]
@@ -518,7 +518,7 @@ You can check this file and/or check Sparkle's documentation to understand more 
 
 With this, lets do a bit of coding in our project to get Sparkle to always download and always perform an update check in background when the application starts:
 
-{% highlight c# linenos %}
+{% highlight csharp linenos %}
 using MonoMac.Foundation;
 using MonoMac.AppKit;
 using MonoMac.Sparkle;
@@ -550,7 +550,7 @@ I added the namespace to this file with the `using MonoMac.Sparkle` directive an
 
 At the end, we need to change our `Main.cs` file for it to load the `Sparkle.framework` native library, here's how it's done:
 
-{% highlight c# linenos %}
+{% highlight csharp linenos %}
 using MonoMac.AppKit;
 using MonoMac.ObjCRuntime;
 using System.IO;
