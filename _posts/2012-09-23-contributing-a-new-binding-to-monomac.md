@@ -577,6 +577,6 @@ With this the framework is loaded and all of our classes will execute just fine,
 
 And with this the app should run and update fine. You can easily add new methods, set delegates and do whatever you would like to do just calling C# code and without having to worry about transforming objects from one to the other.
 
-Now go get your hands dirty wrapping other cool Objective-C libraries. You can check the full source for this project [here](https://github.com/mauricio/UpdaterSample).
+Now go get your hands dirty wrapping other cool Objective-C libraries. You can check the full source for this project [here](https://github.com/mauricio/UpdaterSample) and you can check my pull request with these bindings to the MonoMac project [here](https://github.com/mono/monomac/pull/77).
 
 PS: The original idea of creating the "before build" command to copy frameworks was taken from [this blog post by Kenneth Pouncey](http://cocoa-mono.org/archives/254/growl-my-monomac-application-says/).
