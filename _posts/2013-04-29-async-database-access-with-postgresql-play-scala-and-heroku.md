@@ -284,7 +284,27 @@ it will automatically handle processing our future and generating the response. 
 on the future returned and Play will handle the rest of the work for us. And you can just push this app the
 way it is to Heroku and you will have your fist async PostgreSQL backed Play app.
 
-The SQL to create the `messages` table is:
+## Pushing to Heroku
+
+Just setup this app on heroku with:
+
+{% highlight bash linenos %}
+heroku apps:create
+{% endhighlight %}
+
+And then:
+
+{% highlight bash linenos %}
+git push heroku master
+{% endhighlight %}
+
+Once the slug is ready, login to your psql console:
+
+{% highlight bash linenos %}
+heroku pg:psql
+{% endhighlight %}
+
+And create the `messages` table:
 
 {% highlight sql linenos %}
 CREATE TABLE messages
@@ -295,6 +315,10 @@ CREATE TABLE messages
   CONSTRAINT bigserial_column_pkey PRIMARY KEY (id )
 );
 {% endhighlight %}
+
+You should now be able to run the app and enter data correcly.
+
+You can see my app running [here](http://postgresql-async-example.herokuapp.com/).
 
 If you have questions, bug reports or want to help improve the library, hit me on [Github](https://github.com/mauricio)
 or [Twitter](https://twitter.com/mauriciojr).
