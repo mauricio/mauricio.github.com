@@ -452,7 +452,7 @@ And to wrap it all up we make `LastUpdateCheckDate` and `UpdateInProgress` prope
 
 Now, open the `Makefile` at **monomac/src/Makefile** and look for this piece:
 
-{% highlight Makefile linenos %}
+{% highlight makefile linenos %}
 APIS = \
 	appkit.cs		\
 	corewlan.cs		\
@@ -469,7 +469,7 @@ APIS = \
 
 Just add the `sparkle.cs` file at the end:
 
-{% highlight Makefile linenos %}
+{% highlight makefile linenos %}
 APIS = \
 	appkit.cs		\
 	corewlan.cs		\
