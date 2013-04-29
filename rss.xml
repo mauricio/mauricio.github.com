@@ -6,8 +6,8 @@ layout: nil
 
   <channel>
     <title>My musings about life, the universe and everything else</title>
-    <link>http://mauricio.github.com/</link>
-    <atom:link href="http://mauricio.github.com/rss.xml" rel="self" type="application/rss+xml" />
+    <link>http://mauricio.github.io/</link>
+    <atom:link href="http://mauricio.github.io/rss.xml" rel="self" type="application/rss+xml" />
     <description>My personal blog</description>
     <language>en-us</language>
     <pubDate>{{ site.time | date: "%a, %d %b %Y %H:%M:%S %Z" }}</pubDate>
@@ -16,10 +16,10 @@ layout: nil
     {% for post in site.posts %}
     <item>
       <title>{{ post.title | xml_escape }}</title>
-      <link>http://mauricio.github.com{{ post.url }}</link>
+      <link>http://mauricio.github.io{{ post.url }}</link>
       <pubDate>{{ post.date | date: "%a, %d %b %Y %H:%M:%S %Z" }}</pubDate>
       <author>mauricio.linhares@gmail.com (Maurício Linhares)</author>
-      <guid>http://mauricio.github.com{{ post.id }}</guid>
+      <guid>http://mauricio.github.io{{ post.id }}</guid>
       <description>{{ post.content | xml_escape }}</description>
     </item>
     {% endfor %}
