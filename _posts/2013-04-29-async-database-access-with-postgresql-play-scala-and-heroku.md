@@ -22,7 +22,7 @@ Let's see some sample usage:
 
 {% highlight scala linenos %}
 import com.github.mauricio.async.db.postgresql.DatabaseConnectionHandler
-import com.github.mauricio.async.db.util.ExecutorServiceUtils.CachedExecutionContext
+import com.github.mauricio.async.db.util.ExecutorServiceUtils.FixedExecutionContext
 import com.github.mauricio.async.db.util.URLParser
 import com.github.mauricio.async.db.{RowData, QueryResult, Connection}
 import scala.concurrent.duration._
@@ -97,7 +97,7 @@ package models
 import scala.concurrent.Future
 import org.joda.time.LocalDate
 import com.github.mauricio.async.db.{RowData, Connection}
-import com.github.mauricio.async.db.util.ExecutorServiceUtils.CachedExecutionContext
+import com.github.mauricio.async.db.util.ExecutorServiceUtils.FixedExecutionContext
 
 object MessageRepository {
   val Insert = "INSERT INTO messages (content,moment) VALUES (?,?) RETURNING id"
@@ -212,7 +212,7 @@ import play.api.mvc.{AsyncResult, Action, Controller}
 import play.api.data._
 import play.api.data.Forms._
 import helpers.Global.messagesRepository
-import com.github.mauricio.async.db.util.ExecutorServiceUtils.CachedExecutionContext
+import com.github.mauricio.async.db.util.ExecutorServiceUtils.FixedExecutionContext
 import models.Message
 
 object Messages extends Controller {
