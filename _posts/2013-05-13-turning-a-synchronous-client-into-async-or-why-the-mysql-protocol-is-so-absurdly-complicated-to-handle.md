@@ -3,11 +3,16 @@ layout: post
 title: Turning a synchronous client into async or why the MySQL protocol is so complicated to handle
 ---
 
+**DISCLAIMER**: this is a rant about MySQL's network protocol only. I am very grateful for all the work everyone involved
+in MySQL did and it still is my database of choice if not on Heroku so, don't take this as another 'mysql sucks, bla bla bla'
+post, I just think it's important for people to understand how you can complicate someone else's life with a complicated
+network protocol.
+
 A week ago I released the first version of the [postgresql-async](https://github.com/mauricio/postgresql-async) project
 and got some feedback from people that were looking for something like this but for MySQL. Since I had already planned
 to do it sometime in the future, why not just start it now? It wouldn't be much harder than PostgreSQL, would it?
 
-Oh boy, I was never THIS wrong in my life.
+Oh boy, I was never **THIS wrong** in my life.
 
 As you might have seen from the project description, I'm using [Netty](http://netty.io/) as the IO framework for both
 clients. Netty follows a messaging approach to IO, when something happens, an event is created and eventually your code
@@ -108,11 +113,6 @@ there is no mutable state, you can't have concurrency issues! This class is thre
 between different concurrent threads at any moment.
 
 Why am I saying this? Because now we get to see how the MySQL network protocol works.
-
-**DISCLAIMER**: this is a rant about MySQL's network protocol only. I am very grateful for all the work everyone involved
-in MySQL did and it still is my database of choice if not on Heroku so, don't take this as another 'mysql sucks, bla bla bla'
-post, I just think it's important for people to understand how you can complicate someone else's life with a complicated
-network protocol.
 
 ## Decoding MySQL messages
 
@@ -216,9 +216,20 @@ the code to keep on reading, it makes it harder to test this stuff in isolation.
 
 ## A synchronous mind in an asynchronous world
 
-Building asynchronous solutions might look like a panacea, but when the protocol doesn't lend itself to asynchronous
-programming, like the MySQL network protocol, it might become much harder to reason and to work with. If you ever have to
-build a direct-to-sockets network communication solution, keep this in mind and don't just let the "sequential" model
-go into the code, as you might make life harder for someone else to implement a solution in the future.
+Building an asynchronous solution isn't exactly something easy from the get go, but a flawed protocol like MySQL's are
+even more visible when you try to do it. It's ambiguous, since messages can not be easily identified unless you know
+beforehand what you could get, it's inconsistent, since the same kind of answer (the result set) can come in different
+formats, again, depending on what kind of state you are and it's unnecessarily complicated. The prepared statement response
+could contain a single packet with parameters and column data, but it gets separated into at least 3 packets for no reason
+other than the possibility of having much more data than the 3 bytes integer used for size (16mb) can handle. If the
+column data (not the data itself) for the query you are making is more than 16mb, I don't even want to know what
+kind of query you're sending!
+
+All of this made the job of building an async driver for MySQL be much longer than I had planned or hoped for (as much
+as programmers are bad with estimates). Building a nice network protocol isn't simple, but making it unnecessarily
+complex is not the most awesome thing you can do, think about the lives of all the other programmers out there that
+will try to talk to your system :)
 
 Still, after all that, the MySQL driver is almost complete and will have a first release soon, stay tuned!
+
+PS: If you use someone else's MySQL driver and you meet this person, buy him a burrito, he/she definitely deserves it!
