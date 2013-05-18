@@ -34,6 +34,6 @@ Or if you are into MySQL:
 {% endhighlight %}
 
 If these dependencies are not showing up at Maven Central by the time you try, you can also use the snapshots from Nexus
-at version "0.2.2.1-SNAPSHOT" for both drivers.
+at version `0.2.2.1-SNAPSHOT` for both drivers.
 
 And it goes without saying that contributions, bug fixes, bug reports, benchmarks, feedback are very much welcome.
