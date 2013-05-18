@@ -97,7 +97,7 @@ package models
 import scala.concurrent.Future
 import org.joda.time.LocalDate
 import com.github.mauricio.async.db.{RowData, Connection}
-import com.github.mauricio.async.db.util.ExecutorServiceUtils.FixedExecutionContext
+import com.github.mauricio.async.db.util.ExecutorServiceUtils.CachedExecutionContext
 
 object MessageRepository {
   val Insert = "INSERT INTO messages (content,moment) VALUES (?,?) RETURNING id"
@@ -178,7 +178,7 @@ object Global extends GlobalSettings {
       port = 5433
     )
   }
-  private val factory = new ConnectionObjectFactory( databaseConfiguration )
+  private val factory = new PostgreSQLConnectionFactory( databaseConfiguration )
   private val pool = new ConnectionPool(factory, PoolConfiguration.Default)
   val messagesRepository = new MessageRepository( pool )
 
@@ -212,7 +212,7 @@ import play.api.mvc.{AsyncResult, Action, Controller}
 import play.api.data._
 import play.api.data.Forms._
 import helpers.Global.messagesRepository
-import com.github.mauricio.async.db.util.ExecutorServiceUtils.FixedExecutionContext
+import com.github.mauricio.async.db.util.ExecutorServiceUtils.CachedExecutionContext
 import models.Message
 
 object Messages extends Controller {
