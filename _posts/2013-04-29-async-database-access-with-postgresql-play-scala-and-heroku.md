@@ -21,8 +21,8 @@ that would allow you to execute queries and get results back.
 Let's see some sample usage:
 
 {% highlight scala linenos %}
-import com.github.mauricio.async.db.postgresql.DatabaseConnectionHandler
-import com.github.mauricio.async.db.util.ExecutorServiceUtils.FixedExecutionContext
+import com.github.mauricio.async.db.postgresql.PostgreSQLConnection
+import com.github.mauricio.async.db.util.ExecutorServiceUtils.CachedExecutionContext
 import com.github.mauricio.async.db.util.URLParser
 import com.github.mauricio.async.db.{RowData, QueryResult, Connection}
 import scala.concurrent.duration._
@@ -33,7 +33,7 @@ object BasicExample {
   def main(args: Array[String]) {
 
     val configuration = URLParser.parse("jdbc:postgresql://localhost:5233/my_database?username=postgres&password=somepassword")
-    val connection: Connection = new DatabaseConnectionHandler(configuration)
+    val connection: Connection = new PostgreSQLConnection(configuration)
 
     Await.result(connection.connect, 5 seconds)
 
@@ -64,7 +64,7 @@ The basic usage pattern is quite simple, you ask for something, you get a `Futur
 I'm simplifying the code by blocking to get the results, but if you're using an async framework (like Akka or
 Play) you can just compose on these futures to do your work.
 
-The `DatabaseConnectionHandler` is a real connection to the database, it implements the `Connection` trait and
+The `PostgreSQLConnection` is a real connection to the database, it implements the `Connection` trait and
 you should try to use the trait as much as possible. When you create a connection handler, it's not connected
 to the database yet, you have to connect it yourself calling `connect` and waiting for the future to return or
 composing on the future to do something else.
