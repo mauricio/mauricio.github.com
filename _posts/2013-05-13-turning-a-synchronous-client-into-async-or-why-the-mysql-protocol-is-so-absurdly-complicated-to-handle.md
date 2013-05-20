@@ -216,8 +216,8 @@ the code to keep on reading, it makes it harder to test this stuff in isolation.
 
 ## A synchronous mind in an asynchronous world
 
-Building an asynchronous solution isn't exactly something easy from the get go, but a flawed protocol like MySQL's are
-even more visible when you try to do it. It's ambiguous, since messages can not be easily identified unless you know
+Building an asynchronous solution isn't exactly something easy from the get go, but a biased protocol like MySQL's makes
+it much harder. It's ambiguous, since messages can not be easily identified unless you know
 beforehand what you could get, it's inconsistent, since the same kind of answer (the result set) can come in different
 formats, again, depending on what kind of state you are and it's unnecessarily complicated. The prepared statement response
 could contain a single packet with parameters and column data, but it gets separated into at least 3 packets for no reason
@@ -230,6 +230,6 @@ as programmers are bad with estimates). Building a nice network protocol isn't s
 complex is not the most awesome thing you can do, think about the lives of all the other programmers out there that
 will try to talk to your system :)
 
-Still, after all that, the MySQL driver is almost complete and will have a first release soon, stay tuned!
+Still, after all that, the driver had it's first release, so [go check it out](http://mauricio.github.io/2013/05/18/mysql-async-and-posrgresql-async-0.2.2-released.html)!
 
 PS: If you use someone else's MySQL driver and you meet this person, buy him a burrito, he/she definitely deserves it!
