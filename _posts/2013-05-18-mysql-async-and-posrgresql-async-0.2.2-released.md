@@ -1,6 +1,6 @@
 ---
 layout: post
-title: mysql-async and postgresql-async 0.2.2 released!
+title: mysql-async and postgresql-async 0.2.3 released!
 ---
 
 And a newer version of the `postgresql-async` has finally been released and now the project includes `mysql-async`, an
@@ -24,16 +24,16 @@ example has also been updated with the new renamed classes, give it a go and sta
 You can add both projects to your app using the dependencies:
 
 {% highlight scala %}
-"com.github.mauricio" %% "postgresql-async" % "0.2.2"
+"com.github.mauricio" %% "postgresql-async" % "0.2.3"
 {% endhighlight %}
 
 Or if you are into MySQL:
 
 {% highlight scala %}
-"com.github.mauricio" %% "mysql-async" % "0.2.2"
+"com.github.mauricio" %% "mysql-async" % "0.2.3"
 {% endhighlight %}
 
 If these dependencies are not showing up at Maven Central by the time you try, you can also use the snapshots from Nexus
-at version `0.2.2.1-SNAPSHOT` for both drivers.
+at version `0.2.3-SNAPSHOT` for both drivers.
 
 And it goes without saying that contributions, bug fixes, bug reports, benchmarks, feedback are very much welcome.
