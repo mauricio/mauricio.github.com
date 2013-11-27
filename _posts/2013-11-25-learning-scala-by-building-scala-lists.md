@@ -264,6 +264,11 @@ Let's see how our spec for it would look:
   val original = LinkedList(2, 3, 4)
   original.foldLeft(new StringBuilder())((acc,item) => acc.append(item) ).toString() === "234"
 }
+
+"map and foldLeft to sum the squares" in {
+  val original = LinkedList(2, 3, 4)
+  original.map(x => x * x).foldLeft(0)((acc, x) => acc + x) === 29
+}
 {% endhighlight %}
 
 As you can see, we can reuse the `foldLeft` operation for whenever we need to build one object out of the other. We could even implement the `map` function above in terms of a fold!
