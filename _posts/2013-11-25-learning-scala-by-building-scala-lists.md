@@ -287,6 +287,8 @@ The other important piece here is that we need to give the parameters in separat
 
 And we have covered lists, map and foldLeft here, all very important constructs when doing functional programming and working with Scala in general. Next we will move on to a couple other methods on lists and more functional programming constructs. Stay tuned!
 
+Done here? Head to [part 2]({% post_url 2013-12-08-learning-scala-by-building-scala-lists-part-2 %}) now!
+
 ### References
 If you'd like to dig deeper into all this, check out these resources:
 

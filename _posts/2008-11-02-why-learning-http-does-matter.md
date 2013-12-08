@@ -27,7 +27,7 @@ One of the most harmful exhibitions of this lack of knowledge is the “POST fev
 
 But, what's so bad about it?
 
-If you take a look at the <a href="http://www.w3.org/Protocols/rfc2616/rfc2616.html">HTTP RFC</a>, you will find that the GET method is described as a <a href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html#sec9.1.1">“safe”</a> method. Safe, in the HTTP context, means that you should be able to perform GETs to a web application and this should have no side effects on it, it should not change the resource you are requesting, because the whole idea of the GET method is that you should just GET a copy of the resource at that specific URL, you're not doing anything funny with it, you should just receive it anywhere and anytime you want to.
+If you take a look at the [HTTP RFC](http://www.w3.org/Protocols/rfc2616/rfc2616.html), you will find that the GET method is described as a [“safe”](http://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html#sec9.1.1) method. Safe, in the HTTP context, means that you should be able to perform GETs to a web application and this should have no side effects on it, it should not change the resource you are requesting, because the whole idea of the GET method is that you should just GET a copy of the resource at that specific URL, you're not doing anything funny with it, you should just receive it anywhere and anytime you want to.
 
 But if you look at the POST method description, it's defined as an “unsafe” method. If you send a POST to a URL you might be definitely changing something and generating an evil side effect that might render the whole application useless and bring Skynet and the Terminators to lay Armageddon on Earth. Or you might just be creating a new resource, as a blog posting like this one.
 
