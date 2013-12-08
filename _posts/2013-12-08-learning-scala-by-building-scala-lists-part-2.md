@@ -200,8 +200,48 @@ Given we can't make `:::` tail recursive per se, what we do here is yet another 
 
 There isn't anything special about internal helper methods,  it's just like any other method, but it's only visible here inside our method and not outside of it, given no one really needs to know it exists and it's only useful in this specific case, that's the perfect place for it to be.
 
+## Looping through the elements of a list
+
+And while we covered most pieces of how you can build new stuff out of lists, we didn't look at how we can simply loop through a list. If you have a list and all you want to do is loop through the elements without producing a new value or a new list, you're probably looking at a **side effect**.
+
+This isn't inherently bad or evil in any way, it's just that, different from pure functions, a function that causes a side effect depends on context or information that's out of the function itself and this usually makes them harder to test and understand that they are doing. Still, side effects are the main way our programs interact with external systems, so there's no hiding from them, you will eventually need to write code that causes side effects and this is fine, just keep in mind the downsides of it while doing it.
+
+In Scala collections, the method to loop through elements is `foreach`, here's how it could be implemented:
+
+{% highlight scala %}
+def foreach(f : (E) => Unit) {
+  @tailrec def loop( items : LinkedList[E] ) {
+    items match {
+      case Node(head,tail) => {
+        f(head)
+        loop(tail)
+      }
+      case Empty => {}
+    }
+  }
+
+  loop(this)
+}
+{% endhighlight %}
+
+It takes a function as a parameter and calls the function with each element contained in the list itself. Again, we use a helper method here to do the magic and be tail recursive, we could have implemented it with `foreach` itself being tail recursive but this just looks a bit cooler (yeah, I do like ML a lot).
+
+And since we're all about side effects now, our test needs to cause side effects as well, let's look at it:
+
+{% highlight scala %}
+"foreach implementation" in {
+  val items = new ListBuffer[Int]()
+
+  LinkedList(1, 2, 3, 4).foreach( (x) => items += x )
+
+  items === List(1, 2, 3, 4)
+}
+{% endhighlight %}
+
+And here we are accessing a variable out of the loop and mutating it to be able to test our implementation, not ideal, but that's what we wanted in any case.
+
 ## Wrapping up
 
-Now we know more about the trade offs we have made when we decided to build our `LinkedList` object as immutable, we optimised it to be tail recursive everywhere, included a couple new operations like `filter` and `foldRight` and know we know that any operator that ends in `:` (colon) is right associative.
+Now we know more about the trade offs we have made when we decided to build our `LinkedList` object as immutable, we optimised it to be tail recursive everywhere, included a couple new operations like `filter`, `foldRight`, `foreach` and know we know that any operator that ends in `:` (colon) is right associative.
 
 At the next part, we'll dig deeper into how lists interact with other functional concepts in the language.
