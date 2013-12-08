@@ -5,6 +5,8 @@ title: Learning Scala by building Scala - Lists Part 2
 
 Here we continue our journey to learn more about Scala and functional programming using lists. [If you haven't seen the first part of this tutorial]({% post_url 2013-11-25-learning-scala-by-building-scala-lists %}), you should probably read it first before reading this part. Now let's get back to learn more list operations.
 
+The full source code for these examples can be found [here](https://github.com/mauricio/list-tutorial).
+
 ## Reversing a list
 
 Reversing a linked list is a really simple solution given what we have built already, here's how it looks being used:

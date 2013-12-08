@@ -7,6 +7,8 @@ While trying to come up with a compelling reason to get back at blogging I thoug
 
 After doing a bunch of [Standard ML](http://www.smlnj.org/) and [Racket](http://racket-lang.org/) for [Dan Grossman's Programming Languages course](https://www.coursera.org/course/proglang), it's sad to see that most of the mainstream languages are still so far away in terms of features and functionalities when compared to something as ancient as ML (from the early 70's!). It's great to see the resurgence of these ideas in languages like Scala and Clojure and if you haven't jumped the bandwagon yet, it's time for you to do it :)
 
+The full source code for these examples can be found [here](https://github.com/mauricio/list-tutorial).
+
 # Setup
 To follow this tutorial you will need [SBT](http://www.scala-sbt.org/) and I'd recommend you to use an IDE, but you can definitely use SBT to compile and run the project if you'd prefer to use a basic text editor. You can check a list of IDE's and plugins available at [Typesafe's website](http://typesafe.com/platform/tools/scala).
 
