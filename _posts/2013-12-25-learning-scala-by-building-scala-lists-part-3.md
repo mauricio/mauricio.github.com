@@ -8,7 +8,7 @@ And off we go to build a couple more list operations and understand new concepts
 * [Part 1]({% post_url 2013-11-25-learning-scala-by-building-scala-lists %})
 * [Part 2]({% post_url 2013-12-08-learning-scala-by-building-scala-lists-part-2 %})
 
-## Finding an item given in a list given a predicate
+## Finding an item in a list given a predicate
 
 At **part 2** we saw how we could filter a list given a predicate function, but what if I wanted to find and get an item given a predicate?
 
