@@ -121,7 +121,7 @@ sealed trait Option[+E] {
   def flatMap[R]( f : E => Option[R] ) : Option[R] = if ( isDefined ) f(this.get) else None
   def foreach[U]( f : (E) => U )
   def get() : E
-  def getOrElse[B >: E]( f : () => B ) : B = if ( isDefined ) get() else f()
+  def getOrElse[B >: E]( f : => B ) : B = if ( isDefined ) get() else f
 }
 
 case class Some[+E]( element : E ) extends Option[E] {
@@ -242,7 +242,28 @@ And as I mentioned above, if any of the parts becomes `None`, it all becomes `No
 
 It doesn't matter if it's something or empty, just map on it and keep composing on the options you get back until, eventually, you have to grab a value out of the option. In most cases, you can and should defer the decision to take a value out until there's no way to send an option and, in this case, you probably want to use `getOrElse` instead of `get`. `get`, as you can see from `None`'s implementation, isn't safe and will cause side effects it not handled correctly, so avoid doing it unless it's really necessary or you don't care about the possibility of raising an exception.
 
-And while we're at `getOrElse`, he idea behind it is as simple as it's implementation. If you really need to have a value out of something that could be empty, you definitely **need** a default value, by using the `getOrElse` you can now have this default available directly here instead of waiting somewhere else to be used and you can also make sure that it will be **only** at the place where it is necessary, and not scattered everywhere in your codebase.
+## getOrElse and lazyness
+
+And while we're at `getOrElse`, the idea behind it is as simple as it's implementation. If you really need to have a value out of something that could be empty, you definitely **need** a default value, by using the `getOrElse` you can now have this default available directly here instead of waiting somewhere else to be used and you can also make sure that it will be **only** at the place where it is necessary, and not scattered everywhere in your codebase.
+
+Also, look at the way we have defined `getOrElse`:
+
+{% highlight scala %}
+def getOrElse[B >: E]( f : => B ) : B = if ( isDefined ) get() else f
+{% endhighlight %}
+
+The **or else** value isn't a value per se, it's a **function**. Why is that? Because we want to be lazy, but in a good way. Think about it, if the option is a `Some` this value will never be used, does it make sense to create this value in all cases? No, it doesn't, so, instead of making `getOrElse` take a value, it takes a function that returns a value. Here's how it looks when we use it:
+
+{% highlight scala %}
+"be getOrElse the string" in {
+  val item = Some("10")
+  item.getOrElse("25") === "10"
+}
+{% endhighlight %}
+
+Well, it doesn't looks like I'm calling a function, does it? It's because the Scala compiler is smart enough to understand that even thought I did type just a string, what I mean is that I want a function that returns a string and it will generate just that. So it looks like that string is being created every time, but it isn't, it will only be created when the option is a `None` so we don't incur in the object creation penalty every time we use `getOrElse`.
+
+## And there is more
 
 And let's not forget `foreach` that is, again, mostly for side effects. If you don't care about composing an option and all you want is to run some code if there is something in there, just use `foreach` and be happy with it. If there is something, your block of code will be called, if there isn't, nothing will happen.
 
