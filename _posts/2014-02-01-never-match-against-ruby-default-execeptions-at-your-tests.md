@@ -12,36 +12,40 @@ While working in an app using Rails 4 and RSpec's beta version, I came across a 
       
 Going right where the error happened I saw this:
 
-	def self.declare_verifying_double(type, ref, *args)
-	  if RSpec::Mocks.configuration.verify_doubled_constant_names? &&
-	    !ref.defined?
-	
-	    raise NameError,
-	      "#{ref.name} is not a defined constant. " +
-	      "Perhaps you misspelt it? " +
-	      "Disable check with verify_doubled_constant_names configuration option."
-	  end
-	
-	  declare_double(type, ref, *args)
-	end
+{% highlight ruby %}
+def self.declare_verifying_double(type, ref, *args)
+  if RSpec::Mocks.configuration.verify_doubled_constant_names? &&
+    !ref.defined?
+
+    raise NameError,
+      "#{ref.name} is not a defined constant. " +
+      "Perhaps you misspelt it? " +
+      "Disable check with verify_doubled_constant_names configuration option."
+  end
+
+  declare_double(type, ref, *args)
+end
+{% endhighlight %}	
 
 So, pretty obvious, isn't it?
 
 It's trying to call a method `name` at the double/mock ref since it isn't defined yet. Let's figure out what we should call this, but first let's get a spec to reproduce the error. And then I find this:
 
-	describe 'when verify_doubled_constant_names config option is set' do
-	  it 'prevents creation of instance doubles for unloaded constants' do
-	    expect {
-	      instance_double('LoadedClas')
-	    }.to raise_error(NameError)
-	  end
-	
-	  it 'prevents creation of class doubles for unloaded constants' do
-	    expect {
-	      class_double('LoadedClas')
-	    }.to raise_error(NameError)
-	  end
-	end
+{% highlight ruby %}
+describe 'when verify_doubled_constant_names config option is set' do
+  it 'prevents creation of instance doubles for unloaded constants' do
+    expect {
+      instance_double('LoadedClas')
+    }.to raise_error(NameError)
+  end
+
+  it 'prevents creation of class doubles for unloaded constants' do
+    expect {
+      class_double('LoadedClas')
+    }.to raise_error(NameError)
+  end
+end
+{% endhighlight %}
 	
 Hey, **there is** a spec for this behaviour. Why isn't this spec failing?
 
@@ -53,6 +57,8 @@ When you use a custom error to signal that something has gone wrong, it's much l
 
 So, avoid using and matching against Ruby's default exceptions, when you need to raise something, create your own exception classes, it's absurdly simple:
 
-     VerifyingDoubleNotDefinedError = Class.new(StandardError)
+{% highlight ruby %}
+VerifyingDoubleNotDefinedError = Class.new(StandardError)
+{% endhighlight %}
      
 And you end up with better documentation, better tests and prevent unexpected errors like this one. Also, always be as specific as possible, if you have different errors that represent different states for your application, make sure your exceptions reflect that as well. Having a single `MyAppError` class is hardly any better than raising `Exception` and `StandardError` all around.
