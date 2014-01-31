@@ -57,10 +57,12 @@ In this case, there are many possible solutions, we could match on the exception
 
 When you use a custom error to signal that something has gone wrong, it's much less likely that you will get a false positive like this one. You know only your own code would manually raise that error (given all the other code doesn't even know it exists) so you would be pretty much safe from falling for a case like this one.
 
+Matching against exception messages is brittle, error prone (you will have to copy and paste the message in many different places) and leads to hard to evolve code. I had a codebase that had matches on Mongoid error messages and once we upgraded to Mongoid 3.x all of these matches failed. Not because the code wasn't working anymore, mind you, but because the messages had changed. Don't do it, you don't want to be there to fix this.
+
 So, avoid using and matching against Ruby's default exceptions, when you need to raise something, create your own exception classes, it's absurdly simple:
 
 {% highlight ruby %}
 VerifyingDoubleNotDefinedError = Class.new(StandardError)
 {% endhighlight %}
      
-And you end up with better documentation, better tests and prevent unexpected errors like this one. Also, always be as specific as possible, if you have different errors that represent different states for your application, make sure your exceptions reflect that as well. Having a single `MyAppError` class is hardly any better than raising `Exception` and `StandardError` all around.
+And you end up with better documentation, better tests and prevent unexpected errors like this one. Also, always be as specific as possible, if you have different errors that represent different states for your application, make sure your exceptions reflect that as well. Having a single `MyAppError` class for everything is hardly any better than raising `Exception` and `StandardError` all around.
