@@ -29,7 +29,9 @@ end
 
 So, pretty obvious, isn't it?
 
-It's trying to call a method `name` at the double/mock ref since it isn't defined yet. Let's figure out what we should call this, but first let's get a spec to reproduce the error. And then I find this:
+It's trying to call a `name` method at the double/mock ref since it isn't defined yet, but the `double` doesn't have a method called `name` (the correct method would be `description`). 
+
+Now, before going on to fix the issue, we need to write a spec that shows it happening in a controlled environment. I move on to the specs for this specific file and find this: 
 
 {% highlight ruby %}
 describe 'when verify_doubled_constant_names config option is set' do
