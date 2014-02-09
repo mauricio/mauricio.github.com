@@ -11,7 +11,7 @@ It's such a hassle-free solution for udpates that it almost doesn't allow for a 
 
 First, clone MonoMac and MacCore from Github to a common directory as in:
 
-{% highlight bash linenos %}
+{% highlight bash %}
 mkdir monomac-build
 cd monomac-build
 git clone git://github.com/mono/maccore.git
@@ -20,7 +20,7 @@ git clone git://github.com/mono/monomac.git
 
 Now that you have both projects, let's build **MonoMac** and it's accessory executables:
 
-{% highlight bash linenos %}
+{% highlight bash %}
 cd monomac/src
 make
 {% endhighlight %}
@@ -31,13 +31,13 @@ Once you've done this, download the **Sparkle** framework files and get it's **.
 
 Now, at the "monomac/src" directory, call `parse.exe` to generate the basic bindings from the Objective-C **.h** files:
 
-{% highlight bash linenos %}
+{% highlight bash %}
 mono parse.exe ../../SUAppcast.h ../../SUAppcastItem.h ../../SUUpdater.h ../../SUVersionComparisonProtocol.h 
 {% endhighlight %}
 
 This is the output you will receive:
 
-{% highlight csharp linenos %}
+{% highlight csharp %}
 	[BaseType (typeof (NSObject))]
 	interface SUAppcast {
 		[Export ("fetchAppcastFromURL:")]
@@ -191,7 +191,7 @@ The `parse.exe` executable parses the Objective-C header files and generates a C
 
 Now, at **monomac/src** create a file called **sparkle.cs** and declare a namespace on it, I'm going to use **MonoMac.Sparkle**:
 
-{% highlight csharp linenos %}
+{% highlight csharp %}
 //
 // sparkle.cs: Definitions for the Sparkle Framework
 //
@@ -211,7 +211,7 @@ First, remove the empty `NSObject` reference and comment the `interface NSObject
 
 Now, let's get to the first class, `SUAppcast`:
 
-{% highlight csharp linenos %}
+{% highlight csharp %}
 [BaseType (typeof (NSObject))]
 interface SUAppcast {
 	[Export ("fetchAppcastFromURL:")]
@@ -231,7 +231,7 @@ interface SUAppcast {
 
 Here we have two issues, first, the `SetDelegate` method did not add it's parameter (most likely because it was called **delegate** and it's a keyword in C#) and the `Items` property was translated as an `Items` method that returns an `NSArray` instead of a strongly typed `SUAppcastItem` array, let's fix it:
 
-{% highlight csharp linenos %}
+{% highlight csharp %}
 [BaseType (typeof (NSObject))]
 interface SUAppcast {
 	[Export ("fetchAppcastFromURL:")]
@@ -252,7 +252,7 @@ Here we have added the `delegateHandler` parameter to the `SetDelegate` method (
 
 Now, off to the next one:
 
-{% highlight csharp linenos %}
+{% highlight csharp %}
 [BaseType (typeof (NSObject))]
 interface SUAppcastItem {
 	[Export ("dict")]
@@ -293,7 +293,7 @@ interface SUAppcastItem {
 
 This one is mostly making all of it's properties, well, properties. Here's how it will be like:
 
-{% highlight csharp linenos %}
+{% highlight csharp %}
 [BaseType (typeof (NSObject))]
 interface SUAppcastItem {
 	[Export ("dict")]
@@ -336,7 +336,7 @@ And we're done on this, this one was simple, it was just making sure it looked l
 
 And we're off to the last one! It isn't any different from all the others, it's just making sure our final class looks like a C# class as much as possible. Here's how it looks now:
 
-{% highlight csharp linenos %}
+{% highlight csharp %}
 [BaseType (typeof (NSObject))]
 interface SUUpdater {
 	[Static]
@@ -391,7 +391,7 @@ interface SUUpdater {
 
 And it will become this:
 
-{% highlight csharp linenos %}
+{% highlight csharp %}
 [BaseType (typeof (NSObject))]
 interface SUUpdater {
 	[Static]

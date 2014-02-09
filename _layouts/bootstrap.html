@@ -10,6 +10,7 @@
     <!-- Le styles -->
     <link href="/css/syntax.css" rel="stylesheet"/>
     <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/bootstrap-theme.min.css" rel="stylesheet">
     <style type="text/css">
         body {
             padding-top: 60px;
@@ -33,40 +34,35 @@
 
 <body>
 
-<div class="navbar navbar-inverse navbar-fixed-top">
-    <div class="navbar-inner">
-        <div class="container-fluid">
-            <a class="brand active" href="/">Maurício Linhares' ramblings</a>
-            <div class="nav-collapse collapse">
-                <ul class="nav">
-                    <li class="active"><a href="http://github.com/mauricio">github</a></li>
-                    <li class="active"><a class="active" href="http://twitter.com/mauriciojr">twitter</a></li>
-                    <li class="active"><a class="active" href="http://stackoverflow.com/users/293686/mauricio-linhares">stackoverflow</a></li>
-                    <li class="active"><a class="active" href="http://www.linkedin.com/in/mauriciolinhares" >linkedin</a></li>
-                    <li class="active"><a class="active" href="/rss.xml">feed</a></li>
-                </ul>
-            </div><!--/.nav-collapse -->
+
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+        <div class="navbar-header">        
+            <a class="navbar-brand" href="/">Maurício Linhares' ramblings</a>
         </div>
+        <div class="collapse navbar-collapse bs-navbar-collapse navbar-right" data-toggle="navigation">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="http://github.com/mauricio">github</a></li>
+                <li class="active"><a class="active" href="http://twitter.com/mauriciojr">twitter</a></li>
+                <li class="active"><a class="active" href="http://stackoverflow.com/users/293686/mauricio-linhares">stackoverflow</a></li>
+                <li class="active"><a class="active" href="http://www.linkedin.com/in/mauriciolinhares" >linkedin</a></li>
+                <li class="active"><a class="active" href="/rss.xml">feed</a></li>
+            </ul>
+        </div><!--/.nav-collapse -->            
     </div>
 </div>
 
-<div class="container-fluid">
-    <div class="row-fluid">
-        <div class="span9">
-            {{ content }}
-        </div><!--/span-->
-    </div><!--/row-->
+{{ content }}
 
-    <hr>
-
+<div class="container" align="center">
+    <hr/>
     <footer>
         <p>&copy; Maurício Linhares - mauricio.linhares [at] gmail -
-            Built with <a href="https://github.com/mojombo/jekyll">Jekyll</a>
-            and <a href="http://twitter.github.io/bootstrap/">Bootstrap</a>
+            Built with <a href="http://jekyllrb.com/">Jekyll</a>
+            and <a href="http://getbootstrap.com/">Bootstrap</a>
         </p>
     </footer>
-
-</div><!--/.fluid-container-->
+</div>
 
 <!-- Le javascript
 ================================================== -->

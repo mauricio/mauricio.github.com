@@ -20,7 +20,7 @@ that would allow you to execute queries and get results back.
 
 Let's see some sample usage:
 
-{% highlight scala linenos %}
+{% highlight scala %}
 import com.github.mauricio.async.db.postgresql.PostgreSQLConnection
 import com.github.mauricio.async.db.util.ExecutorServiceUtils.CachedExecutionContext
 import com.github.mauricio.async.db.util.URLParser
@@ -81,7 +81,7 @@ return the futures themselves (you can see the full source code for this app
 
 Let's start creating a model:
 
-{% highlight scala linenos %}
+{% highlight scala %}
 package models
 
 import org.joda.time.LocalDate
@@ -91,7 +91,7 @@ case class Message ( id : Option[Long], content : String, moment : LocalDate = L
 
 Now let's wrap the database access in a class to simplify the controllers:
 
-{% highlight scala linenos %}
+{% highlight scala %}
 package models
 
 import scala.concurrent.Future
@@ -167,7 +167,7 @@ context that comes by default in the driver itself but you might want to provide
 
 One way to use this at your Play app is to configure the database at your `Global` object as in:
 
-{% highlight scala linenos %}
+{% highlight scala %}
 object Global extends GlobalSettings {
 
   private val databaseConfiguration = System.getenv("DATABASE_URL") match {
@@ -205,7 +205,7 @@ database URLs (yes, they're different from JDBC URLs).
 
 And now to wrap it up, we have the controller that uses our `MessagesRepository`:
 
-{% highlight scala linenos %}
+{% highlight scala %}
 package controllers
 
 import play.api.mvc.{AsyncResult, Action, Controller}
@@ -270,7 +270,7 @@ object Messages extends Controller {
 
 And now we see another pattern, as you can see from this code snippet:
 
-{% highlight scala linenos %}
+{% highlight scala %}
   def index = Action {
     AsyncResult( messagesRepository.list.map {
       messages =>
@@ -288,25 +288,25 @@ way it is to Heroku and you will have your fist async PostgreSQL backed Play app
 
 Just setup this app on heroku with:
 
-{% highlight bash linenos %}
+{% highlight bash %}
 heroku apps:create
 {% endhighlight %}
 
 And then:
 
-{% highlight bash linenos %}
+{% highlight bash %}
 git push heroku master
 {% endhighlight %}
 
 Once the slug is ready, login to your psql console:
 
-{% highlight bash linenos %}
+{% highlight bash %}
 heroku pg:psql
 {% endhighlight %}
 
 And create the `messages` table:
 
-{% highlight sql linenos %}
+{% highlight sql %}
 CREATE TABLE messages
 (
   id bigserial NOT NULL,

@@ -62,7 +62,7 @@ Most of the problems you're going to have when trying to test legacy code is dep
 
 For a very simple example, imagine the following class:
 
-{% highlight ruby linenos %}
+{% highlight ruby %}
 class DocumentProcessor 
 
   def process(document)
@@ -83,7 +83,7 @@ This class has two direct dependencies, `DocumentProcessingService` and `Documen
 
 How can we remove these direct dependencies?
 
-{% highlight ruby linenos %}
+{% highlight ruby %}
 class DocumentProcessor 
 
   def initialize( storage_service, processing_service )
