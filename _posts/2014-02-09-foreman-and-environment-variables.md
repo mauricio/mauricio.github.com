@@ -40,6 +40,18 @@ case we have the rails app, a PostgreSQL database and then elasticsearch. You co
 have any other process you depend on running from here and never again install
 anything to run as a service in your machine.
 
+<div class="bs-callout bs-callout-info">
+    <h4>Procfiles and Heroku</h4>
+    <p>
+    If you're going to deploy your app to Heroku or some other service
+    that uses a <code>Procfile</code> to prepare the environment for your app
+    you should rename your development <code>Procfile</code> to something else
+    like <code>Procfile.local</code> or <code>Procfile.dev</code> so it won't be picked
+    up by your production environment. In this case, instead of <code>foreman start</code>
+    you would do <code>foreman start -f Procfile.local</code>.
+    </p>
+</div>
+
 ## Starting out with the database
 
 Now that you're not installing stuff as services anymore, you can go a step further
