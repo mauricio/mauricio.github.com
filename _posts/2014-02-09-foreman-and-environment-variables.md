@@ -181,3 +181,5 @@ it also exports your `Procfile` to many other formats (like Ubuntu's upstart), s
 it isn't just for development, you can actually use it at your production environment
 as well. Once you're happy with your `Procfile`'s, you should go to the website 
 and dig deeper into what else it can do to help you out.
+
+The source code for this example [is here](https://github.com/mauricio/foreman-example).
