@@ -38,13 +38,11 @@ meta:
     and extending modules in Ruby";s:7:"matches";s:1:"2";s:9:"permalink";s:66:"http://techbot.me/2008/09/including-and-extending-modules-in-ruby/";}}
   _relation_threshold: '2'
 ---
-<div id="attachment_160" class="wp-caption alignleft" style="width: 132px"><a href="http://www.amazon.com/gp/product/0596516177?ie=UTF8&amp;tag=ultimaspalavr-20&amp;linkCode=as2&amp;camp=1789&amp;creative=390957&amp;creativeASIN=0596516177"><img class="size-full wp-image-160" title="Dig deeper into Ruby with this book" src="http://techbot.me/wp-content/uploads/2011/01/ruby1.jpg" alt="Dig deeper into Ruby with this book" width="122" height="160" /></a><p class="wp-caption-text">Dig deeper into Ruby with this book</p></div>After <a href="http://gregsterndale.com/">Greg Sterndale's</a> presentation on a <a href="http://bostonrb.org/">boston-rb</a> hackfest earlier this month I noticed that not everyone knew the operators available for equality and comparisons in Ruby. Why not take the dust away from the blog and write about it, then?
+After <a href="http://gregsterndale.com/">Greg Sterndale's</a> presentation on a <a href="http://bostonrb.org/">boston-rb</a> hackfest earlier this month I noticed that not everyone knew the operators available for equality and comparisons in Ruby. Why not take the dust away from the blog and write about it, then?
 
 Ruby has many equality operators, some of them we use and see everywhere in our applications (like the usual double equal - “==”) and some are also used everywhere but we don’t really get to see them (like the triple equal or case equal operator – “===”). So let’s dig into how Ruby implements comparisons between our objects.
 
 You can see the full source code for this tutorial on <a href="https://github.com/mauricio/ruby-equality-operators">Github</a>.
-
-<!--more-->
 
 <h2>What does it mean to be equal?</h2>
 Maybe this is something from my Java past, but I find it to be really useful to first define what being “equal” really means. Objects have identities for the Ruby interpreter, you can easy check this by calling the object_id method:
