@@ -12,3 +12,4 @@ Stuff to blog about:
 * cloud formation auto-scaling based on SQS queues;
 * mongoid and the process method;
 * mixins are just a variation of inheritance;
+* ruby idioms, faraday's retry middleware exception handling;
