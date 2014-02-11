@@ -2,6 +2,9 @@
 layout: post
 title: Turning a synchronous client into async 
 subtitle: or why the MySQL protocol is so complicated to handle
+tags:
+- scala
+- useful
 ---
 
 **DISCLAIMER**: this is a rant about MySQL's network protocol only. I am very grateful for all the work everyone involved

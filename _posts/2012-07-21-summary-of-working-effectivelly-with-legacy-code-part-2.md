@@ -1,6 +1,8 @@
 ---
 layout: post
 title: Summary of Working Effecivelly with Legacy Code - Part 2
+tags:
+- useful
 ---
 
 # Chapter 2 - Working with feedback

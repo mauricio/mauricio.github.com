@@ -2,19 +2,7 @@
 layout: post
 title: Accessing the current request object on your mailer templates to generate links
 tags:
-- en_US
-- ruby
-- ruby on rails
-status: publish
-type: post
-published: true
-meta:
-  _su_description: ''
-  _edit_last: '1'
-  delicious: s:78:"a:3:{s:5:"count";s:1:"3";s:9:"post_tags";s:0:"";s:4:"time";s:10:"1281482615";}";
-  reddit: s:55:"a:2:{s:5:"count";s:1:"0";s:4:"time";s:10:"1295161457";}";
-  dsq_thread_id: '218397875'
-  _su_keywords: ''
+- outdated
 ---
 A common issue with mailer templates is that as they’re not being called from a controller you can’t get your hands on the request object and access properties like <strong>host_with_port</strong>. While you’re usually calling the mailers inside controllers and you could possibly hand the request as a parameter to it, it isn’t really nice to do this every time you need to send an email.
 

@@ -2,24 +2,9 @@
 layout: post
 title: Porque é importante saber como o protocolo HTTP funciona
 tags:
-- desenvolvimento web
-- diversos
-- http
-- pt_BR
-status: publish
-type: post
-published: true
-meta:
-  _su_keywords: ''
-  _edit_last: '1'
-  delicious: s:78:"a:3:{s:5:"count";s:1:"4";s:9:"post_tags";s:0:"";s:4:"time";s:10:"1295462061";}";
-  reddit: s:55:"a:2:{s:5:"count";s:1:"0";s:4:"time";s:10:"1296225857";}";
-  dsq_thread_id: '218499964'
-  _su_description: ''
-  _efficient_related_posts: a:1:{i:0;a:4:{s:2:"ID";s:2:"24";s:10:"post_title";s:29:"Why
-    learning HTTP does matter";s:7:"matches";s:1:"1";s:9:"permalink";s:56:"http://techbot.me/2008/11/why-learning-http-does-matter/";}}
-  _relation_threshold: '1'
+- useful
 ---
+
 É interessante perceber que há tantas pessoas trabalhando escrevendo aplicações web que não entendem o básico sobre a internet e o protocolo HTTP. Você pode encontrar aplicações que demonstram comportamentos bizarros em qualquer lugar, as pessoas simplesmente esquecem de ler as especificações ou dormiram durante as aulas sobre o protocolo HTTP na universidade.
 
 Um dos casos mais infelizes dessa falta de conhecimento é a “febre do POST”. Todos so formulários na aplicação usam o método POST para se comunicar com o servidor, não importa o que ele está fazendo ou se existem ou não “efeitos colaterais” envolvidos no caso. Simplesmente funciona dessa forma e as pessoas aparentemente não tem nenhum motivo pra não fazer dessa forma. Se você pergunta a alguém, eles vão provavelmente soltar a pérola, “ah, me disseram que o GET tem o limite no tamanho dos parâmetros que você pode mandar, então é melhor prevenir do que remediar”.

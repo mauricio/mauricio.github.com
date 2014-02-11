@@ -2,39 +2,7 @@
 layout: post
 title: Como tratar os seus testes?
 tags:
-- bdd
-- ddd
-- desenvolvimento
-- pt_BR
-- qualidade
-- rspec
-- ruby
-- testes
-status: publish
-type: post
-published: true
-meta:
-  _su_keywords: ''
-  _edit_last: '1'
-  delicious: s:78:"a:3:{s:5:"count";s:1:"1";s:9:"post_tags";s:0:"";s:4:"time";s:10:"1295462067";}";
-  reddit: s:55:"a:2:{s:5:"count";s:1:"0";s:4:"time";s:10:"1296225858";}";
-  dsq_thread_id: '218470912'
-  _su_description: ''
-  _efficient_related_posts: a:10:{i:0;a:4:{s:2:"ID";s:2:"11";s:10:"post_title";s:51:"Unit
-    tests don’t guarantee that your system works";s:7:"matches";s:1:"2";s:9:"permalink";s:75:"http://techbot.me/2008/03/unit-tests-dont-guarantee-that-your-system-works/";}i:1;a:4:{s:2:"ID";s:3:"352";s:10:"post_title";s:41:"Ruby
-    Basics - Equality operators in Ruby ";s:7:"matches";s:1:"1";s:9:"permalink";s:62:"http://techbot.me/2011/05/ruby-basics-equality-operators-ruby/";}i:2;a:4:{s:2:"ID";s:3:"162";s:10:"post_title";s:90:"Handling
-    various rubies at the same time in your machine with RVM – Ruby Version Manager";s:7:"matches";s:1:"1";s:9:"permalink";s:123:"http://techbot.me/2011/01/handling-various-rubies-at-the-same-time-in-your-machine-with-rvm-%e2%80%93-ruby-version-manager/";}i:3;a:4:{s:2:"ID";s:3:"134";s:10:"post_title";s:50:"Full
-    text search in in Rails with Sunspot and Solr";s:7:"matches";s:1:"1";s:9:"permalink";s:77:"http://techbot.me/2011/01/full-text-search-in-in-rails-with-sunspot-and-solr/";}i:4;a:4:{s:2:"ID";s:3:"115";s:10:"post_title";s:136:"Deployment
-    Recipes – Deploying, monitoring and securing your Rails application to a clean
-    Ubuntu 10.04 install using Nginx and Unicorn";s:7:"matches";s:1:"1";s:9:"permalink";s:158:"http://techbot.me/2010/08/deployment-recipes-deploying-monitoring-and-securing-your-rails-application-to-a-clean-ubuntu-10-04-install-using-nginx-and-unicorn/";}i:5;a:4:{s:2:"ID";s:3:"101";s:10:"post_title";s:75:"Asynchronous
-    email deliveries using Resque and resque_action_mailer_backend";s:7:"matches";s:1:"1";s:9:"permalink";s:102:"http://techbot.me/2010/07/asynchronous-email-deliveries-using-resque-and-resque_action_mailer_backend/";}i:6;a:4:{s:2:"ID";s:2:"98";s:10:"post_title";s:81:"If
-    you’re cleaning up your user’s input in your views you’re doing it wrong";s:7:"matches";s:1:"1";s:9:"permalink";s:126:"http://techbot.me/2009/11/if-you%e2%80%99re-cleaning-up-your-user%e2%80%99s-input-in-your-views-you%e2%80%99re-doing-it-wrong/";}i:7;a:4:{s:2:"ID";s:2:"93";s:10:"post_title";s:68:"Building
-    your own ActiveRecord validation macros with validates_each";s:7:"matches";s:1:"1";s:9:"permalink";s:95:"http://techbot.me/2009/09/building-your-own-activerecord-validation-macros-with-validates_each/";}i:8;a:4:{s:2:"ID";s:2:"59";s:10:"post_title";s:150:"Setting
-    up your Ruby on Rails application in an Ubuntu Jaunty Jackalope (9.04) server
-    with Nginx, MySQL, Ruby Enterprise Edition and Phusion Passenger";s:7:"matches";s:1:"1";s:9:"permalink";s:172:"http://techbot.me/2009/06/setting-up-your-ruby-on-rails-application-in-a-ubuntu-jaunty-jackalope-9-04-server-with-nginx-mysql-ruby-enterprise-edition-and-phusion-passenger/";}i:9;a:4:{s:2:"ID";s:2:"53";s:10:"post_title";s:92:"Quick
-    Tip – Using to_s as a label and simplified link_to calls to your ActiveRecord
-    models";s:7:"matches";s:1:"1";s:9:"permalink";s:115:"http://techbot.me/2009/06/quick-tip-using-to_s-as-a-label-and-simplified-link_to-calls-to-your-activerecord-models/";}}
-  _relation_threshold: '1'
+- useful
 ---
 Já percebeu o quanto se fala em qualidade e testes de software nos últimos tempos? Testar software hoje não é mais apenas sentar o seu usuário (vulgo “cliente”) na frente de uma tela rodando o seu sistema pra que ele possa validar se as funcionalidades estão implementadas a contento. A algum o uso de testes unitários, de integração e funcionais se tornaram um fato corriqueiro para equipes que trabalham com software e prezam pela mínima qualidade (<a href="http://imasters.uol.com.br/artigo/6061/gerencia/qualidade_e_de_graca">até porque qualidade não é apenas falta de bugs</a>) e facilidade de se fazer alterações sem quebrar o sistema todo.
 

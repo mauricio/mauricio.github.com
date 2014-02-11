@@ -1,6 +1,9 @@
 ---
 layout: post
 title: mysql-async and postgresql-async 0.2.3 released!
+tags:
+- scala
+- useful
 ---
 
 And a newer version of the `postgresql-async` has finally been released and now the project includes `mysql-async`, an

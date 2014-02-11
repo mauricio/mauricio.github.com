@@ -2,24 +2,7 @@
 layout: post
 title: Using board games to teach object oriented analysis
 tags:
-- analysis
-- Education
-- education. board games
-- en_US
-- object oriented design
-status: publish
-type: post
-published: true
-meta:
-  _su_keywords: board games, object oriented design, analysis, education
-  _su_description: Board games are a great source for problems if you're trying to
-    come up with a model for an object oriented analysis and design class
-  _edit_last: '1'
-  _su_title: ! 'Using board games to teach object oriented analysis '
-  _su_rich_snippet_type: none
-  dsq_thread_id: '361602744'
-  _efficient_related_posts: a:0:{}
-  _relation_threshold: ''
+- outdated
 ---
 Just when I arrived from Cambridge back home <a href="http://www.linkedin.com/in/erikobrito">the coordinator</a> at <a href="http://www.faculdadeidez.com.br/">the college</a> where I usually teach after-grad courses mailed me asking if I’d be available to pick up an “Object Oriented Analysis and Design” class. I was still unpacking my stuff but I just said yes. Why not? It’s something I really like to teach and talk about, could be great to get me back to teaching after 5 months away from classes.
 

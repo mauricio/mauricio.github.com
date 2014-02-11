@@ -1,6 +1,9 @@
 ---
 layout: post
 title: Never match against Ruby's default exceptions at your tests
+tags:
+- ruby
+- useful
 ---
 
 While working in an app using Rails 4 and RSpec's beta version, I came across a weird bug that caused the following backtrace:

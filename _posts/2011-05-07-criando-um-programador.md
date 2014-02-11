@@ -2,49 +2,33 @@
 layout: post
 title: Criando um programador
 tags:
-- diversos
-- pt_BR
-status: publish
-type: post
-published: true
-meta:
-  _su_keywords: estágio, programação, aprendendo a programar, carreira, aprendizado,
-    ensino
-  _su_rich_snippet_type: none
-  dsq_thread_id: '297856088'
-  _su_description: De tempos em tempos surge nas listas de discussão de tecnologia
-    a conversa sobre estágio, como aprender e como se “formar” um programador. Eu
-    tive uma experiência interessante sobre isso e acho que finalmente é a hora de
-    escrever sobre o assunto.
-  _edit_last: '1'
-  _su_title: Criando um programador
+- useful
 ---
 De tempos em tempos surge nas listas de discussão de tecnologia a conversa sobre estágio, como aprender e como se “formar” um programador. Eu tive uma experiência interessante sobre isso e acho que finalmente é a hora de escrever sobre o assunto.
 
-<!--more-->
-
 Há algum tempo atrás, quando estava saindo de uma empresa e indo pra outra, resolvi que poderia usar o “downtime” entre uma e outra pra escrever um produto que já tinha na cabeça a algum tempo. Sentei a bunda na cadeira e passei 3 semanas escrevendo muito código, quando finalmente comecei a trabalhar no novo emprego, meu tempo disponível pra ferramenta diminuiu consideravelmente e eu pensei que talvez fosse a hora de encontrar alguém pra me ajudar.
 
-Considerando o meu estado de “empreendedor liso”, não poderia contratar um desenvolvedor mesmo, então fui pra contratar <a href="https://groups.google.com/group/pbjug/browse_thread/thread/3f4b542d12b310e2/49ae3a6e00bb5b24">um estagiário</a>. A luta contra os currículos foi dura (deveria ter escrito <a href="http://techbot.me/2011/01/como-ser-chutado-de-uma-avaliacao-pra-uma-vaga-na-fase-de-curriculos/">isso</a> antes ) e no fim só um realmente me interessou, especialmente porque <a href="http://twitter.com/#!/pedromtavares">a pessoa</a> dizia que sabia ler e escrever em inglês.
-Primeira conversa
+Considerando o meu estado de “empreendedor liso”, não poderia contratar um desenvolvedor mesmo, então fui pra contratar <a href="https://groups.google.com/group/pbjug/browse_thread/thread/3f4b542d12b310e2/49ae3a6e00bb5b24">um estagiário</a>. A luta contra os currículos foi dura (deveria ter escrito <a href="/2011/01/27/como-ser-chutado-de-uma-avaliacao-pra-uma-vaga-na-fase-de-curriculos.html">isso</a> antes ) e no fim só um realmente me interessou, especialmente porque <a href="http://twitter.com/#!/pedromtavares">a pessoa</a> dizia que sabia ler e escrever em inglês.
+
+## Primeira conversa
 
 Nos encontramos pra uma entrevista formal, conversamos sobre a empresa, meus planos de dominação mundial e o que ele deveria fazer. Descobri que ele havia morado nos EUA durante um tempo, então realmente sabia ler e escrever inglês e pelo papo parecia ser uma pessoa interessada.
 
 A experiência dele era pouca, não teve uma formação legal em orientação a objetos e, mesmo estando cursando a mesma graduação que eu cursei, o fato dele ter tido professores diferentes não deu a ele o conhecimento que eu esperaria que ele já tivesse com o tempo de curso que ele tinha. Além disso ele teria que aprender Rails, HAML, Solr e todas as tecnologias que já estavam sendo usadas na aplicação e isso não seria uma tarefa simples.
 
-<h2>Shu-Ha-Ri</h2>
+## Shu-Ha-Ri
 
 Na época, eu estava lendo o <a href="http://www.amazon.com/gp/product/0321482751/ref=as_li_ss_tl?ie=UTF8&tag=ultimaspalavr-20&linkCode=as2&camp=217145&creative=399349&creativeASIN=0321482751">“Agile Software Development: The Cooperative Game”</a> do Cockburn e estava fisgado na idéia do Shu-Ha-Ri, que são os 3 momentos do aprendizado, uma idéia que surgiu no teatro Nô japonês. Segundo o Shu-Ha-Ri, a técnica pode ser dividida em 3 estágios diferentes, Shu ou aprender, Ha ou separar e Ri ou transcender.
 
 No estágio do Shu, o aprendiz somente segue os passos já definidos pelo mestre, sem pensar muito sobre o que está sendo feito. No Ha, o aprendiz já começa a pensar sobre o que ele está fazendo, porque ele deve fazer daquela forma. E no Ri o aprendiz define a sua própria forma, baseado nas suas capacidades, conhecimento e experiências de vida. Ele deixa de ser um aprendiz e agora é um mestre de si mesmo, não mais repetindo o caminho do mestre, mas definindo o seu próprio.
 
-<h2>Começando o caminho</h2>
+## Começando o caminho
 
 Pra começar com o Shu, era necessário aprender e repetir, então a primeira atividade dele no estágio não seria mexer na aplicação, que já estava relativamente pronta. O primeiro mês dele deveria ser criar um <a href="http://pedromtavares.wordpress.com/2009/11/10/awdwr-introduction/">blog</a> e escrever resumos com exemplos de código de cada um dos capítulos iniciais do <a href="http://www.amazon.com/gp/product/1934356549/ref=as_li_ss_tl?ie=UTF8&tag=ultimaspalavr-20&linkCode=as2&camp=217145&creative=399349&creativeASIN=1934356549">“Agile Web Development with Rails”</a>. 
 
 Na época ele deve ter pensado que eu era meio louco (hoje já tem certeza) e na verdade foi bem um tiro no escuro mesmo, eu nunca tinha feito isso antes com um estagiário, mas eu tinha que arriscar. Outro detalhe importante, ele não ia receber nada por esse primeiro mês, os R$ 500,00 reais que ele iria receber foi comprado em livros (lista no final do post), porque ele ainda tinha muito de teoria a melhorar.
 
-<h2>Seguindo o caminho</h2>
+## Seguindo o caminho
 
 Depois do primeiro mês só de blog e de ver como a aplicação funcionava, ele começou finalmente a escrever código. Nesse momento, ainda saindo de Shu para Ha, era necessário que eu constantemente explicasse os passos necessários pra que ele executasse as tarefas. Primeiro porque eu tinha um apego especial pelo código da aplicação, que era a minha primeira ferramenta própria, e também porque eu sabia das limitações dele na tecnologia nesse momento.
 
@@ -52,7 +36,7 @@ A maior parte dos trabalhos iniciais era estender funcionalidades já existentes
 
 Com um pouco mais de tempo, ele já estava escrevendo funcionalidades únicas, criando código do zero e implementando os seus próprios modelos, ainda baseados no que já existia dentro da aplicação, mas já estava claramente em seu momento Ha. Não era mais necessário me perguntar como tudo funcionava, ele já havia criado o seu próprio entendimento sobre como e o que era a aplicação e começava a enxergar ela com os seus próprios olhos. Eu já descrevia as funcionalidades sem explicar detalhes específicos de implementação e ele era capaz de implementá-las sem que houvesse necessidade de ser levado pelo caminho.
 
-<h2>Transcendendo o caminho</h2>
+## Transcendendo o caminho
 
 O estágio acabou, ele tomou o seu próprio caminho e tem agora o seu próprio “estilo”, chegou ao seu momento de Ri, não do conhecimento, mas dessa primeira fase de entendimento do trabalho de um programador. Hoje eu vejo que os primeiros passos, naqueles primeiros meses, foram essenciais pra formação e a prática aliada a teoria foram as principais responsáveis por fazer com que ele se tornasse capaz de escrever código útil, que continua na ferramenta até hoje, com praticamente meses de experiência em programação.
 
@@ -60,7 +44,7 @@ Acho que o grande problema que temos hoje na formação é o exagero do ensino n
 
 Programação se aprende com leitura e, principalmente, prática. A criação do blog não era somente pra que ele lesse o livro naquele momento, mas que ele lesse e repetisse o conhecimento. Nós fixamos o conhecimento por repetição, os músculos de um praticante de artes marciais tem uma memória dos movimentos que ele precisa fazer porque ele os repetiu a exaustão e assim também é programar, você repete os passos seguidamente marcar o seu cérebro com aquele caminho, de forma que você já saiba exatamente pra onde vai assim que começa a escrever.
 
-<h2>Implementando</h2>
+## Implementando
 
 Se você tem aprendizes sob a sua coordenação, aplique o Shu-Ha-Ri com eles. Ajude-os a desenvolver o conhecimento um passo de cada vez, mantenha-os no caminho pra que eles possam apreender o conhecimento de forma que eles apliquem o que foi aprendido corretamente. Você só tem a ganhar ao conseguir formar uma mão de obra mais qualificada e capaz de resolver os problemas.
 
@@ -70,7 +54,7 @@ A grande vitória dessa minha experiência, não foi minha, mas de Pedro, que se
 
 E você, quais são as suas experiências nisso?
 
-<h2>Apêndice</h2>
+## Apêndice
 
 E aqui segue a listinha de livros que ele recebeu (ao menos eu acho que tenham sido esses):
 
@@ -90,12 +74,4 @@ E aqui segue a listinha de livros que ele recebeu (ao menos eu acho que tenham s
 <li><a href="http://www.amazon.com/gp/product/0321127420/ref=as_li_ss_tl?ie=UTF8&tag=ultimaspalavr-20&linkCode=as2&camp=217145&creative=399349&creativeASIN=0321127420">Patterns of Enterprise Application Architecture</a></li>
 
 <li><a href="http://www.amazon.com/gp/product/1934356344/ref=as_li_ss_tl?ie=UTF8&tag=ultimaspalavr-20&linkCode=as2&camp=217145&creative=399349&creativeASIN=1934356344">The Passionate Programmer</a></li>
-</ul>
-
-<h2> Textos Relacionados </h2>
-
-<ul>
-  <li> <a href="http://techbot.me/2011/01/agilidade-snake-oil-power-balances-e-a-falacia-do-nos-somos-diferentes/">Agilidade, snake oil, power balances e a falácia do “nós somos diferentes” </a></li>
-  <li><a href="http://techbot.me/2011/01/como-ser-chutado-de-uma-avaliacao-pra-uma-vaga-na-fase-de-curriculos/">Como ser chutado de uma avaliação pra uma vaga na fase de currículos</a></li>
-<li><a href="http://techbot.me/2007/12/quem-quer-ser-gerente/">Quem quer ser gerente?</a></li>
 </ul>

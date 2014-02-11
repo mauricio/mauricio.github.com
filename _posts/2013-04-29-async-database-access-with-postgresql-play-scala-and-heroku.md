@@ -1,6 +1,9 @@
 ---
 layout: post
 title: Async database access with PostgreSQL, Play, Scala and Heroku
+tags:
+- scala
+- useful
 ---
 
 Last year I felt I wanted to contribute in some way to the Scala community. Since I didn't think I was smart

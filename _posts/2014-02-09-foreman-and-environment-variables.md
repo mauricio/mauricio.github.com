@@ -2,6 +2,9 @@
 layout: post
 title: Using foreman and environment variables to isolate and run your apps in development
 subtitle: or why you should stop installing stuff as services in your machine
+tags:
+- ruby
+- useful
 ---
 
 If you're building Rails apps you probably found yourself installing many external

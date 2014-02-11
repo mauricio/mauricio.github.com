@@ -2,25 +2,7 @@
 layout: post
 title: Quem quer ser gerente?
 tags:
-- agil
-- carreira
-- desenvolvimento
-- diversos
-- gerencia
-- pt_BR
-status: publish
-type: post
-published: true
-meta:
-  _su_keywords: ''
-  delicious: s:78:"a:3:{s:5:"count";s:1:"2";s:9:"post_tags";s:0:"";s:4:"time";s:10:"1295462077";}";
-  reddit: s:55:"a:2:{s:5:"count";s:1:"0";s:4:"time";s:10:"1296225862";}";
-  _edit_last: '1'
-  _wp_old_slug: hello-world
-  dsq_thread_id: '218499910'
-  _su_description: ''
-  _efficient_related_posts: a:0:{}
-  _relation_threshold: ''
+- useful
 ---
 <em>Em uma empresa comum, havia um programador comum.
 

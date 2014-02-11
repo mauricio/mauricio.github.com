@@ -1,6 +1,8 @@
 ---
 layout: post
 title: Summary of Working Effecivelly with Legacy Code - Part 1
+tags:
+- useful
 ---
 
 This week we started a book club at [OfficeDrop](http://www.officedrop.com/) and the first book selected was [Working Effectively with Legacy Code](https://www.amazon.com/dp/0131177052/ref=as_li_ss_til?tag=ultimaspalavr-20&camp=0&creative=0&linkCode=as4&creativeASIN=0131177052&adid=0JSFDNV881K8N57Q24FJ&) by Michael Feathers. Having read it a couple of years ago while in college, going through the chapters again is much more interesting now as at that time I didn't really understand all that he was talking about in the book. Today the lessons are definitely much more interesting as I see a lot of what he is talking about in code that I have worked with or am working on today.

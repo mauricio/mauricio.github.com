@@ -3,19 +3,7 @@ layout: post
 title: Why I am not using Masochism for my master-slave setups and why monkey-patching
   isn’t the only solution
 tags:
-- en_US
-- ruby
-- ruby on rails
-status: publish
-type: post
-published: true
-meta:
-  _edit_last: '1'
-  delicious: s:79:"a:3:{s:5:"count";s:2:"15";s:9:"post_tags";s:0:"";s:4:"time";s:10:"1281482617";}";
-  reddit: s:55:"a:2:{s:5:"count";s:1:"0";s:4:"time";s:10:"1295161461";}";
-  dsq_thread_id: '217521064'
-  _su_keywords: ''
-  _su_description: ''
+- useful
 ---
 I got a message this morning from Gregg at <a href="http://ruby5.envylabs.com/">Ruby5</a> asking why I wrote the <a href="http://github.com/mauricio/master_slave_adapter/tree">master_slave_adapter</a> plugin instead of using <a href="http://github.com/technoweenie/masochism/tree/master">Technoweenie’s Masochism</a> and I think the answer to this question deserves a little blog post (and the blog really needs some new content :P).
 

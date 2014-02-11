@@ -2,19 +2,7 @@
 layout: post
 title: with_scope and named_scopes ignoring stacked :order clauses
 tags:
-- en_US
-- ruby
-- ruby on rails
-status: publish
-type: post
-published: true
-meta:
-  _su_keywords: ''
-  _edit_last: '1'
-  reddit: s:55:"a:2:{s:5:"count";s:1:"0";s:4:"time";s:10:"1281788473";}";
-  delicious: s:78:"a:3:{s:5:"count";s:1:"3";s:9:"post_tags";s:0:"";s:4:"time";s:10:"1280621455";}";
-  dsq_thread_id: '218407830'
-  _su_description: ''
+- outdated
 ---
 If you've been using with_scope and named_scopes a lot with ActiveRecord you have probably noticed that the :order clauses defined at the scopes are lost and only the first :order clause is used. If you defined an :order clause you'd like to have it merged with the other ones already provided. Here's a simple example:
 

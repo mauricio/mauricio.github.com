@@ -2,24 +2,7 @@
 layout: post
 title: Why learning HTTP does matter
 tags:
-- en_US
-- http
-- rest
-- usability
-- web development
-status: publish
-type: post
-published: true
-meta:
-  _su_keywords: ''
-  _edit_last: '1'
-  delicious: s:78:"a:3:{s:5:"count";s:1:"1";s:9:"post_tags";s:0:"";s:4:"time";s:10:"1280621470";}";
-  reddit: s:55:"a:2:{s:5:"count";s:1:"0";s:4:"time";s:10:"1280621471";}";
-  dsq_thread_id: '294976324'
-  _su_description: ''
-  _efficient_related_posts: a:1:{i:0;a:4:{s:2:"ID";s:2:"15";s:10:"post_title";s:57:"Porque
-    é importante saber como o protocolo HTTP funciona";s:7:"matches";s:1:"1";s:9:"permalink";s:83:"http://techbot.me/2008/11/porque-e-importante-saber-como-o-protocolo-http-funciona/";}}
-  _relation_threshold: '1'
+- useful
 ---
 It's interesting to notice that there's so many people working with web applications that don't understand the basics of the Internet and the HTTP protocol. You might find applications that exibit bizarre behaviors anywhere, people just forget to read the specs or sleep during the HTTP protocol classes at college.
 

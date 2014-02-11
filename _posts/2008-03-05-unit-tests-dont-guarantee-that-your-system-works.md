@@ -2,27 +2,7 @@
 layout: post
 title: Unit tests don’t guarantee that your system works
 tags:
-- bdd
-- en_US
-- quality
-- rspec
-- ruby
-- ruby on rails
-- tdd
-- testing
-status: publish
-type: post
-published: true
-meta:
-  _edit_last: '1'
-  delicious: s:78:"a:3:{s:5:"count";s:1:"1";s:9:"post_tags";s:0:"";s:4:"time";s:10:"1280358961";}";
-  reddit: s:55:"a:2:{s:5:"count";s:1:"0";s:4:"time";s:10:"1281209939";}";
-  dsq_thread_id: '217521012'
-  _su_keywords: ''
-  _su_description: ''
-  _efficient_related_posts: a:1:{i:0;a:4:{s:2:"ID";s:3:"228";s:10:"post_title";s:27:"Como
-    tratar os seus testes?";s:7:"matches";s:1:"2";s:9:"permalink";s:53:"http://techbot.me/2008/01/como-tratar-os-seus-testes/";}}
-  _relation_threshold: '2'
+- useful
 ---
 Last week we had <a href="http://rubyforge.org/pipermail/rspec-users/2008-February/006012.html">an interesting message at the RSpec users list</a>, the most interesting part of it is the following:
 

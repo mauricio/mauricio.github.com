@@ -2,22 +2,9 @@
 layout: post
 title: Meu ambiente de desenvolvimento em 7 itens
 tags:
-- diversos
-- pt_BR
-status: publish
-type: post
-published: true
-meta:
-  _edit_last: '1'
-  jabber_published: '1293801370'
-  delicious: s:78:"a:3:{s:5:"count";s:1:"0";s:9:"post_tags";s:0:"";s:4:"time";s:10:"1296138438";}";
-  reddit: s:55:"a:2:{s:5:"count";s:1:"0";s:4:"time";s:10:"1296225853";}";
-  _su_rich_snippet_type: none
-  dsq_thread_id: '218500137'
+- outdated
 ---
 Recebi o convite do <a href="http://twitter.com/cmilfont">@cmilfont</a> e agora estou entrando na brincadeira também, vamos lá.
-
-<!--more-->
 
 <h3>Máquina/SO</h3>
 

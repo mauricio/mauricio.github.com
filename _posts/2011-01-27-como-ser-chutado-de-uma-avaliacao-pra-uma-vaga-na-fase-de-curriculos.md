@@ -5,24 +5,7 @@ tags:
 - currículos
 - diversos
 - empregos
-- pt_BR
-status: publish
-type: post
-published: true
-meta:
-  _edit_last: '1'
-  jabber_published: '1296149125'
-  delicious: s:78:"a:3:{s:5:"count";s:1:"1";s:9:"post_tags";s:0:"";s:4:"time";s:10:"1296178805";}";
-  reddit: s:55:"a:2:{s:5:"count";s:1:"0";s:4:"time";s:10:"1296251083";}";
-  _su_rich_snippet_type: none
-  _su_title: Como ser chutado de uma avaliação pra uma vaga na fase de currículos
-  _su_description: Criar currículos pra vagas em tecnologia é um serviço sério e os
-    candidatos devem procurar escrever um currículo interessante e que prenda a atenção
-    do avaliador.
-  _su_keywords: currículo, tecnologia, escrever, carreira, como fazer currículo
-  dsq_thread_id: '218491723'
-  _efficient_related_posts: a:0:{}
-  _relation_threshold: ''
+- useful
 ---
 <em><strong>Aviso aos navegantes: esse texto foi publicado originalmente em 27/01/2011, a OfficeDrop não está mais recebendo currículos pra essas vagas.</strong></em>
 
@@ -95,11 +78,3 @@ Algumas empresas também gostam de saber se as pessoas que estão sendo contrata
 Pense no seu currículo como a primeira impressão que você vai causar e pense que ele nem pode ser pequeno demais pra não dizer nada nem deve ser grande demais pra não parecer enrolação. Currículos com até 3 folhas são aceitáveis, depois disso pode ter certeza de que o avaliador não está mais olhando pro conteúdo e está contando os minutos pra esse sofrimento acabar.
 
 Seja direto, coloque informações que qualifiquem você pra vaga em questão e preste atenção nas entrelinhas da vaga, pra não enviar um currículo em português pra uma empresa americana. Mas não se empolgue, o currículo é somente pra que você seja considerado pra vaga, a entrevista e os assigments que vão ser passados é quem vão dizer se você realmente vai chegar lá ou não, mas é sempre bom causar uma boa primeira impressão.
-
-<h2>Textos Relacionados</h2>
-
-<ul>
-  <li> <a href="http://techbot.me/2011/01/agilidade-snake-oil-power-balances-e-a-falacia-do-nos-somos-diferentes/">Agilidade, snake oil, power balances e a falácia do “nós somos diferentes” </a></li>
-  <li><a href="http://techbot.me/2011/05/criando-um-programador/">Criando um programador</a></li>
-<li><a href="http://techbot.me/2007/12/quem-quer-ser-gerente/">Quem quer ser gerente?</a></li>
-</ul>

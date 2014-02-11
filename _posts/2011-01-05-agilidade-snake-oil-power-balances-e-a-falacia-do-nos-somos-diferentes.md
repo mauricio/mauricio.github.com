@@ -2,19 +2,7 @@
 layout: post
 title: Agilidade, snake oil, power balances e a falácia do “nós somos diferentes”
 tags:
-- gerenciamento
-- pt_BR
-status: publish
-type: post
-published: true
-meta:
-  _edit_last: '1'
-  jabber_published: '1294269224'
-  _wp_old_slug: agilidade-snake-oil-power-balances-e-a-falacia-do-%e2%80%9cnos-somos-diferentes%e2%80%9d
-  delicious: s:78:"a:3:{s:5:"count";s:1:"0";s:9:"post_tags";s:0:"";s:4:"time";s:10:"1295462055";}";
-  reddit: s:55:"a:2:{s:5:"count";s:1:"0";s:4:"time";s:10:"1296225851";}";
-  _su_rich_snippet_type: none
-  dsq_thread_id: '218492833'
+- useful
 ---
 Um companheiro de uma das listas que participo recebeu um email bem interessante, e eu preciso fazer alguns comentários sobre isso.
 

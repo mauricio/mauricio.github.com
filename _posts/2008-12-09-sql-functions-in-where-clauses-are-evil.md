@@ -2,23 +2,7 @@
 layout: post
 title: SQL functions in WHERE clauses are evil
 tags:
-- Anything
-- en_US
-- mysql
-- optimization
-- sql
-status: publish
-type: post
-published: true
-meta:
-  _su_rich_snippet_type: none
-  delicious: s:78:"a:3:{s:5:"count";s:1:"0";s:9:"post_tags";s:0:"";s:4:"time";s:10:"1280621462";}";
-  _edit_last: '1'
-  reddit: s:55:"a:2:{s:5:"count";s:1:"0";s:4:"time";s:10:"1280621462";}";
-  dsq_thread_id: '218408794'
-  _efficient_related_posts: a:1:{i:0;a:4:{s:2:"ID";s:2:"16";s:10:"post_title";s:60:"Handling
-    database indexes for Rails polymorphic associations";s:7:"matches";s:1:"2";s:9:"permalink";s:87:"http://techbot.me/2008/09/handling-database-indexes-for-rails-polymorphic-associations/";}}
-  _relation_threshold: '2'
+- useful
 ---
 Once we get up an running with the basic SQL syntax, doing inserts, updates, deletes and simple selects we start to learn about the SQL functions, the default ones like LOWER, COUNT, AVG and then the functions that are specific for the database you're using. We learn them and start to feel that your fingers are itching to try them, to use them in the real world. Why would you learn them if you can't use them anyway?
 

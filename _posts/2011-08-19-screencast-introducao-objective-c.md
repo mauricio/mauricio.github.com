@@ -1,6 +1,8 @@
 ---
 layout: post
 title: Screencast - Introdução a Objective-C - Parte 1
+tags:
+- outdated
 ---
 
 E eis que finalmente surge o primeiro screencast! Demorou mas agora saiu, <a href="http://www.slideshare.net/mauricio.linhares/curso-de-desenvolvimento-de-aplicaes-para-ios-com-objectivec">revitalizando o material de Objective-C e iOS que eu comecei ano passado</a>, resolvi gravar screencasts pra essa atualização em vez de escrever pra ver se funciona melhor e o primeiro vídeo, de introducão a linguagem Objective-C, vocês encontram aí embaixo ( <a href="https://github.com/mauricio/objetive-c-tutorial">o código fonte está disponível no GitHub</a> ) :

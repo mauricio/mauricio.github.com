@@ -2,29 +2,7 @@
 layout: post
 title: Produzindo um avião com métodos ágeis
 tags:
-- agilidade
-- gerenciamento
-- jogos
-- pt_BR
-- scrum
-status: publish
-type: post
-published: true
-meta:
-  _su_keywords: scrum, agilidade, exercício, lean, métodos, engenharia de software
-  _edit_last: '1'
-  jabber_published: '1276056106'
-  _wp_old_slug: ''
-  delicious: s:78:"a:3:{s:5:"count";s:1:"0";s:9:"post_tags";s:0:"";s:4:"time";s:10:"1295462059";}";
-  reddit: s:55:"a:2:{s:5:"count";s:1:"0";s:4:"time";s:10:"1296225854";}";
-  dsq_thread_id: '219774395'
-  _su_description: Usando um exercício de trabalho manual pra explicar como funcionam
-    os métodos ágeis é uma ótima forma de fazer com que o aprendizado se fixe na mente
-    dos alunos.
-  _su_rich_snippet_type: none
-  _su_title: Produzindo um avião com métodos ágeis
-  _efficient_related_posts: a:0:{}
-  _relation_threshold: ''
+- outdated
 ---
 [caption id="attachment_19" align="alignleft" width="225" caption="Produto final produzido no curso de CSM"]<a href="http://techbot.me/wp-content/uploads/2010/06/img_0356.jpg"><img src="http://techbot.me/wp-content/uploads/2010/06/img_0356.jpg?w=225" alt="Produto final produzido no curso de CSM" title="Produto final produzido no curso de CSM" width="225" height="300" class="size-medium wp-image-19" /></a>[/caption]Este último sábado foi também o último dia da minha disciplina de Introdução aos Métodos Ágeis e Scrum da especialização em<a href="http://www.faculdadeidez.com.br/posgraduacaocursos/engenharia"> Metodologia para Engenharia de Software</a> na <a href="http://www.faculdadeidez.com.br/">Faculdade iDez</a>. Como projetinho de última aula resolvi roubar a idéia que eu havia visto no curso  de Certified Scrum Master que o <a href="http://twitter.com/Michel_Golden">Michel Goldenberg</a> ministrou em Recife no início do ano.
 

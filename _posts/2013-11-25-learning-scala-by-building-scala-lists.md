@@ -1,6 +1,9 @@
 ---
 layout: post
 title: Learning Scala by building Scala - Lists
+tags:
+- scala
+- useful
 ---
 
 While trying to come up with a compelling reason to get back at blogging I thought about all I've been learning over these last few months and it's all about functional programming. Coursera courses, books, learning new languages, it all boils down to learning how you can build programs the functional way, so, why not put a bit of all this into a couple blog posts and, better yet, use Scala for it?

@@ -1,6 +1,10 @@
 ---
 layout: post
 title: Contributing a new binding for MonoMac and making your MonoMac application updateable using Sparkle
+tags:
+- C#
+- mono
+- useful
 ---
 
 When building [MonoMac](https://github.com/mono/monomac) applications you will eventually have to get your hands dirty interoperating with Cocoa/Objetive-C frameworks, one of the most common examples is updating applications. In the Mac apps world, if you're not on the app store, you probably want to allow your users to update their applications so they all can start using all the new and shiny features and the most common solution for updating Mac applications is the [Sparkle](http://sparkle.andymatuschak.org/) by [Andy Matuschak](https://github.com/andymatuschak).

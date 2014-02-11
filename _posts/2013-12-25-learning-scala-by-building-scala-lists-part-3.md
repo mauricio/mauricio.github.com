@@ -1,6 +1,9 @@
 ---
 layout: post
 title: Learning Scala by building Scala - Lists and Option
+tags:
+- scala
+- useful
 ---
 
 And off we go to build a couple more list operations and understand new concepts and styles of working with collections and values in Scala. If you didn't see the fist two parts of of this tutorial, check them below before moving forward:

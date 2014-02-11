@@ -6,6 +6,7 @@ tags:
 - rails
 - ruby
 - ruby-basics
+- useful
 ---
 
 One of the coolest features in Ruby is the existence of modules and the possibility of including their implementation in any object. This simple behavior is the source of things like the [Enumerable](http://www.ruby-doc.org/core/classes/Enumerable.html) module, that gives you a bunch of methods to work with a collection of objects and just expects that the class that included it to define an “each” method. You write a class, define an “each” method, include Enumerable and your're done, all Enumerable methods are available for you.
