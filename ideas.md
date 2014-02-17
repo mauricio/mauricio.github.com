@@ -14,3 +14,4 @@ Stuff to blog about:
 * mixins are just a variation of inheritance;
 * ruby idioms, faraday's retry middleware exception handling;
 * rspec double-to-string coercion bug;
+* respond_to? going for public methods only;
