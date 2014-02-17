@@ -377,3 +377,9 @@ Didn't see the other posts about this? Check the two ones about `List`:
 
 * [Part 1]({% post_url 2013-11-25-learning-scala-by-building-scala-lists %})
 * [Part 2]({% post_url 2013-12-08-learning-scala-by-building-scala-lists-part-2 %})
+
+For more about monads and Scala, check these ones:
+
+* Monads are elephants by James Iry - [Part 1](http://james-iry.blogspot.com.br/2007/09/monads-are-elephants-part-1.html) - [Part 2](http://james-iry.blogspot.com/2007/10/monads-are-elephants-part-2.html) - [Part 3](http://james-iry.blogspot.com.br/2007/10/monads-are-elephants-part-3.html) - [Part 4](http://james-iry.blogspot.com.br/2007/11/monads-are-elephants-part-4.html)
+* [Reactive programming course](https://www.coursera.org/course/reactive)
+* [Functional Programming in Scala](http://www.manning.com/bjarnason/)
