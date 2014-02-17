@@ -367,7 +367,7 @@ Which in turn would be defined as follows for `Option[T]`:
 
 And for this last one, we mean that having a monad, running `flatMap` on unit, we should have the same as `unit(x)`.
 
-To validate these laws, you can't just go through these unit tests, but you would have to replace all function calls with the actual code (which we won't do here) but if you can guarantee that your container object respects these 3 laws then you have a monad in place.
+To validate these laws, you can't just go through these unit tests, you would have to replace all function calls with the actual code (which we won't do here) and check that the expressions generated are compatible (as you would do in a mathematical equation), but if you can guarantee that your container object respects these 3 laws then you have a monad in place.
 
 As you can see, there isn't anything specially complicated about monads, they're just a container type that follows a collection of rules (which are very important, the right unit rule, for instance, allows us to use monads in for-comprehensions) and are used as container types.
 
