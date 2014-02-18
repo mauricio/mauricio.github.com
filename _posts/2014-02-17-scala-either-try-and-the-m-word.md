@@ -371,7 +371,7 @@ To validate these laws, you can't just go through these unit tests, you would ha
 
 As you can see, there isn't anything specially complicated about monads, they're just a container type that follows a collection of rules (which are very important, the right unit rule, for instance, allows us to use monads in for-comprehensions) and are used as container types.
 
-As an aside, there is some debate as to if `Try[U]` is a full monad or not. The problem is that if you think `unit(x)` is `Success(x)`, then exceptions would be raised when you try to execute the **left unit** law since `flatMap` will correctly wrap an exception but the `f(x)` might be able to do it. Still, if you assume that the correct unit is `Try.apply` then this would not be an issue. In any case, while `Try` might not be a pure monad, it's close enough so you can use it much the same way.
+As an aside, there is some debate as to if `Try[U]` is a full monad or not. The problem is that if you think `unit(x)` is `Success(x)`, then exceptions would be raised when you try to execute the **left unit** law since `flatMap` will correctly wrap an exception but the `f(x)` might not be able to do it. Still, if you assume that the correct unit is `Try.apply` then this would not be an issue. In any case, while `Try` might not be a pure monad, it's close enough so you can use it much the same way.
 
 Didn't see the other posts about this? Check the two ones about `List`:
 
