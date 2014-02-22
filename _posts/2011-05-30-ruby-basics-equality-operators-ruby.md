@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Ruby Basics - Equality operators in Ruby
+keywords: ruby, equality, triple equals, equals, operators, comparable
 tags:
 - useful
 - ruby

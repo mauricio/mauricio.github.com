@@ -1,6 +1,7 @@
 ---
 layout: post
 title: mysql-async and postgresql-async 0.2.3 released!
+keywords: scala, postgresql, mysql, database driver, async
 tags:
 - scala
 - useful

@@ -2,6 +2,7 @@
 layout: post
 title: Using foreman and environment variables to isolate and run your apps in development
 subtitle: or why you should stop installing stuff as services in your machine
+keywords: ruby, foreman, rails, postgresql, mysql, environment, deployment
 tags:
 - ruby
 - useful

@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Never match against Ruby's default exceptions at your tests
+keywords: ruby, rails, rspec, bug, doubles
 tags:
 - ruby
 - useful

@@ -2,6 +2,7 @@
 layout: post
 title: Turning a synchronous client into async 
 subtitle: or why the MySQL protocol is so complicated to handle
+keywords: scala, postgresql, mysql, database driver, async
 tags:
 - scala
 - useful

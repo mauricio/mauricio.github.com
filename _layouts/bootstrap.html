@@ -3,10 +3,14 @@
 <head>
     <meta charset="utf-8">
     <title>Maurício Linhares' ramblings - {{ page.title }}</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
-    <meta name="author" content="Maurício Linhares">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="description" content="technology blog about ruby, scala, java, software engineering and programming in general"/>
+    <meta name="author" content="Maurício Linhares"/>
 
+    {{if page.keywords != empty}}
+    <meta name="keywords" content="{{page.keywords}}" />
+    {{endif}}
+    
     <!-- Le styles -->
     <link href="/css/syntax.css" rel="stylesheet"/>
     <link href="/css/bootstrap.min.css" rel="stylesheet">

@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Learning Scala by building Scala - Lists
+keywords: scala, lists, learning, Standard ML, functional programming
 tags:
 - scala
 - useful

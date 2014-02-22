@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Including and extending modules in Ruby
+keywords: ruby, include, extend, modules, composition, inheritance
 tags:
 - object orientation
 - rails

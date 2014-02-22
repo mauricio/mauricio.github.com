@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Contributing a new binding for MonoMac and making your MonoMac application updateable using Sparkle
+keywords: objective-c, C#, mono, monomac, cocoa, sparkle
 tags:
 - C#
 - mono

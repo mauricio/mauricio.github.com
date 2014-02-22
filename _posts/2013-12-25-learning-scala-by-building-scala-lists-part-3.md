@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Learning Scala by building Scala - Lists and Option
+keywords: scala, list, option, collections, map, flatmap, find
 tags:
 - scala
 - useful

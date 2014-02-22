@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Scala's Either, Try and the M word
+keywords: scala, either, try, monads, option
 tags:
 - useful
 ---

@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Learning Scala by building Scala - Lists Part 2
+keywords: scala, lists, functional programming, monads, reverse, fold, filter, map, cons
 tags:
 - scala
 - useful

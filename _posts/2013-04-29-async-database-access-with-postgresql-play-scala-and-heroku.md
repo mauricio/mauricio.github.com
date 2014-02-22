@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Async database access with PostgreSQL, Play, Scala and Heroku
+keywords: scala, postgresql, mysql, database driver, async, play, heroku
 tags:
 - scala
 - useful
