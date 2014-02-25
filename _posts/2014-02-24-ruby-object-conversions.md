@@ -106,7 +106,7 @@ You can easily turn it into a `Hash` calling `to_h` on it, as you can turn a `Ra
 
 ## Implicit conversions
 
-Now this is where the magic really starts to show itself. Ruby defines some implicit conversion methods that are called under specific circunstances on objects to check if they can be transformed to something else, they are `to_int`, `to_str`, `to_ary`, `to_hash` and `to_enum`.
+Now this is where the magic really starts to show itself. Ruby defines some implicit conversion methods that are called under specific circunstances on objects to check if they can be transformed to something else, they are `to_int`, `to_str`, `to_ary`, `to_hash` and `to_enum` (you'll see some others below).
 
 There isn't an actual list of where or when these methods are called. Given we don't annotate variables or methods with types in Ruby (as we do in languages like Java, for instance) the runtime can't figure out when this would be necessary and the built in funcionality just tries do to this when it thinks it's necessary. One of the examples of this is exacly the `rspec` bug above. 
 
