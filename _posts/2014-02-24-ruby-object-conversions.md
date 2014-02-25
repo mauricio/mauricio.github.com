@@ -136,7 +136,7 @@ rb_f_raise(int argc, VALUE *argv)
 }
 {% endhighlight %}
 
-Then we go to `rb_make_exception` which just calls `make_exception` below:
+The important piece here is `rb_make_exception` which, calls `make_exception` below:
 
 {% highlight c %}
 static VALUE
@@ -191,7 +191,7 @@ make_exception(int argc, VALUE *argv, int isstr)
 }
 {% endhighlight %}
 
-The interesting piece here is the call to `rb_check_string_type`, which is the function that converts something that has a `to_str` method into a real `String`, let's see how it's implemented:
+The piece we're looking for here is the call to `rb_check_string_type`, which is the function that converts something that has a `to_str` method into a real `String`, let's see how it's implemented:
 
 {% highlight c %}
 VALUE
@@ -269,7 +269,7 @@ rb_check_convert_type(VALUE val, int type, const char *tname, const char *method
 }
 {% endhighlight %}
 
-The code is rather simple, first, it checks if the type already is the type we want to convert to. If it is, return it. Then call `convert_type` with the value, type and conversion method.
+The code is rather simple, first, it checks if the type already is the type we want to convert to. If it is, return it. Otherwise call `convert_type` with the value, type and conversion method.
 
 `convert_type`, in turn, will check if the object implements the conversion method. In our case, it would check if the object implements `to_str`. Also, it only does the conversion if the method is in the list above, if it isn't one of those methods it would just ignore it and not perform any conversion.
 
@@ -294,7 +294,7 @@ def convert_type( value, type, method, raise_on_error = false )
 end
 {% endhighlight %}
 
-So, while we call these methods __implicit converters__, they're not that implicit. The runtime has to manually decide when this is required and call `rb_check_string_type` to convert what you have into a string or into any of the other methods by itself. So, unless the documentation is specific about this or you know the code will make this check, don't expect your objects to be converted into something else.
+So, while we call these methods __implicit converters__, they're not that implicit. The runtime has to manually decide when this is required and call `rb_check_string_type` to convert what you have into a string or into any of the other types by itself. So, unless the documentation is specific about this or you know the code will make this check, don't expect your objects to be converted into something else.
 
 Another common built-in conversion is when you're comparing `String`, `Array` and `Hash` objects with `==`. The current implementation will check if the right-hand object is of the same type of the left-hand one and if it isn't, it will try to convert it. Here's the `Hash#==` implementation:
 
@@ -327,7 +327,7 @@ hash_equal(VALUE hash1, VALUE hash2, int eql)
 }
 {% endhighlight %}
 
-As you can see, if the object isn't a `Hash`, it goes to `rb_respond_to(hash2, rb_intern("to_hash"))` to be converted if possible, otherwise it just returns false.
+As you can see, if the object isn't a `Hash`, it goes to `rb_respond_to(hash2, rb_intern("to_hash"))` to check if the object can be converted to a hash, if it can't, it just returns false right away since you can't compare some generic object with a hash.
 
 ## Arithmethic coercion
 
@@ -348,9 +348,11 @@ As you can see, I start with the `Rational` object and then call `coerce` on it 
 
 ## Boolean coercion
 
-Operators and control structures that expect booleans in Ruby will take any kind of object and use it. There are two cases, `false` and `nil` are __falsy__ so they will behave as if it was a real `false` boolean value (ie. `if nil` will go to the `else` piece), __everything else__ is truthy.
+Operators and control structures that expect booleans in Ruby will take any kind of object and use it. There are two cases, `false` and `nil` are __falsy__ so they will behave as if it was a real `false` boolean value (ie. `if nil` will go to the `else` piece), and the other case is __everything else is truthy__.
 
-Empty strings, arrays, hashes, `0`, they will all be assumed to be `true` values. This leads us to some interesting developments when using boolean operators in Ruby, for instance:
+Empty strings, arrays, hashes, `0`, they will all be assumed to be `true` values. Every single object that is not `false` or `nil` is assumed to be true when used in control structures and boolean operators, doesn't matter what the object is.
+
+This leads to some interesting developments when using boolean operators in Ruby, for instance:
 
 {% highlight ruby %}
 2.1.0 :001 > false || nil
@@ -360,9 +362,11 @@ Empty strings, arrays, hashes, `0`, they will all be assumed to be `true` values
 Boolean operators in Ruby will not return a boolean, but the last expression that was evaluated by the operator and this is both good a bad. Good, because it lets you write terse statements like the elvis operator:
 
 {% highlight ruby %}
-2.1.0 :003 > me ||= 10 # me = me || 10
+2.1.0 :003 > me ||= 10
  => 10 
 {% endhighlight %}
+
+This is equivalent to `me = me || 10`.
 
 And bad because if you actually need something to always be a boolean (maybe you are turning this value to JSON or something else) you need to add a bit more code:
 
@@ -370,6 +374,8 @@ And bad because if you actually need something to always be a boolean (maybe you
 2.1.0 :005 > !!(10 && [])
  => true 
 {% endhighlight %}
+
+Without this, the result of executing that `&&` operation would be `[]` (the empty array).
 
 ## Don't trust magic
 
