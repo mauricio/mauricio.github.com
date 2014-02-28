@@ -13,5 +13,5 @@ Stuff to blog about:
 * mongoid and the process method - building great public apis;
 * mixins are just a variation of inheritance;
 * ruby idioms, faraday's retry middleware exception handling;
-* rspec double-to-string coercion bug;
 * respond_to? going for public methods only;
+* scala, futures, promises, memcached and netty;
