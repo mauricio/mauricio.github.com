@@ -8,22 +8,22 @@ tags:
 - useful
 ---
 
-This new year I decided I'd do a bit less of community work by [answering stuff at 
-SO](http://stackoverflow.com/users/293686/mauricio-linhares) and mailing lists and 
+This new year I decided I'd do a bit less of community work by [answering stuff at
+SO](http://stackoverflow.com/users/293686/mauricio-linhares) and mailing lists and
 would contribute more actual code to OSS projects. So, from time to time I wander
 about projects I use, and try to contribute by fixing stuff and sending PRs.
 
-This has actually led me [to figure out some interesting stuff]({% post_url 2014-02-01-never-match-against-ruby-default-execeptions-at-your-tests %}) and a [new bugfix I did for rspec-mocks](https://github.com/rspec/rspec-mocks/pull/577) a couple days ago sent me down the rabbit hole of Ruby's object conversions.
+This has actually led me [tqo figure out some interesting stuff]({% post_url 2014-02-01-never-match-against-ruby-default-execeptions-at-your-tests %}) and a [new bugfix I did for rspec-mocks](https://github.com/rspec/rspec-mocks/pull/577) a couple days ago sent me down the rabbit hole of Ruby's object conversions.
 
 ## The Bug
 
 The actual bug was found indirectly by [@adamstegman](https://github.com/adamstegman). He was using test doubles in `raise` statements and they were causing a `RuntimeError` to be raised instead of the class he was using as a double, so his specs weren't matching the expected error. In Ruby, you can raise objects of type `Exception`, strings or objects that act like strings.
 
-These two last cases are the interesting ones here, string or string like objects. 
+These two last cases are the interesting ones here, string or string like objects.
 
 So, what is a string like object?
 
-In Ruby, a string like object is any object that has a `to_str` method defined on it. So, methods that expect to take a string, will usually check if there is a `to_str` method defined there if the object isn't a string. 
+In Ruby, a string like object is any object that has a `to_str` method defined on it. So, methods that expect to take a string, will usually check if there is a `to_str` method defined there if the object isn't a string.
 
 For `rspec` doubles, having the `to_str` method defined made them coercible to string (an unintended side effect, most likely) and raised it's string representation.
 
@@ -31,7 +31,7 @@ If you try to raise something that isn't an `Exception`, string or string like, 
 
 {% highlight ruby %}
 2.1.0 :001 > class Something; end
- => nil 
+ => nil
 2.1.0 :002 > raise Something.new
 TypeError: exception class/object expected
 	from (irb):2:in `raise'
@@ -46,7 +46,7 @@ And it's this subtle bug that takes us to the real subject for this blog post, R
 
 ## Explicit conversions
 
-No, that's not what you're thinking. 
+No, that's not what you're thinking.
 
 Explicit conversions are when objects define methods like `to_s`, `to_i`, `to_f`, `to_a` and `to_h`. This means you can call these methods on the objects and they will return a string, an int, a float, an array or a hash, respectively, that represents the object.
 
@@ -66,7 +66,7 @@ Well, that doesn't work, but this works:
  => 41
 {% endhighlight %}
 
-While `String` does define a `to_i` method, Ruby won't call it for me, I have to manually call the method here to make sure the `String` object is transformed to an `int` before summing them. 
+While `String` does define a `to_i` method, Ruby won't call it for me, I have to manually call the method here to make sure the `String` object is transformed to an `int` before summing them.
 
 __oh, but that is tedious, isn't it?__ you might think. Well, not if you fall for a bug that's caused by the runtime coercing your objects into something else, just like the bug that was fixed above. Personally, I'd take a well known behavior over magic all the time.
 
@@ -85,7 +85,7 @@ Doesn't work, `Fixnum` can't be implicitly converted into `String`. But if we do
 
 {% highlight ruby %}
 2.1.0 :001 > "me #{10}"
- => "me 10" 
+ => "me 10"
 {% endhighlight %}
 
 Perfect! That's what we're looking for. In the specific case of string interpolation, Ruby __will__ call the object's `to_s` method and use that as the output to be included in the string. That's the only case you will see the runtime automatically calling one of the explicit conversion methods.
@@ -101,14 +101,14 @@ You can easily turn it into a `Hash` calling `to_h` on it, as you can turn a `Ra
 
 {% highlight ruby %}
 2.1.0 :001 > ('a'..'f').to_a
- => ["a", "b", "c", "d", "e", "f"] 
+ => ["a", "b", "c", "d", "e", "f"]
 {% endhighlight %}
 
 ## Implicit conversions
 
 Now this is where the magic really starts to show itself. Ruby defines some implicit conversion methods that are called under specific circunstances on objects to check if they can be transformed to something else, they are `to_int`, `to_str`, `to_ary`, `to_hash` and `to_enum` (you'll see some others below).
 
-There isn't an actual list of where or when these methods are called. Given we don't annotate variables or methods with types in Ruby (as we do in languages like Java, for instance) the runtime can't figure out when this would be necessary and the built in funcionality just tries do to this when it thinks it's necessary. One of the examples of this is exacly the `rspec` bug above. 
+There isn't an actual list of where or when these methods are called. Given we don't annotate variables or methods with types in Ruby (as we do in languages like Java, for instance) the runtime can't figure out when this would be necessary and the built in funcionality just tries do to this when it thinks it's necessary. One of the examples of this is exacly the `rspec` bug above.
 
 Let's look at the C code that gets called when you try to raise an exception, it starts on `rb_f_raise` (or `Kernel.raise`):
 
@@ -335,11 +335,11 @@ One little known feature of Ruby numbers is the `coerce` method, it allows you t
 
 {% highlight ruby %}
 2.1.0 :001 > require 'rational'
- => true 
+ => true
 2.1.0 :002 > r = Rational(1,5)
- => (1/5) 
+ => (1/5)
 2.1.0 :003 > result = r.coerce(10)
- => [(10/1), (1/5)] 
+ => [(10/1), (1/5)]
 2.1.0 :004 > sum = result.inject(Rational(0,1), :+)
  => (51/5)
 {% endhighlight %}
@@ -363,7 +363,7 @@ Boolean operators in Ruby will not return a boolean, but the last expression tha
 
 {% highlight ruby %}
 2.1.0 :003 > me ||= 10
- => 10 
+ => 10
 {% endhighlight %}
 
 This is equivalent to `me = me || 10`.
@@ -372,7 +372,7 @@ And bad because if you actually need something to always be a boolean (maybe you
 
 {% highlight ruby %}
 2.1.0 :005 > !!(10 && [])
- => true 
+ => true
 {% endhighlight %}
 
 Without this, the result of executing that `&&` operation would be `[]` (the empty array).

@@ -4,7 +4,8 @@ title: Quem quer ser gerente?
 tags:
 - useful
 ---
-<em>Em uma empresa comum, havia um programador comum.
+
+Em uma empresa comum, havia um programador comum.
 
 O programador comum não era tão comum como todos pensavam, ele fazia muito bem o seu trabalho, o código que ele escrevia funcionava corretamente, os problemas eram poucos e os clientes, satisfeitos. Tanto sucesso começou a chamar a atenção dos superiores do programador. Ele começou a subir na empresa, recebendo mais e também podendo tomar decisões mais importantes, ele começava a sentir-se parte de tudo aquilo que o cercava.
 
@@ -12,7 +13,7 @@ Enfim, ele galgou o último degrau que um programador chegaria, havia se tornado
 
 Em poucas semanas, ele percebeu o problema que havia recebido de presente, não podia mais escrever código, seu trabalho agora era lidar com pessoas, interesses, prazos e custos. Ele havia passado anos na universidade, estudado por livros e cursos de extensão para aprender a programar, mas a única coisa que ele recebeu sobre gerenciar foi um pequeno livro, "os 10 ideais do gerente perfeito", tão gasto que até a capa havia se perdido. Em pouco tempo, a infelicidade e os problemas já haviam extinguido  suas forças, os projetos não mais andavam, os resultados eram pífios e seus superiores não paravam de pressionar.
 
-Nesse momento, o simples programador perguntou a si mesmo, "quem disse que eu queria ser gerente?".</em>
+Nesse momento, o simples programador perguntou a si mesmo, "quem disse que eu queria ser gerente?".
 
 Por mais que pareça um tanto quanto exagerada, a novelização da breve carreira de um programador até as posições de gestão normalmente segue esse caminho, especialmente no Brasil, onde praticamente não existem carreiras diferenciadas para quem faz e quem gerencia o que tem que ser feito. Em grandes empresas por todo mundo existem caminhos diferentes de crescimento, onde um funcinário pode optar por sair da carreira puramente técnica e passar para o lado da gestão de pessoas e projetos, ou ele pode simplesmente continuar evoluindo no caminho técnico e ter os mesmos vencimentos que teria um gerente na sua posição.
 

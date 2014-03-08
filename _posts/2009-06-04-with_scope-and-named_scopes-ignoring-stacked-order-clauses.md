@@ -6,26 +6,26 @@ tags:
 ---
 If you've been using with_scope and named_scopes a lot with ActiveRecord you have probably noticed that the :order clauses defined at the scopes are lost and only the first :order clause is used. If you defined an :order clause you'd like to have it merged with the other ones already provided. Here's a simple example:
 
-<pre class="brush:ruby">class User
+{% highlight ruby %}class User
   named_scope :by_first_name, :order => "#{quoted_table_name}.first_name ASC"
   named_scope :by_last_name, :order => "#{quoted_table_name}.last_name ASC"
-end</pre>
+end{% endhighlight %}
 
 Our user has two named scopes defined and both of them define an :order clause, if we try to run a finder like this:
 
-<pre class="brush:ruby">User.by_first_name.by_last_name.all</pre>
+{% highlight ruby %}User.by_first_name.by_last_name.all{% endhighlight %}
 
 This is the generated query:
 
-<pre class="brush:sql">SELECT * FROM `users` ORDER BY `users`.first_name ASC</pre>
+{% highlight sql %}SELECT * FROM `users` ORDER BY `users`.first_name ASC{% endhighlight %}
 
 As you've noticed, only the first :order clause was used, the last one was lost. Our ideal SQL query would have to look like this, with both :order clauses being used:
 
-<pre class="brush:sql">SELECT * FROM `users` ORDER BY `users`.last_name ASC , `users`.first_name ASC</pre>
+{% highlight sql %}SELECT * FROM `users` ORDER BY `users`.last_name ASC , `users`.first_name ASC{% endhighlight %}
 
 That's why we're going to hack the with_scope method a litle bit to reach our goal. This issue <a href="https://rails.lighthouseapp.com/projects/8994/tickets/2253-named_scope-and-nested-order-clauses">was already reported to the Rails issue tracker</a> but there's no fix yet so our only hope is to monkeypatch Rails to behave as we expect it to, so here's a really simple fix for the problem:
 
-<pre class="brush:ruby">ActiveRecord::Base.class_eval do
+{% highlight ruby %}ActiveRecord::Base.class_eval do
 
   class << self
 
@@ -108,6 +108,6 @@ That's why we're going to hack the with_scope method a litle bit to reach our go
 
   end
 
-end</pre>
+end{% endhighlight %}
 
 You can place this code at an initializer (maybe called with_scope_fix.rb) or at your lib folder and require it in your initializers. And now all your :order clauses defined by named_scope or with_scope calls will be correctly merged and will not be lost in your code.

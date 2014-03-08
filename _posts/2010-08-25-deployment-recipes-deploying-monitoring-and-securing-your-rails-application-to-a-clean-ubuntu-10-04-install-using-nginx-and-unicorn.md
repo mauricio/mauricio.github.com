@@ -84,7 +84,8 @@ rm –rf rubygems*</code></pre>
 Before start installing gems, as this is a server environment, you probably don’t want to have the rdoc and ri files generated for every installed gem as this is just going to slow down the gem installation for nothing, as no one will be calling “ri” in this server, to disable this stuff, fire up a text editor in the server:
 <pre><code>nano ~/.gemrc</code></pre>
 And put this on it:
-<pre><code>---
+{% highlight yaml %}
+---
 :verbose: true
 :bulk_threshold: 1000
 install: --no-ri --no-rdoc --env-shebang
@@ -95,7 +96,9 @@ install: --no-ri --no-rdoc --env-shebang
 :benchmark: false
 :backtrace: false
 update: --no-ri --no-rdoc --env-shebang
-:update_sources: true</code></pre>
+:update_sources: true
+{% endhighlight %}
+
 This will avoid ri and rdoc generation while installing gems. And now you can start installing the gems your application will need:
 <pre><code>gem install rails unicorn will_paginate nokogiri paperclip sunspot sunspot_rails</code></pre>
 Add your database gems as needed in this installation too, if you’re on MySQL:
@@ -145,7 +148,8 @@ This will generate a “Capfile” at your project root folder and a “deploy.r
 <img src="http://img.skitch.com/20100825-db2a14jp9tmy3jcncduqnmxsw6.jpg" alt="New files created by capistrano" />
 
 The Capfile is just to boot Capistrano, the file we really change is the “deploy.rb”, where we’re going to configure our remote server information and also the deployer user credentials, here’s how the file looks like for the example project:
-<pre class="brush:ruby">set :use_sudo,            false
+
+{% highlight ruby %}set :use_sudo,            false
 #tell git to clone only the latest revision and not the whole repository
 set :git_shallow_clone,   1
 set :keep_releases,       5
@@ -163,13 +167,15 @@ default_run_options[:pty] = true
 
 role :app, "184.106.215.175"
 role :web, "184.106.215.175"
-role :db,  "184.106.215.175", :primary =&gt; true</pre>
+role :db,  "184.106.215.175", :primary =&gt; true
+{% endhighlight %}
+
 In this Capistrano file you have to define your server, the user that Capistrano is going to use to login into it (and also the password) and the location of your source code repository.
 
 Each of the roles defined at “deploy.rb” file can have more than one server and you could possibly separate your components, the “app” role is where your application server lives, the “web” role is where the web server lives and the “db” role is where your database is. The “:primary =&gt; true” for the :db role tells Capistrano which one is the “master” database if you’re running in a “master-slave” database setup, as if you’re doing this the migrations should only be run in the “master” and not on the slave databases.
 <h3>Configuring Unicorn</h3>
 With the Capistrano file defined, let’s create a Unicorn config file for our application, here’s a simple configuration example (this file is placed at the root of our project and named as “unicorn.rb”):
-<pre class="brush:ruby"># See http://unicorn.bogomips.org/Unicorn/Configurator.html for complete
+{% highlight ruby %}# See http://unicorn.bogomips.org/Unicorn/Configurator.html for complete
 # documentation.
 worker_processes 4
 # Help ensure your application will always spawn in the symlinked
@@ -185,7 +191,8 @@ user 'deployer', 'staff'
 shared_path = “/home/deployer/shop/shared”
 pid "#{shared_path}/pids/unicorn.pid"
 stderr_path "#{shared_path}/log/unicorn.stderr.log"
-stdout_path "#{shared_path}/log/unicorn.stdout.log"</pre>
+stdout_path "#{shared_path}/log/unicorn.stdout.log"{% endhighlight %}
+
 You should place the number of worker processes based on the memory you have available in your server and also the number of processor cores it has, leaving too little will make your not use the whole server resources and adding too many of it will surely make everyone wait too much on IO access. So, profile, test and reach your best configuration for your current environment.
 
 Unlike using mongrel or thin, you don’t have to define many processes do be run, Unicorn loads a single process that’s going to take care of loading and serving the requests to all of your workers, so you only have to manage a single process instead of a process for each worker, something that’s going to simplify our work a lot.
@@ -213,7 +220,7 @@ drwxrwxr-x 5 deployer staff 4096 Aug 25 02:08 shared</code></pre>
 Now we have the environment ready for action and we’re close to our first deployment. You should now create your database in production and configure the “database.yml” accordingly, as the first deployment is going to run the migrations and needs a pre-existing database to be run.
 
 Once you have the database ready we need to add some code to the deploy.rb file to tell Capistrano how our server is started/stopped. You should add the following lines at the end of your deploy.rb file:
-<pre class="brush:ruby">namespace :deploy do
+{% highlight ruby %}namespace :deploy do
   task :start do
     sudo "/etc/init.d/unicorn start"
   end
@@ -223,7 +230,7 @@ Once you have the database ready we need to add some code to the deploy.rb file 
   task :restart do
     sudo "/etc/init.d/unicorn reload"
   end
-end</pre>
+end{% endhighlight %}
 These are the calls Capistrano is going to make to handle our Unicorn daemon. Look that at the :restart call we do not send a restart to Unicorn but a “reload”.
 
 Why this?

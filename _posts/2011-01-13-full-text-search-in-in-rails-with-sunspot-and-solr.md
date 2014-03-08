@@ -68,7 +68,7 @@ Now we’ll create two models, <strong>Product</strong> and <strong>Category</st
 <pre class="brush:shell">rails g migration create_base_tables</pre>
 
 <h4>Listing 2 – create_base_tables.rb</h4>
-<pre class="brush:ruby">class CreateBaseTables &lt; ActiveRecord::Migration
+{% highlight ruby %}class CreateBaseTables &lt; ActiveRecord::Migration
 
   def self.up
     create_table :categories do |t|
@@ -92,12 +92,12 @@ Now we’ll create two models, <strong>Product</strong> and <strong>Category</st
   end
 
 end
-</pre>
+{% endhighlight %}
 
 Now we move on to the basic models, starting with the <strong>Category</strong> model:
 
 <h4>Listing 3 – category.rb</h4>
-<pre class="brush:ruby">class Category &lt; ActiveRecord::Base
+{% highlight ruby %}class Category &lt; ActiveRecord::Base
 
   has_many :products
 
@@ -113,7 +113,7 @@ Now we move on to the basic models, starting with the <strong>Category</strong> 
   end
 
 end
-</pre>
+{% endhighlight %}
 
 Here in the Category class we see our first reference to Sunspot, the “searchable” method, where we configure the fields that should be indexed by Solr. At the Category class, there’s only one field that’s useful at this moment, the “name”, so we tell Sunspot to configure the field name to be indexed as “text” (you usually don’t want your text indexed as “string”, as it will only be a hit in a full match).
 
@@ -122,7 +122,7 @@ The :auto_index and :auto_remove options are there to let Sunspot automatically 
 Now lets look at the <strong>Product</strong> class:
 
 <h4>Listing 4 – product.rb</h4>
-<pre class="brush:ruby">class Product &lt; ActiveRecord::Base
+{% highlight ruby %}class Product &lt; ActiveRecord::Base
 
   belongs_to :category
 
@@ -141,7 +141,7 @@ Now lets look at the <strong>Product</strong> class:
   end
 
 end
-</pre>
+{% endhighlight %}
 
 In our Product class things are a little bit different, we have more fields (and more kinds) being indexed. “float” and “integer” are pretty self explanatory, but the “name” field has some black magic floating around, with the “boost” parameter. Boosting a field when indexing means that if the match is in that specific field, it has more “relevance” than if found somewhere else.
 
@@ -154,7 +154,7 @@ Boosting allows you to reduce these issues. Some fields are inherently more impo
 Now let’s take a look at the ProductsController to see how we perform the search:
  
 <h4>Listing 4 – products_controller.rb</h4>
-<pre class="brush:ruby">class ProductsController &lt; ApplicationController
+{% highlight ruby %}class ProductsController &lt; ApplicationController
 
   def index
     @products = if params[:q].blank?
@@ -167,14 +167,14 @@ Now let’s take a look at the ProductsController to see how we perform the sear
   end
 
 end
-</pre>
+{% endhighlight %}
 
 As you can see, searching is quite simple, you just call the solr_search method and send in the text to be searched for. One thing that I don’t like about Sunspot is that searches do not return an Array like object, you get a Sunspot::Search::StandardSearch object that has, as a property, the results array which contains the records returned by the search.
 
 Here’s a simple way to fix this issue (I usually place the contents of this file inside an initializer in “config/initializers”):
 
 <h4>Listing 5 – sunspot_hack.rb</h4>
-<pre class="brush:ruby">::Sunspot::Search::StandardSearch.class_eval do
+{% highlight ruby %}::Sunspot::Search::StandardSearch.class_eval do
 
   include Enumerable
 
@@ -194,7 +194,7 @@ Here’s a simple way to fix this issue (I usually place the contents of this fi
     :to =&gt; :results)
 
 end
-</pre>
+{% endhighlight %}
 
 This simple monkeypatch makes the search object itself behave like an Enumerable/Array and you can use it to navigate directly in the results, without having to call the “results” method. The methods usually used by will_paginate helpers are also included so you can pass this object to a will_paginate call in your view and it’s just going to work.
 
@@ -252,14 +252,14 @@ Once you type and hit “Analyze” you should see the output just below the for
 Now that you have an idea about how the indexing and searching process work, let’s start to customize the fields in Solr, open up the “solr/conf/schema.xml” file and look for this reference:
 
 <h4>Listing 6 – solr/conf/schema.xml except</h4>
-<pre class="brush:xml">&lt;fieldtype class=&quot;solr.TextField&quot; positionIncrementGap=&quot;100&quot; name=&quot;text&quot;&gt;
+{% highlight xml %}&lt;fieldtype class=&quot;solr.TextField&quot; positionIncrementGap=&quot;100&quot; name=&quot;text&quot;&gt;
       &lt;analyzer&gt;
         &lt;tokenizer class=&quot;solr.StandardTokenizerFactory&quot;/&gt;
         &lt;filter class=&quot;solr.StandardFilterFactory&quot;/&gt;
         &lt;filter class=&quot;solr.LowerCaseFilterFactory&quot;/&gt;
       &lt;/analyzer&gt;
     &lt;/fieldtype&gt;
-</pre>
+{% endhighlight %}
 
 If you look at Image 1, where we saw the “name_text” configuration, you’ll see that the field type is “text”, this except above is the configuration for all fields of type “text”, which means that if we add more filters here we’ll affect all fields of this type. This greatly simplifies the way we configure the tool, as we don’t have to define explicit configurations for every single field that our models have, we can just reuse this same “text” config for all fields that are supposed to be indexed as text.
 
@@ -274,7 +274,7 @@ The “the” is mostly useless, as it’s going to be available in almost all p
 Given that this is a common operation, Solr already contains a filter that’s capable of removing all stop words from your data, the solr.StopFilterFactory, let’s see how we can add it to our config:
 
 <h4>Listing 7 – solr/config/schema.xml except</h4>
-<pre class="brush:xml">&lt;fieldtype class=&quot;solr.TextField&quot; positionIncrementGap=&quot;100&quot; name=&quot;text&quot;&gt;
+{% highlight xml %}&lt;fieldtype class=&quot;solr.TextField&quot; positionIncrementGap=&quot;100&quot; name=&quot;text&quot;&gt;
   &lt;analyzer&gt;
     &lt;tokenizer class=&quot;solr.StandardTokenizerFactory&quot;/&gt;
     &lt;filter class=&quot;solr.StandardFilterFactory&quot;/&gt;
@@ -284,7 +284,7 @@ Given that this is a common operation, Solr already contains a filter that’s c
     &lt;filter class=&quot;solr.TrimFilterFactory&quot; /&gt;
   &lt;/analyzer&gt;
 &lt;/fieldtype&gt;
-</pre>
+{% endhighlight %}
 
 If you look at the “solr/config” folder you’ll se a “stopwords.txt” file that already contains most of the common stop words in English, you can add or remove words from there as needed and if you’re not indexing English text you can just remove the English names and add your language’s stop words. Now change this in your “solr/config/schema.xml” file and stop and start Solr again and open the analyzer:
 
@@ -303,7 +303,7 @@ If you look at <a href="http://lucene.apache.org/java/2_9_1/queryparsersyntax.ht
 When all you need is prefixed partial matching, the solr.EdgeNGramFilterFactory is your best friend. It will break words into pieces that will then be added to the index, so it looks like you have partial matching, but in fact the partials are tokens by themselves in the index, let’s see how our config would look like in this case:
 
 <h4>Listing 8 – solr/config/schema.xml except</h4>
-<pre class="brush:xml">&lt;fieldtype class=&quot;solr.TextField&quot; positionIncrementGap=&quot;100&quot; name=&quot;text&quot;&gt;
+{% highlight ruby %}&lt;fieldtype class=&quot;solr.TextField&quot; positionIncrementGap=&quot;100&quot; name=&quot;text&quot;&gt;
   &lt;analyzer type=&quot;index&quot;&gt;
     &lt;tokenizer class=&quot;solr.StandardTokenizerFactory&quot;/&gt;
     &lt;filter class=&quot;solr.StandardFilterFactory&quot;/&gt;
@@ -324,7 +324,7 @@ When all you need is prefixed partial matching, the solr.EdgeNGramFilterFactory 
     &lt;filter class=&quot;solr.TrimFilterFactory&quot; /&gt;
   &lt;/analyzer&gt;
 &lt;/fieldtype&gt;
-</pre>
+{% endhighlight %}
 
 As you can see, now we have two  sections in our , one of the analyzers is for “index” and the other is for “query”. This is needed because we don’t want to have our search parameters being transformed for a partial match. If the user is searching for “battle”, it doesn’t makes sense to show him results for “bat”, so the generation of pieces of each word should be done only when indexing information.
 
@@ -345,7 +345,7 @@ Faceting of results is <strong>YACF (Yet Another Cool Feature)</strong> that you
 “I still don’t get it”, you might be thinking now. In our Product model we’re indexing the “category_id” property, we’ll tell Sunspot to facet our search based on the “category_id” field and Sunspot will tell us how many matches each category had, even if we’re paginating the results. Let’s see how our searching code would change:
  
 <h4>Listing 9 – products_controller.rb except</h4>
-<pre class="brush:ruby">
+{% highlight ruby %}
   def index
     @page = (params[:page] || 1).to_i
     @products = if params[:q].blank?
@@ -369,29 +369,29 @@ Faceting of results is <strong>YACF (Yet Another Cool Feature)</strong> that you
       result
     end
   end
-</pre>
+{% endhighlight %}
 
 The search code really changed a lot, now if there’s a “category_id” parameter we will use that to filter our search, if there isn’t we’re going to perform faceting with the “s.facet :category_id” call. There’s also a slight change to the “product.rb” class, let’s see it:
 
 <h4>Listing 10 – product.rb except</h4>
-<pre class="brush:ruby">
+{% highlight ruby %}
   searchable :auto_index =&gt; true, :auto_remove =&gt; true do
     text :name, :boost =&gt; 2.0
     text :description
     float :price
     integer :category_id, :references =&gt; ::Category
   end
-</pre>
+{% endhighlight %}
 
 We’ve added the “:references =&gt; ::Category” to the “:category_id” field configuration so Sunspot knows that this field is, in fact, a foreign key to another object, this will allow Sunspot to load the categories in the facets automatically for you.
 
 The “result.facet(:category_id)” asks the search object for the array that contains the facets returned for the :category_id field in this search. Each row in this list contains an “instance” (which, in our case, is an Category object) and a “count”, that’s the number of hits in that specific facet. Once you get your hands at the rows, we can use it in our view, let’s see how we used them:
  
 <h4><a href="https://github.com/mauricio/sunspot_tutorial/blob/master/app/views/products/index.html.haml">Listing 11 – products/index.html.haml except</a></h4>
-<pre><code>  - if !@facet_rows.blank? &amp;&amp; @facet_rows.size &gt; 1
+{% highlight erb %}  - if !@facet_rows.blank? &amp;&amp; @facet_rows.size &gt; 1
     %ul
       - for row in @facet_rows
-        %li= link_to( "#{row.instance} (#{row.count})", products_path( :q =&gt; params[:q], :category_id =&gt; row.instance ) )</code></pre>
+        %li= link_to( "#{row.instance} (#{row.count})", products_path( :q =&gt; params[:q], :category_id =&gt; row.instance ) ){% endhighlight %}
 
 If there are facets available, we use them to add links that will make the user filter based on each specific facet, each row object has an instance and a count, and we use both in the interface to tell the user which category is it and how many hits it had. Look at how our user interface looks like:
 

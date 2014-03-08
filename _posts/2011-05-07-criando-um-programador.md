@@ -18,13 +18,13 @@ A experiência dele era pouca, não teve uma formação legal em orientação a 
 
 ## Shu-Ha-Ri
 
-Na época, eu estava lendo o <a href="http://www.amazon.com/gp/product/0321482751/ref=as_li_ss_tl?ie=UTF8&tag=ultimaspalavr-20&linkCode=as2&camp=217145&creative=399349&creativeASIN=0321482751">“Agile Software Development: The Cooperative Game”</a> do Cockburn e estava fisgado na idéia do Shu-Ha-Ri, que são os 3 momentos do aprendizado, uma idéia que surgiu no teatro Nô japonês. Segundo o Shu-Ha-Ri, a técnica pode ser dividida em 3 estágios diferentes, Shu ou aprender, Ha ou separar e Ri ou transcender.
+Na época, eu estava lendo o [Agile Software Development: The Cooperative Game](http://www.amazon.com/gp/product/0321482751/ref=as_li_ss_tl?ie=UTF8&tag=ultimaspalavr-20&linkCode=as2&camp=217145&creative=399349&creativeASIN=0321482751) do Cockburn e estava fisgado na idéia do Shu-Ha-Ri, que são os 3 momentos do aprendizado, uma idéia que surgiu no teatro Nô japonês. Segundo o Shu-Ha-Ri, a técnica pode ser dividida em 3 estágios diferentes, Shu ou aprender, Ha ou separar e Ri ou transcender.
 
 No estágio do Shu, o aprendiz somente segue os passos já definidos pelo mestre, sem pensar muito sobre o que está sendo feito. No Ha, o aprendiz já começa a pensar sobre o que ele está fazendo, porque ele deve fazer daquela forma. E no Ri o aprendiz define a sua própria forma, baseado nas suas capacidades, conhecimento e experiências de vida. Ele deixa de ser um aprendiz e agora é um mestre de si mesmo, não mais repetindo o caminho do mestre, mas definindo o seu próprio.
 
 ## Começando o caminho
 
-Pra começar com o Shu, era necessário aprender e repetir, então a primeira atividade dele no estágio não seria mexer na aplicação, que já estava relativamente pronta. O primeiro mês dele deveria ser criar um <a href="http://pedromtavares.wordpress.com/2009/11/10/awdwr-introduction/">blog</a> e escrever resumos com exemplos de código de cada um dos capítulos iniciais do <a href="http://www.amazon.com/gp/product/1934356549/ref=as_li_ss_tl?ie=UTF8&tag=ultimaspalavr-20&linkCode=as2&camp=217145&creative=399349&creativeASIN=1934356549">“Agile Web Development with Rails”</a>. 
+Pra começar com o Shu, era necessário aprender e repetir, então a primeira atividade dele no estágio não seria mexer na aplicação, que já estava relativamente pronta. O primeiro mês dele deveria ser criar um <a href="http://pedromtavares.wordpress.com/2009/11/10/awdwr-introduction/">blog</a> e escrever resumos com exemplos de código de cada um dos capítulos iniciais do [Agile Web Development with Rails](http://www.amazon.com/gp/product/1934356549/ref=as_li_ss_tl?ie=UTF8&tag=ultimaspalavr-20&linkCode=as2&camp=217145&creative=399349&creativeASIN=1934356549).
 
 Na época ele deve ter pensado que eu era meio louco (hoje já tem certeza) e na verdade foi bem um tiro no escuro mesmo, eu nunca tinha feito isso antes com um estagiário, mas eu tinha que arriscar. Outro detalhe importante, ele não ia receber nada por esse primeiro mês, os R$ 500,00 reais que ele iria receber foi comprado em livros (lista no final do post), porque ele ainda tinha muito de teoria a melhorar.
 
@@ -48,7 +48,7 @@ Programação se aprende com leitura e, principalmente, prática. A criação do
 
 Se você tem aprendizes sob a sua coordenação, aplique o Shu-Ha-Ri com eles. Ajude-os a desenvolver o conhecimento um passo de cada vez, mantenha-os no caminho pra que eles possam apreender o conhecimento de forma que eles apliquem o que foi aprendido corretamente. Você só tem a ganhar ao conseguir formar uma mão de obra mais qualificada e capaz de resolver os problemas.
 
-Se você é um aprendiz, antes de tudo, tenha paciência. Você nunca vai chegar ao Ri sem ter passado pelos estágios anteriores. Não force o seu caminho entre as fases, pois isso só vai garantir que você falhe no futuro. Programar, assim como tudo o mais, exige esforço, repetição e interesse. 
+Se você é um aprendiz, antes de tudo, tenha paciência. Você nunca vai chegar ao Ri sem ter passado pelos estágios anteriores. Não force o seu caminho entre as fases, pois isso só vai garantir que você falhe no futuro. Programar, assim como tudo o mais, exige esforço, repetição e interesse.
 
 A grande vitória dessa minha experiência, não foi minha, mas de Pedro, que se esforçou além do normal pra atingir os objetivos. Leu livros, escreveu sobre as suas experiências e continua fazendo isso (se você continuar seguindo no blog dele, vai ver que ele continuou fazendo resumos sobre os outros livros). Ele poderia ter descansado e feito como todos os outros fazem, se esforçar apenas o suficiente pra ter o básico, mas é esse interesse em ir além que faz as melhores pessoas. Sucesso é muito mais persistência do que talento, já que talento sem ação nunca vai levar ninguém a lugar nenhum.
 
@@ -58,20 +58,10 @@ E você, quais são as suas experiências nisso?
 
 E aqui segue a listinha de livros que ele recebeu (ao menos eu acho que tenham sido esses):
 
-<ul>
-<li>
-<a href="http://www.amazon.com/gp/product/0321603508/ref=as_li_ss_tl?ie=UTF8&tag=ultimaspalavr-20&linkCode=as2&camp=217145&creative=399349&creativeASIN=0321603508">Refactoring: Ruby Edition</a>
-</li>
-
-<li><a href="http://www.amazon.com/gp/product/0596007124/ref=as_li_ss_tl?ie=UTF8&tag=ultimaspalavr-20&linkCode=as2&camp=217145&creative=399349&creativeASIN=0596007124">Head First Design Patterns</a></li>
-
-<li><a href="http://www.amazon.com/gp/product/0596008678/ref=as_li_ss_tl?ie=UTF8&tag=ultimaspalavr-20&linkCode=as2&camp=217145&creative=399349&creativeASIN=0596008678">Head First Object Oriented Analysis and Design</a></li>
-
-<li><a href="http://www.amazon.com/gp/product/020161622X/ref=as_li_ss_tl?ie=UTF8&tag=ultimaspalavr-20&linkCode=as2&camp=217145&creative=399349&creativeASIN=020161622X">The Pragmatic Programmer</a></li>
-
-<li><a href="http://www.amazon.com/gp/product/0321490452/ref=as_li_ss_tl?ie=UTF8&tag=ultimaspalavr-20&linkCode=as2&camp=217145&creative=399349&creativeASIN=0321490452">Design Patterns in Ruby</a></li>
-
-<li><a href="http://www.amazon.com/gp/product/0321127420/ref=as_li_ss_tl?ie=UTF8&tag=ultimaspalavr-20&linkCode=as2&camp=217145&creative=399349&creativeASIN=0321127420">Patterns of Enterprise Application Architecture</a></li>
-
-<li><a href="http://www.amazon.com/gp/product/1934356344/ref=as_li_ss_tl?ie=UTF8&tag=ultimaspalavr-20&linkCode=as2&camp=217145&creative=399349&creativeASIN=1934356344">The Passionate Programmer</a></li>
-</ul>
+- [Refactoring: Ruby Edition](http://www.amazon.com/gp/product/0321603508/ref=as_li_ss_tl?ie=UTF8&tag=ultimaspalavr-20&linkCode=as2&camp=217145&creative=399349&creativeASIN=0321603508)
+- [Head First Design Patterns](http://www.amazon.com/gp/product/0596007124/ref=as_li_ss_tl?ie=UTF8&tag=ultimaspalavr-20&linkCode=as2&camp=217145&creative=399349&creativeASIN=0596007124)
+- [Head First Object Oriented Analysis and Design](http://www.amazon.com/gp/product/0596008678/ref=as_li_ss_tl?ie=UTF8&tag=ultimaspalavr-20&linkCode=as2&camp=217145&creative=399349&creativeASIN=0596008678)
+- [The Pragmatic Programmer](http://www.amazon.com/gp/product/020161622X/ref=as_li_ss_tl?ie=UTF8&tag=ultimaspalavr-20&linkCode=as2&camp=217145&creative=399349&creativeASIN=020161622X)
+- [Design Patterns in Ruby](http://www.amazon.com/gp/product/0321490452/ref=as_li_ss_tl?ie=UTF8&tag=ultimaspalavr-20&linkCode=as2&camp=217145&creative=399349&creativeASIN=0321490452)
+- [Patterns of Enterprise Application Architecture](http://www.amazon.com/gp/product/0321127420/ref=as_li_ss_tl?ie=UTF8&tag=ultimaspalavr-20&linkCode=as2&camp=217145&creative=399349&creativeASIN=0321127420)
+- [The Passionate Programmer](http://www.amazon.com/gp/product/1934356344/ref=as_li_ss_tl?ie=UTF8&tag=ultimaspalavr-20&linkCode=as2&camp=217145&creative=399349&creativeASIN=1934356344)
