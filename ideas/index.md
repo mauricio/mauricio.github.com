@@ -1,4 +1,8 @@
-Stuff to blog about:
+---
+layout: post
+title: Ideas to blog about
+subtitle: my sandbox
+---
 
 * ruby's forwardable;
 * lazyness and enumerable;
