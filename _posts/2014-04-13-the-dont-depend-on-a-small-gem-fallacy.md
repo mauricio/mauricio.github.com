@@ -10,7 +10,7 @@ tags:
 
 There's this thing around the Ruby community (it might be at other communities as well, I don't know) that you should not depend on __small__ gems. If a gem is less than a couple hundred lines of code, you should write it yourself, because, you know, you will have to maintain it.
 
-It isn't worth if to have a small gem in your codebase because when you upgrade your other dependencies, it might break, the current maintainer might disapear or just stop keeping the gem up to date with the newer Ruby, Rails and other dependencies it might have. And once a gem becomes unmaintained it's a burden on you and your team to handle it because no one will be able to fix that code anymore.
+It isn't worth it to have a small gem in your codebase because when you upgrade your other dependencies, it might break, the current maintainer might disapear or just stop keeping the gem up to date with the newer Ruby, Rails and other dependencies it might have. And once a gem becomes unmaintained it's a burden on you and your team to handle it because no one will be able to fix that code anymore.
 
 If you're talking to people old enough in the Ruby community, they might even invoke the good old [Jamis Buck](http://weblog.jamisbuck.org/2007/2/21/review-build-your-own-ruby-on-rails-web-applications) who wrote the following when reviewing a Rails 1.2 book (yeah, I'm old as well):
 
