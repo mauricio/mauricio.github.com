@@ -43,3 +43,5 @@ So, next time someone comes in and says __let's rewrite this gem because it's sm
 > Who maintains the code now? Who will maintain it in the future? 
 
 If it's still you, there's hardly a reason to do it.
+
+Liked this? [Upvote on Hacker News](https://news.ycombinator.com/item?id=7396800)
