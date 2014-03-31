@@ -17,5 +17,8 @@ subtitle: my sandbox
 * mixins are just a variation of inheritance;
 * ruby idioms, faraday's retry middleware exception handling;
 * respond_to? going for public methods only;
-* scala, futures, promises, memcached and netty;
 * wrapping external services in Ruby;
+* always pick messaging first;
+* Rust for Ruby/Scala developers;
+* OCaml for Ruby/Scala developers;
+* Admin panels should not be part of your app;
