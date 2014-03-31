@@ -18,7 +18,6 @@ If you haven't seen the other pieces of this collection of articles, you might w
 * [Part 2 - Lists - folding right, filtering, consing and looping]({% post_url 2013-12-08-learning-scala-by-building-scala-lists-part-2 %})
 * [Part 3 - Lists and Options]({% post_url 2013-12-25-learning-scala-by-building-scala-lists-part-3 %})
 * [Part 4 - Either, Try and Monads]({% post_url 2014-02-17-scala-either-try-and-the-m-word %})
-* [Part 5 - Scala, promises, futures, Netty and Memcached getting together for async fun]({% post_url 2014-04-31-scala-promises-futures-memcached-and-netty-having-fun %})
 
 And as usual, the source code for this [is at GitHub](https://github.com/mauricio/list-tutorial).
 
