@@ -11,6 +11,13 @@ Here we continue our journey to learn more about Scala and functional programmin
 
 The full source code for these examples can be found [here](https://github.com/mauricio/list-tutorial).
 
+Check all the other parts for this tutorial below:
+
+* [Part 1 - Lists - creating, mapping and folding]({% post_url 2013-11-25-learning-scala-by-building-scala-lists %})
+* [Part 3 - Lists and Options]({% post_url 2013-12-25-learning-scala-by-building-scala-lists-part-3 %})
+* [Part 4 - Either, Try and Monads]({% post_url 2014-02-17-scala-either-try-and-the-m-word %})
+* [Part 5 - Scala, promises, futures, Netty and Memcached getting together for async fun]({% post_url 2014-04-31-scala-promises-futures-memcached-and-netty-having-fun %})
+
 ## Reversing a list
 
 Reversing a linked list is a really simple solution given what we have built already, here's how it looks being used:

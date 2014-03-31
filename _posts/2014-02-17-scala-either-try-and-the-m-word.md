@@ -374,10 +374,12 @@ As you can see, there isn't anything specially complicated about monads, they're
 
 As an aside, there is some debate as to if `Try[U]` is a full monad or not. The problem is that if you think `unit(x)` is `Success(x)`, then exceptions would be raised when you try to execute the **left unit** law since `flatMap` will correctly wrap an exception but the `f(x)` might not be able to do it. Still, if you assume that the correct unit is `Try.apply` then this would not be an issue. In any case, while `Try` might not be a pure monad, it's close enough so you can use it much the same way.
 
-Didn't see the other posts about this? Check the two ones about `List`:
+Didn't see the other posts about this? Check the whole list:
 
-* [Part 1]({% post_url 2013-11-25-learning-scala-by-building-scala-lists %})
-* [Part 2]({% post_url 2013-12-08-learning-scala-by-building-scala-lists-part-2 %})
+* [Part 1 - Lists - creating, mapping and folding]({% post_url 2013-11-25-learning-scala-by-building-scala-lists %})
+* [Part 2 - Lists - folding right, filtering, consing and looping]({% post_url 2013-12-08-learning-scala-by-building-scala-lists-part-2 %})
+* [Part 3 - Lists and Options]({% post_url 2013-12-25-learning-scala-by-building-scala-lists-part-3 %})
+* [Part 5 - Scala, promises, futures, Netty and Memcached getting together for async fun]({% post_url 2014-04-31-scala-promises-futures-memcached-and-netty-having-fun %})
 
 For more about monads and Scala, check these ones:
 

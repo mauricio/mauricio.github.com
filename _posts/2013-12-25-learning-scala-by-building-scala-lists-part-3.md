@@ -9,8 +9,10 @@ tags:
 
 And off we go to build a couple more list operations and understand new concepts and styles of working with collections and values in Scala. If you didn't see the fist two parts of of this tutorial, check them below before moving forward:
 
-* [Part 1]({% post_url 2013-11-25-learning-scala-by-building-scala-lists %})
-* [Part 2]({% post_url 2013-12-08-learning-scala-by-building-scala-lists-part-2 %})
+* [Part 1 - Lists - creating, mapping and folding]({% post_url 2013-11-25-learning-scala-by-building-scala-lists %})
+* [Part 2 - Lists - folding right, filtering, consing and looping]({% post_url 2013-12-08-learning-scala-by-building-scala-lists-part-2 %})
+* [Part 4 - Either, Try and Monads]({% post_url 2014-02-17-scala-either-try-and-the-m-word %})
+* [Part 5 - Scala, promises, futures, Netty and Memcached getting together for async fun]({% post_url 2014-04-31-scala-promises-futures-memcached-and-netty-having-fun %})
 
 ## Finding an item in a list given a predicate
 
