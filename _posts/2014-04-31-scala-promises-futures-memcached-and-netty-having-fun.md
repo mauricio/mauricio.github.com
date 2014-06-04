@@ -181,9 +181,9 @@ trait Future[T] {
 
 Yes, it's a trait!
 
-We don't want people knowing what the actual future looks like, since we might have many implementations for it, so all interactions will be with __something that implements `Future[T]`__. 
+We don't want people knowing what the actual future looks like, since we might have many implementations for it, so all interactions will be with __something that implements `Future[T]`__.
 
-Looking at the methods, the first 3 are our old friends, `flatMap`, `map` and `foreach`. But there's something different here, they also take an `ExecutionContext` as a parameter. What is that? 
+Looking at the methods, the first 3 are our old friends, `flatMap`, `map` and `foreach`. But there's something different here, they also take an `ExecutionContext` as a parameter. What is that?
 
 Since we're working on asynchronous code, we don't actually know when our code will be executed. Different from the usual collection where the `flatMap` would happen right away, here it will happen sometime in the future when this future is actually completed. The `ExecutionContext` here serves as a way for us to tell where the `flatMap` will be executed, this is important because the original code that signals this future to complete itself shouldn't care if this operation is fast or takes forever, so it must provide it's own execution context (as if it was a thread pool) to execute itself.
 
@@ -195,7 +195,7 @@ Also, the `ExecutionContext` parameter is given as a separate parameter list:
 
 Why is that?
 
-Because we want to allow clients of our code to simplify the way they interact with promises. Scala allows you to declare many parameter list declarations so you can `curry` your functions, call a function with less parameters than it actually takes and producing a function that takes only the missing parameters. In this case, we're not interested in currying the function, but in taking the `ExecutionContext` from the implicit scope. The implicit scope is a special scope in Scala where you can put variables that will be filled in by the compiler instead of yourself. 
+Because we want to allow clients of our code to simplify the way they interact with promises. Scala allows you to declare many parameter list declarations so you can `curry` your functions, call a function with less parameters than it actually takes and producing a function that takes only the missing parameters. In this case, we're not interested in currying the function, but in taking the `ExecutionContext` from the implicit scope. The implicit scope is a special scope in Scala where you can put variables that will be filled in by the compiler instead of yourself.
 
 This will simplify our interactions with `Future[T]` objects because we will be able to declare a single `ExecutionContext` in the implicit scope and the compiler will pick it and set it for all calls of these methods. For us, it will be as if this parameter doesn't even exist, but we could send in a different value if we wanted.
 
@@ -293,7 +293,7 @@ Our `DefaultFuture[T]` implementation starts with two variables, the result (as 
 
 Now we get to `isCompleted` and `value`, there isn't much to see here, the method return types and implementations are simple enough for us to understand what's going on.
 
-The magic starts at `complete`. Here we have the code that completes this future with a value, as with `Promise[T]`, the future has to be completed with a `Try[T]` object and it won't take null as a value. Everything happens inside a synchronized block because we must make sure no changes happen to the callbacks collection before we are able to fire events and clear it. 
+The magic starts at `complete`. Here we have the code that completes this future with a value, as with `Promise[T]`, the future has to be completed with a `Try[T]` object and it won't take null as a value. Everything happens inside a synchronized block because we must make sure no changes happen to the callbacks collection before we are able to fire events and clear it.
 
 The `fireCallbacks` method will execute each callback in it's own execution context and then clear the callbacks collection. Clearing the collection in this case is necessary because we could end up with a cycle of futures and promises pointing to each other and causing GC woes, so we just clear them all as soon as we can. And we have a separate `fireCallback` method because it will be reused at our `onComplete` as well.
 
@@ -492,7 +492,7 @@ trait Client {
 
 These are the basic operations we need, `connect`, `disconnect`, `set`, `get` and `delete`. You could easily build all other operations from the codebase we'll build, but for this example these are enough. The interesting fact about all this is that none of these methods return an actual value, they all return `Future[T]` objects because this client is async, it won't block until the `memcached` server has produced a value so we can't tell you there is a value but that __there will be__ a value at some point in the future.
 
-Before we dig into the actual networking code, we have to define what our messages will look like. Our client won't really know much about the binary protocol used to communicate to `memcached`, all this will be hidden inside our encoders and decoders, all it will know are the high level messages we will encode and decode to/from the binary protocol. 
+Before we dig into the actual networking code, we have to define what our messages will look like. Our client won't really know much about the binary protocol used to communicate to `memcached`, all this will be hidden inside our encoders and decoders, all it will know are the high level messages we will encode and decode to/from the binary protocol.
 
 First, we have a couple constants:
 
@@ -573,11 +573,11 @@ class GetResponse(val value: Option[Array[Byte]], status: Int, val flags: Int, o
   extends ServerResponse(Keys.Get, status, opaque, cas)
 {% endhighlight %}
 
-In the case of server responses, we have a bit less diversity. We start with a collection of constants, symbolizing the possible status codes we could receive from `memcached`. The `ServerResponse` the fields we will always have when we get a `memcached` response, status, command, CAS and opaque. These fields are part of all responses you will receive from the server. 
+In the case of server responses, we have a bit less diversity. We start with a collection of constants, symbolizing the possible status codes we could receive from `memcached`. The `ServerResponse` the fields we will always have when we get a `memcached` response, status, command, CAS and opaque. These fields are part of all responses you will receive from the server.
 
 Here we also define what's going to be an error for us. It might be weird to think that anything other than `Ok` are not errors, but `NotFound`, `Exists` and `ItemNotStored` are all expected responses when you're talking to `memcached` and clients should handle them, these are not exceptional cases, they are all natural and will happen when you're talking to the server. On the other hand, status like `ValueTooLarge` are not expected and will cause the client to throw an exception, clients should correctly abide by memcached requirements when sending messages to it.
 
-Moving on, we have two subclasses for our `ServerResponse` object. `StatusResponse` is the __catch all__ case. Most of the time the only response you will get from `memcached` is a status code about how the operation was executed (or not executed), this is, by far, the most common response we will see. 
+Moving on, we have two subclasses for our `ServerResponse` object. `StatusResponse` is the __catch all__ case. Most of the time the only response you will get from `memcached` is a status code about how the operation was executed (or not executed), this is, by far, the most common response we will see.
 
 The other subclass is `GetResponse`, which is what we receive when we execute a `GET` request on `memcached`. This one is different because we have the value that is possibly stored there and we also have flags, opaque and CAS fields that are part of this response.
 
@@ -656,7 +656,7 @@ And here we are finally digging into Netty. The encoder's goal is to turn one of
 
 Given there are some well known patterns when building network messaging apps, Netty comes with a collection of base classes you can inherit when building your own stuff and we're using one of those here, the `MessageToByteEncoder`. This class defines an `encode` method that gives us the `ChannelHandlerContext` (for now, think about it as the collection of pipes we're using to communicate), the `ClientRequest` message and a `ByteBuf` object were we will write the data.
 
-Our implementation here is just matching on the message code (which is faster than mathing on object type) and call the method to turn the message into a collection of bytes. The `@switch` is there because we want to make sure that the compiler will turn this into a Java `switch/case` operation, if we make a change to our code that prevents the compiler from generating a `switch/case`, compilation will fail and we will be able to fix this.
+Our implementation here is just matching on the message code (which is faster than matching on object type) and call the method to turn the message into a collection of bytes. The `@switch` is there because we want to make sure that the compiler will turn this into a Java `switch/case` operation, if we make a change to our code that prevents the compiler from generating a `switch/case`, compilation will fail and we will be able to fix this.
 
 But what are we writing here? Let's look at how the common memcached packet is organized(the offset are positions in an array):
 
@@ -670,7 +670,7 @@ But what are we writing here? Let's look at how the common memcached packet is o
     | 8-11   | total message body size (this includes the key size as well)          |
     | 12-15  | opaque field for operations that use it                               |
     | 16-23  | CAS field for operations that use it                                  |
-    | 24-N   | bytes that symbolize the key that is being operated on                | 
+    | 24-N   | bytes that symbolize the key that is being operated on                |
 
 For both `GET` and `DELETE` operations, this is the packet that we write. There's a bunch of control information at the top and our data starts at the 24th item. All packets sent to/from memcached have at least 24 bytes and all that changes betwen them is if there are extra fields (like we have at the `SET` message) and if it has a body other than the key value. For the `SET` operation, the packet would be:
 
@@ -927,7 +927,7 @@ Let's look at `connect` first:
   }
 {% endhighlight %}
 
-Here we use the `bootstrap` we have to connect to the `host` and `port` fields we had defined before and if it fails it will call our `onFailure` hook and fail the connect promise. The method itself returns the future tied to our `connectPromise` instance variable. 
+Here we use the `bootstrap` we have to connect to the `host` and `port` fields we had defined before and if it fails it will call our `onFailure` hook and fail the connect promise. The method itself returns the future tied to our `connectPromise` instance variable.
 
 But hey, how come Netty, a Java project, has an implementation that returns a promise that has an `onFailure` handler? Well, it doesn't. The `connect` method at `Boostrap` returns a Netty's channel future but we wrote a nice implicit conversion from the channel future to our `Future[T]` implementation, let's check it:
 
@@ -1039,7 +1039,7 @@ The methods that call `write` are just creating the message objects and firing t
   def castTo[S](implicit executor: ExecutionContext): Future[S] = this.map(v => v.asInstanceOf[S])
 {% endhighlight %}
 
-We could write this code inside the `NettyClient` object, but it's much simpler to just have it at `Future`. 
+We could write this code inside the `NettyClient` object, but it's much simpler to just have it at `Future`.
 
 Now that we know how writes work let's look at what reads look like:
 
