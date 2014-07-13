@@ -22,3 +22,9 @@ subtitle: my sandbox
 * Rust for Ruby/Scala developers;
 * OCaml for Ruby/Scala developers;
 * Admin panels should not be part of your app;
+* Anything about R;
+* Knife plugins for chef;
+* Moving AWS infrastructure configuration to Cloud Formation templates;
+* Basics on probabilities;
+* Dead letter queues on SQS;
+* rspec, factory girl and mutability;
