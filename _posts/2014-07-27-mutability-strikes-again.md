@@ -63,21 +63,19 @@ end
 
 So far, so good, running specs one by one shows everything works after the spec refactoring. When I finally run all specs together, *surprise*, specs start to fail with this weird error:
 
-{% highlight plain %}
-  1) User should allow setting yet another option
-     Failure/Error: expect(user.options).to eq(hometown: "Tokyo", state: "The Shire")
+    1) User should allow setting yet another option
+       Failure/Error: expect(user.options).to eq(hometown: "Tokyo", state: "The Shire")
 
-       expected: {:hometown=>"Tokyo", :state=>"The Shire"}
-            got: {:hometown=>"Tokyo", :timezone=>"UTC", :state=>"The Shire"}
+         expected: {:hometown=>"Tokyo", :state=>"The Shire"}
+              got: {:hometown=>"Tokyo", :timezone=>"UTC", :state=>"The Shire"}
 
-       (compared using ==)
+         (compared using ==)
 
-       Diff:
-       @@ -1,3 +1,4 @@
-        :hometown => "Tokyo",
-        :state => "The Shire",
-       +:timezone => "UTC",
-{% endhighlight %}
+         Diff:
+         @@ -1,3 +1,4 @@
+          :hometown => "Tokyo",
+          :state => "The Shire",
+         +:timezone => "UTC",
 
 How come this spec has the `timezone` field that was set at the other spec? Each spec get's it's own `user` reference created by the factory since we're using the `let` block. There's no way the same `user` would be reused by both specs.
 
