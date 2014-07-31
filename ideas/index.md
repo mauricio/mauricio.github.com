@@ -6,7 +6,6 @@ subtitle: my sandbox
 
 * ruby's forwardable;
 * lazyness and enumerable;
-* mongoid 3 upgrade;
 * short-circuiting external services instead of incrementing timeout;
 * Qu queue system;
 * active-model guide;
@@ -27,4 +26,3 @@ subtitle: my sandbox
 * Moving AWS infrastructure configuration to Cloud Formation templates;
 * Basics on probabilities;
 * Dead letter queues on SQS;
-* rspec, factory girl and mutability;
