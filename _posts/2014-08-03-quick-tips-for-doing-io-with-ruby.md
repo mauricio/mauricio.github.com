@@ -21,8 +21,8 @@ It's a bit hidden since it isn't part of the main [Dir](http://ruby-doc.org/stdl
 {% highlight ruby %}
 require 'tmpdir'
 
-Dir.mktempdir("my-prefix") do |dir|
-  File.open("text.txt", 'w') { |f| f.write("this is a test") }
+Dir.mktmpdir("my-prefix") do |dir|
+  File.open(File.join(dir,"text.txt"), 'w') { |f| f.write("this is a test") }
 end
 {% endhighlight %}
 
@@ -94,6 +94,8 @@ This is basically saying:
 * Now that you're at `root`, give me the file `config/items.yml`;
 
 So you can use the `__FILE__` variable as the relative path to load files you know are available at your current file sytem.
+
+If you're using Ruby 2.x you can also remove the `File.dirname(__FILE__)` and just use `__dir__`, as pointed out by [brianauton](http://www.reddit.com/r/ruby/comments/2cjx5c/a_couple_quick_tips_for_doing_file_operations_in/cjg9eip).
 
 ### Avoid `File.open` without a block
 
