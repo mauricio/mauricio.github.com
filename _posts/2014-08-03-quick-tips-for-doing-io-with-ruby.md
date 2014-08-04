@@ -58,7 +58,9 @@ In general, prefer `StringIO` and when you really have to use `Tempfile` assume 
 
 ### Use `File.join` instead of manual string concatenation
 
-While the [File.join documentation](http://www.ruby-doc.org/core-2.1.2/File.html#method-c-join) declares the method as simply __appending File::SEPARATOR__ for every item given, the [actual implementation](https://github.com/ruby/ruby/blob/aa3b5062707b72189b42a912dc6df58ab3bb68f8/file.c#L4223-L4297) does much more than just that and your simple `Array.join` call won't be the same as what's being done there, whenever you need to build an actual path, remember to always use `File.join`:
+While the [File.join documentation](http://www.ruby-doc.org/core-2.1.2/File.html#method-c-join) declares the method as simply __appending File::SEPARATOR__ for every item given, the [actual implementation](https://github.com/ruby/ruby/blob/aa3b5062707b72189b42a912dc6df58ab3bb68f8/file.c#L4223-L4297) does much more than just that and your simple `Array.join` call won't be the same as what's being done there.
+
+Whenever you need to build an actual path, remember to always use `File.join`:
 
 {% highlight ruby %}
 path = Path.join("Users", "mauricio", "projects", "ruby")
@@ -66,7 +68,7 @@ path = Path.join("Users", "mauricio", "projects", "ruby")
 
 ### Accessing files relative to the current Ruby file
 
-A common problem we see in Ruby code, specially when you're building gems or writing tests is that you have to load a file that's somewhere at your project path, but you obviously can't set a full path for it as you want it to be usable out of your own machine, so you need a relative path for it. A very simple way to do this is to use the `__FILE__` special variable.
+A common problem we see in Ruby code, specially when you're building gems or writing tests is having to load a file that's somewhere at your project path, but you obviously can't set a full path for it as you want it to be usable out of your own machine, you need a relative path for it. A very simple way to do this is to use the `__FILE__` special variable.
 
 Let's look at an example file system structure:
 
@@ -155,6 +157,6 @@ And what's really important here is that most of these operations will return a 
 
 ### `FileUtils` probably already has what you're looking for
 
-If what you're trying to do something that's not available at `Pathname`, `File` and `Dir`, what you're looking for is probably defined at [FileUtils](http://ruby-doc.org/stdlib-2.1.2/libdoc/fileutils/rdoc/FileUtils.html).
+If you're trying to do something that's not available at `Pathname`, `File` and `Dir`, what you're looking for is probably defined at [FileUtils](http://ruby-doc.org/stdlib-2.1.2/libdoc/fileutils/rdoc/FileUtils.html).
 
 Many of the operations you'd usually have to manually dive down into a tree of files and directories (like `chowning` a directory and it's children) are already defined as single method calls at `FileUtils` and you should just go there, find the method and call it instead of manually writing code to recurse over the trees and calling methods.
