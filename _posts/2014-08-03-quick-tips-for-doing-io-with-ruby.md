@@ -63,7 +63,7 @@ While the [File.join documentation](http://www.ruby-doc.org/core-2.1.2/File.html
 Whenever you need to build an actual path, remember to always use `File.join`:
 
 {% highlight ruby %}
-path = Path.join("Users", "mauricio", "projects", "ruby")
+path = File.join("Users", "mauricio", "projects", "ruby")
 {% endhighlight %}
 
 ### Accessing files relative to the current Ruby file
