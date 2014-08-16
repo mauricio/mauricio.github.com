@@ -25,4 +25,4 @@ subtitle: my sandbox
 * Knife plugins for chef;
 * Moving AWS infrastructure configuration to Cloud Formation templates;
 * Basics on probabilities;
-* Dead letter queues on SQS;
+* Tips and tricks of using SQS in the wild;
