@@ -170,7 +170,7 @@ Now that we've seen the first, let's look at the second resource:
 
 Again we have an SQS queue being declared but now there is another property, `RedrivePolicy`. This property allows us to declare the maximum number of times a message can be received and the target queue to where this message should be sent once it reaches this limit. So, if our systems fail to process this message an specific number of times, the queue itself should give up this message and send it to the dead letter queue were we can later verify what's going on.
 
-To do this we use two intrinsic functions, the `Fn::FindInMap` function to get the `maxReceiveCount` value for the current environment and then the `Fn::GetAtt` function to get the `Arn` value for the dead letter queue. Every resource declares a group of properties that are available for `Fn::GetAtt` calls, whenever you need to reference specific values from other resources inside your cloud formation template, check their documentation and see what values they produce when given to a `Ref` or `Fn::GetAtt` call.
+To do this we use two intrinsic functions, the `Fn::FindInMap` function to get the `maxReceiveCount` value for the current environment and then the `Fn::GetAtt` function to get the `Arn` value for the dead letter queue (`Arns` are the unique identifier almost every AWS resource has). Every resource declares a group of properties that are available for `Fn::GetAtt` calls, whenever you need to reference specific values from other resources inside your cloud formation template, check their documentation and see what values they produce when given to a `Ref` or `Fn::GetAtt` call.
 
 Creating environment specific mappings helps you fine tune your configuration options for every environment and simplify figuring out which values go where instead of manually updating parameters whenever you create a new cloud formation. While parameters are useful, it's much harder to manage and see the changes made when uploading or updating cloud formation stacks, so prefer mappings whenever possible.
 
@@ -211,7 +211,7 @@ end
 => {"IndexerQueue" => "indexer-development", "IndexerDeadLetterQueue" => "indexer_dead-development"}
 {% endhighlight %}
 
-And once they pull the outputs from the cloud formation, they can grab the actual queues and start pushing and pulling messages to them. This way you could change the queue names and not care about what would happen to the apps, they they would rely on the output names (`IndexerQueue` and `IndexerDeadLetterQueue`) instead of hardcoding the actual names there. You could even just not declare names for these queues at all and the Cloud Formation would provide unique names for them for you.
+And once they pull the outputs from the cloud formation, they can grab the actual queues and start pushing and pulling messages to them. This way you could change the queue names and not care about what would happen to the apps, they would rely on the output names (`IndexerQueue` and `IndexerDeadLetterQueue`) instead of hardcoding the actual queue names there. You could even just not declare names for these queues at all and the Cloud Formation would provide unique names for them for you.
 
 ## Cloud formations FTW!
 
@@ -222,7 +222,7 @@ Let's list the advantages first:
 * Allows for parametrization and specific configurations on a per-environment basis (by using mappings with environment names);
 * Includes a huge collection of available resources by AWS itself;
 
-The main disadvantage is that not all options are available. For instance, you can't subscribe an SQS queue to an SNS topic if the topic already exists or if it was created somewhere else that's where the queue is being declared. Also, even when you can subscribe (right at the SNS resource declaration) you can't set parameters to it like the `raw subscription` that removes the SNS envelope from the message.
+The main disadvantage is that not all options are available. For instance, you can't subscribe an SQS queue to an SNS topic if both are not at the same template. Also, even when you can subscribe (right at the SNS resource declaration) you can't set parameters to it like the `raw subscription` that removes the SNS envelope from the message.
 
 And this is where our [cfn-bridge](https://github.com/TheNeatCompany/cfn-bridge) project comes into play. When you start building everything with cloud formations, having to manually create resources feels like going back in time but since not every we would have to do it anyway, right?
 
