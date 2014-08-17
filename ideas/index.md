@@ -23,6 +23,5 @@ subtitle: my sandbox
 * Admin panels should not be part of your app;
 * Anything about R;
 * Knife plugins for chef;
-* Moving AWS infrastructure configuration to Cloud Formation templates;
 * Basics on probabilities;
 * Tips and tricks of using SQS in the wild;
