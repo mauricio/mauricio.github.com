@@ -1,6 +1,6 @@
 ---
 layout: post
-title: AWS Cloud Formations and creating custom resources
+title: Getting to know AWS Cloud Formations and creating custom resources in Ruby
 subtitle: give your sysadmin a hand
 keywords: ruby, aws, cloud-formation, ops, sysadmin
 tags:
