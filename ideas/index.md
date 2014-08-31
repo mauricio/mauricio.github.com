@@ -24,4 +24,3 @@ subtitle: my sandbox
 * Anything about R;
 * Knife plugins for chef;
 * Basics on probabilities;
-* Tips and tricks of using SQS in the wild;
