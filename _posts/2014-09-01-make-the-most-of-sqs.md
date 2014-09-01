@@ -12,7 +12,7 @@ While it's not as popular as other solutions like [Resque](https://github.com/re
 
 The base SQS model is rather simple, you create queues and you push and pull messages from them. The actual advantages come from the fact that you don't have to manage the queuing servers yourself (if you ever had to build an HA Redis cluster for Resque workers you know the pain already) and you can have as many producers and consumers as you would like to, there's no limit on how many messages a queue can hold and how many requests you can make to the SQS servers, so most of the scaling pain you could have setting up a pool of background workers is gone already.
 
-To follow through these examples you have to create an AWS account and setup your AWS keys as environment variables.
+To follow through these examples you have to create an AWS account and setup your AWS keys as environment variables. Check the [Ruby's AWS SDK](https://github.com/aws/aws-sdk-ruby) project for docs on the many ways you can configure your keys.
 
 ## Creating queues and sending messages
 
