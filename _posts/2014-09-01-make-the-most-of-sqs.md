@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Make the most of SQS in Ruby
+title: Make the most of Amazon SQS in Ruby for your background worker needs
 subtitle: there's a lot more than sending and receiving messages
 keywords: aws, amazon, sqs, sns, ruby, aws-sdk, rails
 tags:
