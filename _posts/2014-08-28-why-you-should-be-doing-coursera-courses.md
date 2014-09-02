@@ -25,7 +25,7 @@ The course wasn't this permissive.
 
 I delivered the first assignment (it became available on september 17th) four hours before the september 28th, 4PM deadline. With all the two weeks available to deliver it, I left it to the very last moment at the last day to actually do it.
 
-I was so used to this _self paced_ rhythm of learning I've been doing for these past years that it was hard not to keep doing it now as well. It wasn't as if I was doing crazy hours at work, my live was pretty normal, working from home in a small coastal city in Brazil, hanging out with my girlfriend (now wife), playing boardgames and hanging out with friends.
+I was so used to this _self paced_ rhythm of learning I've been doing for these past years that it was hard not to keep doing it now as well. It wasn't as if I was doing crazy hours at work, my life was pretty normal, working from home in a small coastal city in Brazil, hanging out with my girlfriend (now wife), playing boardgames and hanging out with friends.
 
 What I didn't have was clear priorities and objectives. I would see a book about software architecture (like `Beautiful Architectures`), would buy it, read a couple chapters and then forget about it and buy another one from another completely different subject.
 
