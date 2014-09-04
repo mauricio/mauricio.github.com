@@ -24,3 +24,7 @@ subtitle: my sandbox
 * Anything about R;
 * Knife plugins for chef;
 * Basics on probabilities;
+* neat-cli and building clients for your own APIs;
+* mongo object-ids and timestamps;
+* career as an accident;
+* date and time in ruby;
