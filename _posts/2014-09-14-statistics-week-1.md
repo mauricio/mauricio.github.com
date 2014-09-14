@@ -558,16 +558,3 @@ span.blue {
   color: blue;
 }
 </style>
-
-
-
-
-
-
-
-
-
-
-
-
-.
