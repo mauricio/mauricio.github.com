@@ -27,3 +27,7 @@ subtitle: my sandbox
 * neat-cli and building clients for your own APIs;
 * career as an accident;
 * date and time in ruby;
+* blog about anti-corruption layers;
+* call by name and call by value in scala;
+* não se mude pra São Paulo;
+* learn languages that make your head hurt;

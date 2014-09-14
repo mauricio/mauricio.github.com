@@ -1,0 +1,203 @@
+country	population	expectancy	gdp_per_capita
+Afghanistan	29863	45	466
+Albania	3130	77	4174
+Algeria	32854	73	4959
+
+Angola	15941	49	1942
+
+Argentina	38747	76	8358
+Armenia	3016	74	3877
+Australia	20155	82	48253
+Austria	8189	80	49596
+Azerbaijan	8411	71	5298
+Bahamas	323	75	22102
+Bahrain	727	76	28240
+Bangladesh	141822	68	494
+Barbados	270	78	14422
+Belarus	9755	70	6230
+Belgium	10419	81	47609
+Belize	270	77	4569
+Benin	8439	63	767
+Bhutan	2163	68	1933
+Bolivia	9182	67	1723
+Bosnia and Herzegovina	3907	75	4874
+Botswana	1765	55	6108
+Brazil	186405	73	8311
+Brunei	374	79	37048
+Bulgaria	7726	74	6573
+Burkina Faso	13228	54	522
+Burundi	7548	52	138
+Cambodia	14071	63	769
+Cameroon	16322	52	1218
+Canada	32268	81	45166
+Cape Verde	507	72	3439
+Central African Republic	4038	48	464
+Chad	9749	50	765
+Chile	16295	79	10091
+China	1315844	74	3292
+Colombia	45600	74	5415
+Comoros	798	67	802
+Congo	3999	54	2934
+Costa Rica	4327	79	6599
+Cote d'Ivoire	18154	60	1137
+Croatia	4551	77	15677
+Cuba	11269	79	5596
+Cyprus	835	80	31551
+Czech Republic	10220	77	21036
+Democratic Republic of the Congo	57549	48	181
+Denmark	5431	79	62520
+Djibouti	793	57	1155
+
+Dominican Republic	8895	73	4574
+Ecuador	13228	76	3900
+Egypt	74033	71	2031
+El Salvador	6881	72	3605
+Equatorial Guinea	504	52	27130
+Eritrea	4401	61	300
+Estonia	1330	74	17298
+Ethiopia	77431	57	319
+Fiji	848	69	4264
+Finland	5249	80	51409
+France	60496	82	44675
+
+French Polynesia	257	75	17781
+Gabon	1384	62	9888
+Gambia	1517	57	636
+Georgia	4474	72	2970
+Germany	82689	80	44363
+Ghana	22113	58	709
+Greece	11120	80	31954
+Grenada	103	76	6221
+
+
+Guatemala	12599	71	2848
+Guinea	9402	60	505
+Guinea-Bissau	1586	49	257
+Guyana	751	69	1543
+Haiti	8528	62	717
+Honduras	7205	73	1957
+Hong Kong	7041	83	30872
+Hungary	10098	74	15448
+Iceland	295	82	52490
+India	1103371	65	1061
+Indonesia	222781	72	2247
+Iran	69515	73	4728
+Iraq	28807	70	788
+Ireland	4148	80	61314
+Israel	6725	81	28292
+Italy	58093	82	38640
+Jamaica	2651	73	5571
+Japan	128085	83	38578
+Jordan	5703	74	3466
+Kazakhstan	14825	66	8535
+Kenya	34256	56	788
+Kiribati	84	61	804
+Korea	47817	80	19296
+Kuwait	2687	79	54152
+Kyrgyzstan	5264	69	934
+Laos	5924	67	858
+Latvia	2307	73	14956
+Lebanon	3577	73	6797
+Lesotho	1795	47	788
+Liberia	3283	60	219
+Libya	5853	76	14430
+
+Lithuania	3431	72	14244
+Luxembourg	465	80	111743
+Macau	460	81	41427
+Macedonia	2034	75	4407
+Madagascar	18606	62	488
+Malawi	12884	56	278
+Malaysia	25347	75	8197
+Maldives	329	73	4131
+Mali	13518	50	677
+Malta	402	80	20254
+Marshall Islands	57	69	2737
+
+Mauritania	3069	58	1017
+Mauritius	1245	72	7450
+Mexico	107029	77	9964
+Micronesia	110	69	2154
+Moldova	4206	70	1662
+
+Mongolia	2646	68	1991
+Morocco	31478	72	2740
+Mozambique	19792	49	440
+Myanmar	50519	64	578
+Namibia	2031	62	4143
+Nauru	10	56	2396
+Nepal	27133	68	465
+Netherlands	16299	80	52699
+Netherlands Antilles	183	77	19512
+New Caledonia	237	77	37678
+New Zealand	4028	81	29879
+Nicaragua	5487	75	1228
+Niger	13957	54	354
+Nigeria	131530	49	1450
+North Korea	22488	68	555
+Norway	4620	81	94791
+Oman	2567	76	18879
+Pakistan	157935	68	1010
+Palau	20	69	8812
+Palestinian Territory	3702	75	1485
+Panama	3232	76	6793
+Papua New Guinea	5887	62	1218
+Paraguay	6158	73	2581
+Peru	27968	74	4471
+Philippines	83054	73	1866
+Poland	38530	76	13855
+Portugal	10495	79	22805
+Puerto Rico	3955	79	24583
+Qatar	813	77	88990
+Romania	21711	73	9518
+Russian Federation	143202	68	11858
+Rwanda	9038	52	458
+
+Saint Kitts and Nevis	46	69	10874
+Saint Lucia	161	75	6016
+Saint Vincent and the Grenadines	119	72	5515
+Samoa	185	73	2988
+San Marino	27	80	60925
+Sao Tome and Principe	157	67	1108
+Saudi Arabia	24573	74	18555
+Senegal	11658	57	1088
+Serbia	10503	74	6871
+Sierra Leone	5525	49	418
+Singapore	4326	81	39423
+Slovakia	5401	75	17585
+Slovenia	1967	79	26987
+Solomon Islands	478	68	1284
+Somalia	8228	51	298
+South Africa	47432	53	5566
+Spain	43064	82	36061
+Sri Lanka	20743	75	2030
+Sudan	36233	59	1700
+Suriname	449	70	5569
+Swaziland	1032	49	2369
+Sweden	9041	82	52035
+Switzerland	7252	82	65200
+Syrian	19043	75	2572
+Tajikistan	6507	67	363
+Tanzania	38329	58	502
+Thailand	64233	70	4187
+East Timor-Leste	947	63	518
+Togo	6145	64	446
+Tonga	102	72	2891
+Trinidad and Tobago	1305	70	18153
+Tunisia	10102	75	3876
+Turkey	73193	72	10031
+Turkmenistan	4833	66	1754
+Tuvalu	10	63	3213
+Uganda	28816	55	500
+Ukraine	46481	69	3921
+United Arab Emirates	4496	78	63966
+United Kingdom	59668	80	43544
+United States of America	298213	80	45230
+Uruguay	3463	77	9610
+Uzbekistan	26593	69	946
+Vanuatu	211	72	2388
+Venezuela	26749	75	11376
+Viet Nam	84238	75	1041
+Yemen	20975	65	1356
+Zambia	11668	49	1144
+Zimbabwe	13010	50	314
