@@ -15,7 +15,9 @@ The information I was presented during these last 8 weeks of [Data Analysis and 
 
 ## The Brazilian election case
 
-Brazil has just gone over one of it's most competitive president elections of all time, with two sides fighting for every inch of the electorate and, as you can imagine, polls were abound. Before taking the class, I knew that the *margin of error* was a sign that the _actual_ value was inside the interval provided. So, if one of the candidates was with 38% of the votes with an margin of error of 2% the actual value was between 36% to 40%.
+Brazil has just gone over one of it's most competitive president elections of all time, with two sides fighting for every inch of the electorate and, as you can imagine, polls were abound. Before taking the class, I knew that the *margin of error* was a sign that the _actual_ value was, most likely, inside the interval provided given the confidence level.
+
+If the poll had a 95% confidence level, it means 95% of all polls would produce an interval with the actual value (the distinction here is important, 5% of the polls could still produce an interval that will not include the *real* population parameter). As a simplification, we say that the actual value will be inside the interval produced by the poll, which when 38% value and a 2% margin of error would be betweem 36% and 40%. This specific interval might not actually have the value, but for now let's assume it does.
 
 So, I knew what it meant but I had no idea how they got at that specific interval. Going through the classes I then learned that the margin of error for proportions is calculated like:
 
