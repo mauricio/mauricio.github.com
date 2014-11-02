@@ -382,7 +382,7 @@ Which will give us the value of `95.7827` which is correct but it's not at the s
 
 To decide what kind of measures of center and spread you should use, you need to look at the data you're working with. We say that robust statistics are those measures that are not greatly affected by outliers at the dataset and non-robust as the ones that are.
 
-Looking at the measures we've seen, when measusing center, the **median** is more robust than the **mean** because it's not affected by outliers as the mean is. In a small example given the following values:
+Looking at the measures we've seen, when measuring center, the **median** is more robust than the **mean** because it's not affected by outliers as the mean is. In a small example given the following values:
 
     [ 1, 2, 3, 4, 5, 6 ]
 
