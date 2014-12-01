@@ -21,7 +21,6 @@ subtitle: my sandbox
 * Rust for Ruby/Scala developers;
 * OCaml for Ruby/Scala developers;
 * Admin panels should not be part of your app;
-* Anything about R;
 * Knife plugins for chef;
 * Basics on probabilities;
 * neat-cli and building clients for your own APIs;
@@ -31,3 +30,6 @@ subtitle: my sandbox
 * call by name and call by value in scala;
 * não se mude pra São Paulo;
 * learn languages that make your head hurt;
+* S3 eventing for indirect uploads;
+* memcached server in Rust;
+* contributing to communities as a way to expand your experiences;
