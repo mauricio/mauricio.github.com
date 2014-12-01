@@ -393,8 +393,6 @@ The [read.table](https://stat.ethz.ch/R-manual/R-devel/library/utils/html/read.t
 
 At the next part we'll part we'll see how we can subset and plot the data we have collected, stay tuned!
 
-....
-
 <script type="text/javascript"
 src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>
