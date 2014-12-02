@@ -35,6 +35,15 @@ The `<-` operator is the preferred way to assign variables in *R* (you could als
 
 Later we use the the `c` function to create a `numeric vector` and when we make the same `class` call on it it produces `numeric` again. Why is that? Because almost everything in *R* is actually a vector of some kind.
 
+You can also create a vector from an interval using the `:` operator as in:
+
+{% highlight r %}
+interval <- 1:10
+> [1]  1  2  3  4  5  6  7  8  9 10
+{% endhighlight %}
+
+Vectors created like this are always inclusive.
+
 In *R* a `vector` is a collection of items all of the same type, so you can't mix numbers and strings. If you want to have a collection with different types, you'd create a list using the `list` function:
 
 {% highlight r %}
@@ -375,6 +384,12 @@ The name of the tenth person:
 {% highlight r %}
 titanic[10,4]
 > [1] "Nasser, Mrs. Nicholas (Adele Achem)"
+{% endhighlight %}
+
+You can use a vector for both indexes as well. For instance, if I wanted rows from 10 to 20 I could do it like:
+
+{% highlight r %}
+titanic[10:20,]
 {% endhighlight %}
 
 And you can also get all values from a single column using the `$` operator:
