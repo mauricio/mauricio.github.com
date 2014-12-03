@@ -15,13 +15,13 @@ While getting an answer for these questions is most likely pretty important for 
 
 Most of our time is invested in programming using many different tools, from languages to IDEs and frameworks and while a lot of what we do is alike, there are many different applications being built and each of these apps has it's own team and it's own experiences. These experiences will lead people in different directions while deciding how the code is written, how the tools are joined together and how the final product behaves.
 
-This leads to very different solutions for the same set of problems and makes different people, while working on the same field, developing completely different styles and experiences on what and how to build their solutions. If you've ever been to a busy mailing list you probably have seen this yourself when someone had trouble using a tool in a completely different setting than yours. For instance, I've seen people distributing a Rails app inside a [VirtualBox](https://www.virtualbox.org/) VM so it could be run on any OS that supports VirtualBox.
+This leads to very different solutions for the same set of problems and makes different people, while working on the same field, developing completely different styles and experiences on what and how to build their solutions. If you've ever been to a busy mailing list you have seen this yourself when someone had trouble using a tool in a completely different setting than yours. I've seen people distributing a Rails app inside a [VirtualBox](https://www.virtualbox.org/) VM so it could be run on any OS that supports VirtualBox.
 
-This myriad of experiences leads to people asking stuff on communities that you don't know and this is where this stuff gets interesting. You can now tap into their own world for a brief moment and gain experience on something you don't know know but that could be useful in the future.
+This myriad of experiences leads to people asking stuff you don't know or wouldn't consider doing and this is where it gets interesting. You can now tap into their own world for a brief moment and gain experience on something you didn't think about before but could be useful in the future.
 
 ## The journey is what's actually important
 
-A couple months ago while browsing `StackOverflow` I saw [this question about Scala's DelayedInit](http://stackoverflow.com/q/20649982/293686) and something clicked in my memory about it. I did read [Scala in Depth](http://www.manning.com/suereth/) a while ago but my memory about this specific section was mostly _oh, I remember this was in the book, but I have no idea what it actually is_ so I couldn't answer the question right away.
+A couple months ago while browsing `StackOverflow` I saw [this question about Scala's DelayedInit](http://stackoverflow.com/q/20649982/293686) and something clicked for me. I did read [Scala in Depth](http://www.manning.com/suereth/) a while ago but my memory about this specific section was mostly _oh, I remember this was in the book, but I have no idea what it actually is_ so I couldn't answer the question right away.
 
 But hey, *I could* grab the book again, read it to refresh my memory and try to answer it, couldn't I?
 
@@ -33,8 +33,8 @@ Seeing this at someone else's code before seeing this error at my own programs w
 
 ## Let no opportunity be wasted
 
-Whenever you see someone asking a question, specially something you don't know yet, think if you can invest some time to find an answer. Could be as simple as googling the error message and surfing through the search results or reading through the source code of a project you haven't seen before. Even if someone else answers before you do, your journey to find an answer will teach you something new and keep your knowledge search engines running.
+Whenever you see someone asking a question, specially something you don't know yet, think if you can invest some time to find an answer. Could be as simple as googling the error message and surfing through the search results (as simple as it sounds if you're experienced, people aren't born knowing how to read stack traces or search for errors on google) or reading through the source code of a project you haven't seen before. Even if someone else answers before you do, your journey to find an answer will teach you something new and keep your knowledge search engines running.
 
-Getting used to finding and fixing bugs, reading through someone else's code and problem solving skills are qualities every single programmer out there should have and to practice them all you have to do is to help your community by answering other people's questions.
+Getting used to finding and fixing bugs, reading through someone else's code and problem solving skills are qualities every single programmer out there needs have and to practice them all you have to do is to help your community by answering other people's questions.
 
 Did you answer someone's question today already?
