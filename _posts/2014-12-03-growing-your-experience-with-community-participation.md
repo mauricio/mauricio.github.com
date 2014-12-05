@@ -1,7 +1,7 @@
 ---
 layout: post
-title: Answering other people's questions is much more than you might think
-subtitle: no, not a waste of time
+title: Growing your experience with community participation
+subtitle: by answering other people's questions
 keywords: community, networking, participation, stackoverflow
 tags:
 - useful
