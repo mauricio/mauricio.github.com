@@ -32,4 +32,5 @@ subtitle: my sandbox
 * learn languages that make your head hurt;
 * S3 eventing for indirect uploads;
 * memcached server in Rust;
-* contributing to communities as a way to expand your experiences;
+* R and cleaning the natural disaster data;
+* R and plotting;
