@@ -7,6 +7,8 @@ tags:
 - useful
 ---
 
+{% include r-introduction.html %}
+
 [R](http://www.r-project.org/) has two very distinct characteristics, one is having a horrible name that makes it hard to search for stuff about it and the other is being an incredible language (and environment) to do statistical computing and plotting. It was meant to be an GNU implementation of [S](http://en.wikipedia.org/wiki/S_(programming_language)), an older statistical programming language and environment developed at Bell Labs/AT&T.
 
 To follow through this tutorial you'll have to install *R* for your operating system and I would also recommend that you install [R Studio](http://www.rstudio.com/) which is a free GUI tool to work with *R*.
