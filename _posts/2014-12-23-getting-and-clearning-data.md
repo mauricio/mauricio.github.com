@@ -33,7 +33,7 @@ data <- read.csv(zip,
   "NULL","NULL"))
 {% endhighlight %}
 
-Given the file is large (if you unpack it it will be around half a GB) we don't want to let *R* try to figure out the data types or load all columns, we will specifically select the columns we want to use and declare their types to the initial load is faster as *R* won't be loading everything or trying to figure out what each field is.
+Given the file is large (if you unpack it it will be around half a GB) we don't want to let *R* try to figure out the data types or load all columns, we will specifically select the columns we want to use and declare their types so the initial load is faster as *R* won't be loading everything or trying to figure out what each field is.
 
 Let's look at the fields we have here:
 
@@ -48,7 +48,7 @@ Most of the variables here should be self explanatory, let's take a tour:
 * *BGN_DATE* and *END_DATE* - the start and end of the event;
 * *COUNTY* and *COUNTYNAME* - an unique identifier for the county and the name of the county;
 * *STATE* - state of the county where the event happened;
-* *EVTYPE* - this is the type of the event that has happened, there are *many* types of events and they will require some clean up, we'll get back to that in a bit;
+* *EVTYPE* - this is the type of event that has happened, there are *many* types of events and they will require some clean up, we'll get back to that in a bit;
 * *FATALITIES* and *INJURIES* - the number of victims (either killed or injured) by the event;
 * *PROPDMG* and *CROPDMG* - these are the cost of the damage caused by the event as property or crop damage;
 * *PROPDMGEXP* and *CROPDMGEXP* - these are the multipliers to be applied to the crop and property damage values provided;
@@ -70,7 +70,7 @@ The `unique` function takes a vector and produces a new vector removing  duplica
 * "THUNDESTORM WINDS"
 * "THUNDERSTROM WINDS"
 
-So we have typos, different casing, switched words all together for events that are supposed to be the same ones, we need a fix for that. While it would be great if I could tell you there is this magical *R* function that does this work for us, there isn't. Due to the many different ways the same event is being presented differently here, the solution will be going through all the event names and changing them to a canonical one.
+So we have typos, different casing and switched words all together for events that are supposed to be the same, we need a fix for that. While it would be great if I could tell you there is this magical *R* function that does this work for us, there isn't. Due to the many different ways the same event is being presented differently here, the solution will be going through all the event names and changing them to a canonical one.
 
 The first step is to make them all have the same casing and remove extraneous spaces from the beginning or the end of the event names, here's how we can do it:
 
@@ -93,7 +93,7 @@ length(unique(data$EVTYPE))
 > [1] 890  
 {% endhighlight %}
 
-This basic cleanup removed 95 duplicate event types, not perfect but still a great start for our job. The next step is, unfortunately, a manual operation, going through every event type and mapping it to a _canonical_ version so we can have less noise when organizing this data, you won't actually have to do this since I've done it already but whenever you find yourself in the same situation, find an expert in the field (which will probably be working with you anyway on the anaylsis) and remove the duplicates.
+This basic cleanup removed 95 duplicate event types, not perfect but still a great start for our job. The next step is, unfortunately, a manual operation, going through every event type and mapping it to a _canonical_ version so we can have less noise when organizing this data. You won't actually have to do this since I've done it already but whenever you find yourself in the same situation, find an expert in the field (which will probably be working with you anyway on the anaylsis) and remove the duplicates.
 
 You should download the [replacements.csv](https://raw.githubusercontent.com/mauricio/reproductible-research-assignment-2/master/replacements.csv) that contains the mappings from the original to the canonical event type. Once it's downloaded and available to be used, load it at your *R* session:
 
@@ -108,7 +108,7 @@ data$event <- sapply(data$EVTYPE, eventFor)
 
 Running this will take a while since we have to produce results for 902297 rows, just be a little patient. Another option would be using a library like [hash](http://cran.r-project.org/web/packages/hash/index.html) (yes, *R* does not have hashes natively) for faster access, but we can live with this waiting for now.
 
-Going back to the code, we first read the `replacements.csv` file as usual but now we include the `stringsAsFactors=FALSE` option to prevent the code from loading everything as factors, which wouldn't work for our case. By default the `read.csv` method will assume all string fields should be read as factors, so make sure you either declare the types of every column as we have been doing or just disable factors if you don't want them.
+Going back to the code, we first read the `replacements.csv` file as usual but now we include the `stringsAsFactors=FALSE` option to prevent the code from loading everything as factors, which wouldn't work for our case. By default, `read.csv` will assume all string fields should be read as factors, so make sure you either declare the types of every column as we have been doing or just disable factors if you don't want them.
 
 And now for something new, a function declaration!
 
@@ -173,7 +173,7 @@ Here we're doing mostly the same of what we did with events, the main difference
 
 `sapply` expects to call the given function with a single argument, but to actually perform the calculation here we need both the damage value *and* the multiplier for that value, so we need to give our functions the pair of damage and multiplier values. `mapply` comes to the rescue here since it allows us to provide N vectors and it is going to call our function with every sequence of the N values, which in our case is every damage and it's own multiplier.
 
-Again, no loops are necessary everywhere since all operations are vectorized. At the end we also sum the damage values to calculate the total damage for every event. Since *R* knows we're dealing with vectors here it knows what we want is to sum every *row* and not the whole vectors, so what is happening at that last line is that every row will have it's property and crop damage summed and included at a new column.
+Again, no loops are necessary anywhere since all operations are vectorized. At the end we also sum the damage values to calculate the total damage for every event. Since *R* knows we're dealing with vectors here it knows what we want is to sum every *row* and not the whole vectors, so what is happening at that last line is that every row will have it's property and crop damage summed and included at a new column.
 
 ## split-apply-combine
 
@@ -254,7 +254,7 @@ result <- do.call(rbind, events_per_year)
     2010   44
     2011   44
 
-As you can see, before 1993, very few different events were recorded every year, not because they did not happen, but because the rules to track these natural disasters were different. These discrepancies are going to be all over the place as you work with data and you should always consider that it will mean for your end results, as making direct comparisons between the years before 93 with the ones that come after it will surely generate different results. In this case, we're better off using either one or the other side of the data set and not everything.
+As you can see, before 1993, very few different events were recorded every year, not because they did not happen, but because the rules to track these natural disasters were different. These discrepancies are going to be all over the place as you work with data and you should always consider what it will mean for your end results, as making direct comparisons between the years before 93 with the ones that come after it will surely generate different results. In this case, we're better off using either one or the other side of the data set and not everything.
 
 As for the code, the `split` function takes the data set as the first parameter and the categories as the second. You don't have to provide unique values here, `split` is smart enough to figure out what you mean and correctly split the values on every unique option. This produces a list of `year -> dataset subset for that year`.
 
@@ -282,7 +282,7 @@ events_per_year <- ddply(
   )  
 {% endhighlight %}
 
-The `plyr` package contains various methods that do the `split-apply-combine` scenario on many different kinds of inputs producing different outputs. The `ddply` method is one that takes a data frame and produces a data frame, but you could use a method that produces a list or any of the other methods available at the library.
+The `plyr` package contains various methods that do the `split-apply-combine` scenario on many different kinds of inputs producing different outputs. The `ddply` method is one that takes a data frame and produces a data frame (that's why it's `dd`), but you could use a method that produces a list or any of the other methods available at the library.
 
 Here we provide our data frame as the first argument, then the list of variables we want to use as the `split`, then how the result will be built (`summarise` means we want a new object to be built from scratch) and then the fields we will want included at this new data frame. For this case, all we want is the `count` field, the value for the field is the operation you want to apply (it does not have to be a function) and it has access to all fields at the data frame you provided, that's why we just say `event` here instead of `data$event`.
 
@@ -296,7 +296,7 @@ Given we know the information before 1993 is much different than the one availab
 filteredData <- data[data$year >= 1993,]
 {% endhighlight %}
 
-This known in *R* parlance as *subsetting* since you are creating a subset of the data based on some conditional. If you run `data$year >= 1993` alone the result will be a logical vector containing one value for every row inside `data` with either `TRUE` (if the row matches the condition) or `FALSE` (if it does not) and when you use this vector as the row part for the `[]` operator every row that matches a `TRUE` value will be returned. You can use boolean operators like `&` and `|` when performing these comparisons as well for compound matches just like any other programming language.
+This is known in *R* parlance as *subsetting* since you are creating a subset of the data based on some conditional. If you run `data$year >= 1993` alone the result will be a logical vector containing one value for every row inside `data` with either `TRUE` (if the row matches the condition) or `FALSE` (if it does not) and when you use this vector as the row part for the `[]` operator every row that matches a `TRUE` value will be returned. You can use boolean operators like `&` and `|` when performing these comparisons as well for compound matches just like any other programming language.
 
 Let's group injuries and deaths per event:
 
@@ -328,7 +328,7 @@ barplot(
   ylab="Deaths")
 {% endhighlight %}
 
-Since we have one categorical and one numeric variable to use, the most direct option for a plot is a `barplot`, we grab the top 5 rows and print them. The code itself is self explanatory, first we provide the numeric values, then we set the `names.arg`
+Since we have one categorical and one numeric variable to use, the most direct option for a plot is a `barplot`, we grab the top 5 rows and print them. The code itself is self explanatory, first we provide the numeric values, then we set the `names.arg` to be the top 5 field names, we provide color names for the bars, titles and legends for the generated plot.
 
 ![Natural disaster X Deaths]({{ site.url }}/images/stats-part-2/deaths-by-natural-disaster.png)
 
@@ -367,6 +367,8 @@ barplot(
 We'll get:
 
 ![Natural disaster X Injuries]({{ site.url }}/images/stats-part-2/injuries-by-disasters.png)
+
+Now start playing around with the damage data to figure out which is the most expensive type of disaster that has happened over these years, there's a lot of interesting information you can figure out from this simple dataset.
 
 ## Patience and exploration are key
 
