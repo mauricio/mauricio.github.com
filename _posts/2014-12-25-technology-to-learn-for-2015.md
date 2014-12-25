@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Technologies I'll be learning in 2015
+title: Technologies I'll learn in 2015
 subtitle: a futurology exercise
 keywords: statistics, machine learning, rust, systems programming, distributed systems, cloud
 tags:
