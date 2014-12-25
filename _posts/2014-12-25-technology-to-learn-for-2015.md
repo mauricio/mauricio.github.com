@@ -9,15 +9,13 @@ tags:
 
 I don't usually plan years in advance or try to predict what I'm going to learn as work and life priorities change over time, but my goal of building a strong statistics background over 2014 has definitely worked out exactly because I decided to focus on doing it instead of trying to do a lot of different unrelated stuff throughout the year.
 
-With 2015 at the door, I think it's time to define what kind of stuff I will be focusing on to keep up the pace.
+With 2015 right at the door, I think it's time to define what kind of stuff I will be focusing on to keep up the pace.
 
 ## Distributed systems (or, if you prefer buzzwords, cloud computing)
 
 As the systems grow, more and more of my work involves scaling, integrating and making sure disparate services distributed among many machines stay up and responsive. Unfortunately, most of my distributed systems knowledge has been acquired in the trenches and finding good introductory material to the field isn't easy.
 
-The goal is to cover most of the topics [summarized here](http://the-paper-trail.org/blog/distributed-systems-theory-for-the-distributed-systems-engineer/) to start going through the actual papers in the field. I've already finished [Distributed systems for fun and profit by ](http://book.mixu.net/distsys/) by [Mikito Takada](https://twitter.com/mikitotakada) and will continue going down the list soon.
-
-There is also a [Coursera specialization on Cloud Computing by the University of Illinois at Urbana-Champaign](https://www.coursera.org/specialization/cloudcomputing/19) that definitely looks promising, gonna enroll and see how it works out.
+The goal is to cover most of the topics [summarized here](http://the-paper-trail.org/blog/distributed-systems-theory-for-the-distributed-systems-engineer/) and then start going through the actual papers in the field. I've already finished [Distributed systems for fun and profit by ](http://book.mixu.net/distsys/) by [Mikito Takada](https://twitter.com/mikitotakada) and will continue going down the list soon. There is also a [Coursera specialization on Cloud Computing by the University of Illinois at Urbana-Champaign](https://www.coursera.org/specialization/cloudcomputing/19) that definitely looks promising, gonna enroll and see how it works out.
 
 While gaining experience in the trenches is amazing, understanding the theory, algorithms and options available in the field are also important when making decisions about using the various different systems available, as it can be seen at the [current discussion about tools on service discovery ](https://www.knewton.com/tech/blog/2014/12/eureka-shouldnt-use-zookeeper-service-discovery/). It's important to make informed decisions and to be able to do that we must understand how distributed systems work.
 
@@ -29,7 +27,7 @@ Why did they work? How did they work?
 
 Most of the courses and books on machine learning I found were about writing algorithms and it definitely felt like I was missing something not understanding the statistics that was actually behind most of them. Now that I've been able to build this backbone, I'm going back to the machine learning books and courses.
 
-But this doesn't mean my statistics days are over, I had to pause [the Data Science specialization](https://www.coursera.org/specialization/jhudatascience/1) right in the middle because I wanted to take the [Introduction to Data Science](https://www.coursera.org/course/datasci) and the [Data Analysis and Statistical Inference](https://www.coursera.org/course/statistics) courses, so now it's time to circle back and finish the last courses at the specialization and do the capstone project.
+But this doesn't mean my statistics days are over, I had to pause [the Data Science specialization](https://www.coursera.org/specialization/jhudatascience/1) right in the middle because I wanted to take the [Introduction to Data Science](https://www.coursera.org/course/datasci) and [Data Analysis and Statistical Inference](https://www.coursera.org/course/statistics) courses (and both were amazing), so now it's time to circle back and finish the last courses at the specialization and do the capstone project.
 
 My machine learning days will have to live side by side with my continuing statistics education.
 
@@ -37,9 +35,9 @@ My machine learning days will have to live side by side with my continuing stati
 
 This year I had a new foray into `C/C++` development and while I still don't have considerable experience with these system level languages, it didn't feel like I would like to devote my study time to them. The tooling feels awkward, `C++` as a language seems to give me too much power for no reason (and yes, I want to be constrained and protected from spurious crashes if possible) and it they didn't _click_ to me.
 
-But this doesn't mean I'd never do systems programming. Now that [Rust](http://www.rust-lang.org/) is about to reach it's *1.0* release and it is reaching a more consistent syntax and standard library, it is definitely time to get serious about it.
+But this doesn't mean I'd never do systems programming. Now that [Rust](http://www.rust-lang.org/) is about to reach it's *1.0* release with a more consistent syntax and standard library, it is definitely time to get serious about it.
 
-The language offers a systems programming environment while still retaining and guaranteeing a lot of the safety you only get at interpreted languages (or languages that compile to intermediary bytecodes and run on VMs like Java), has a nice functional feel (right from the [ML family](http://en.wikipedia.org/wiki/ML_%28programming_language%29), which I love by the way) and offers a simpler way to do manual memory management with it's borrowing and boxing ideas.
+The language offers a systems programming environment while still retaining and guaranteeing a lot of the safety you only get at interpreted languages nowadays (or languages that compile to intermediary bytecodes and run on VMs like Java), has a nice functional feel (right from the [ML family](http://en.wikipedia.org/wiki/ML_%28programming_language%29), which I love by the way) and offers a simpler way to do manual memory management with it's borrowing and boxing ideas.
 
 The first goal is to build a functional *memcached* clone. Given this requires using doing threading, data structures, networking and a lot of memory management, it's definitely going to be a nice tour around the language. Eventually, as the distributed systems education progresses, this *memcached* clone will become a [CRDTs server](http://en.wikipedia.org/wiki/Conflict-free_replicated_data_type) so I can get some of this distributed systems knowledge out there. Given there aren't that many `CRDT` server solutions out there, this might definitely become an actual and useful project in the long run.
 
