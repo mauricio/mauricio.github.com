@@ -31,6 +31,13 @@ But this doesn't mean my statistics days are over, I had to pause [the Data Scie
 
 My machine learning days will have to live side by side with my continuing statistics education.
 
+The planned resources so far:
+
+* [Machine Learning course on Coursera](https://www.coursera.org/course/ml)
+* [Machine Learning: The Art and Science of Algorithms that Make Sense of Data](http://www.amazon.com/Machine-Learning-Science-Algorithms-Sense/dp/1107422221/ref=pd_cp_b_0)
+* [Real world machine learning](http://www.manning.com/brink/)
+* [Taming text](http://www.manning.com/ingersoll/)
+
 ## Rust and systems programming
 
 This year I had a new foray into `C/C++` development and while I still don't have considerable experience with these system level languages, it didn't feel like I would like to devote my study time to them. The tooling feels awkward, `C++` as a language seems to give me too much power for no reason (and yes, I want to be constrained and protected from spurious crashes if possible) and it they didn't _click_ to me.
@@ -46,5 +53,7 @@ The first goal is to build a functional *memcached* clone. Given this requires u
 I've no idea. But having a clearly laid plan for that to study at 2014 did show me that focus was an important part of actually learning a topic. For many years I would be picking up stuff randomly, reading many different chapters in different books on different topics and, as you can imagine, very little of this was actually useful in the long run.
 
 Even if I can't do all this, I'm sure focusing on these topics and not on everything else that shows up at my twitter feed or hacker news is definitely a better bet at gaining new knowledge.
+
+Do you have any other recommendations for these fields? [Hit me on twitter!](https://twitter.com/mauriciojr)
 
 May 2015 be an awesome year for all of us :)
