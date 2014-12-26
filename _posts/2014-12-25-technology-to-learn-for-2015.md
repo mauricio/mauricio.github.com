@@ -37,6 +37,7 @@ The planned resources so far:
 * [Machine Learning: The Art and Science of Algorithms that Make Sense of Data](http://www.amazon.com/Machine-Learning-Science-Algorithms-Sense/dp/1107422221/ref=pd_cp_b_0)
 * [Real world machine learning](http://www.manning.com/brink/)
 * [Taming text](http://www.manning.com/ingersoll/)
+* [Data Mining specialization by University of Illinois at Urbana-Champaign](https://www.coursera.org/specialization/datamining/20)
 
 ## Rust and systems programming
 
