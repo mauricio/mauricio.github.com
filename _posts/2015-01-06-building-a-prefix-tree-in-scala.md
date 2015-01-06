@@ -180,7 +180,7 @@ override def findByPrefix(prefix: String): scala.collection.Seq[String] = {
 
 Now we are traversing towards a specific path of nodes in our tree, we only want the nodes that match the character we have at every index (all characeters are also lowercased). This could lead us to two cases, one where we have found the character (and then continue deeper) and one were one of the characters in the prefix does not match. As soon as we fail to match (the `None` case) we return. Otherwise, if we reach the end of the string we append all words under that node to the accumulator list.
 
-Again, this is `foreach` and `Traversable[T]` in action. The `++` method at `ListBuffer` couldn't possibly kno what to do with our `TrieNode` object, but since we have extended the `Traversable[T]` trait and implemented `foreach` it can just use the methods available and pull all the items from that part of the tree and down. We don't have to actually collect the items, the `++` method will already do the collection work for us and include the words at and below the current item.
+Again, this is `foreach` and `Traversable[T]` in action. The `++` method at `ListBuffer` couldn't possibly know what to do with our `TrieNode` object, but since we have extended the `Traversable[T]` trait and implemented `foreach` it can just use the methods available and pull all the items from that part of the tree and down. We don't have to actually collect the items, the `++` method will already do the collection work for us and include the words at and below the current item.
 
 Let's look at an example with a trie that contains `johann`, `john` and `joan`:
 
@@ -247,7 +247,13 @@ Let's look at an example:
                   r #word node
 
 
-Here we have a tree with the names `johann`, `john` and `john naur`. If we remove `john naur` we have to remove the whole `naur` suffix but leave `john` untouched since we also have `john` as an actual name, so what needs to happen is that we need to reach that last `r` node, walk up to `u`, delete the reference to the `r` node at it's children, this will make `u` not have any children and since it isn't a word node it means that we have to remove it, we keep repeating this until we reach the `n` that is the end of `john`, we again delete the reference to the `n` node for `naur` that is on it and since this node is  a word node our delete process has to stop.
+Here we have a tree with the names `johann`, `john` and `john naur`. If we remove `john naur` we have to remove the whole `naur` suffix but leave `john` untouched since we also have `john` as an actual name, so what needs to happen is:
+
+* reach that last `r` node;
+* walk up to `u`;
+* delete the reference to the `r` node at it's children, this will make `u` not have any children and since it isn't a word node it means that we have to remove it;
+
+We keep repeating this until we reach the `n` that is the end of `john`, we again delete the reference to the `n` node for `naur` that is on it and since this node is  a word node our delete process has to stop.
 
 As you can see, deleting a word from our prefix tree is a quite complicated operation. As with `contains`, you're better off if you build the tree and avoid removing items from it.
 
@@ -276,7 +282,7 @@ private[trie] def pathTo( word : String ) : Option[ListBuffer[TrieNode]] = {
 
 We provide a list buffer to be filled with nodes and we then traverse the tree to buid the actual list, if we reach the end of the word we're looking for and it is indeed a *word node* then we return the list, if it isn't we just return `None` to signal that we haven't found the full word we're looking for. It's important here that we only return if we do find a word node that matches, otherwise we could be deleting parts of other words.
 
-Then, with the method that builds the path, we can implement the `remove` operations:
+Then, with the method that builds the path, we can implement the `remove` operation:
 
 {% highlight scala %}
 override def remove(word : String) : Boolean = {
