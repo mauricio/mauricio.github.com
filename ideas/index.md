@@ -32,5 +32,6 @@ subtitle: my sandbox
 * learn languages that make your head hurt;
 * S3 eventing for indirect uploads;
 * memcached server in Rust;
-* R and cleaning the natural disaster data;
 * R and plotting;
+* openNLP and jruby;
+* simple AST interpreter in Scala;
