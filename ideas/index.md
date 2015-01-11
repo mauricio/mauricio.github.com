@@ -36,3 +36,4 @@ subtitle: my sandbox
 * openNLP and jruby;
 * simple AST interpreter in Scala;
 * type parameters and type bounds in Scala;
+* statistics with small workings sets (inspired by rubyrogues on PL research);
