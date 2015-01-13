@@ -59,9 +59,9 @@ module CustomEnumerable
 end
 {% endhighlight %}
 
-This will be a pattern for almost all the methods we will be creating, create the destination array, call each on itself and then do the actual work.
+This will be a pattern for almost all the methods we will be creating, create the destination array, call each on itself and then do the actual work. It's important to notice that our implementation knows nothing about where it is being included, the only expectation it has is that there is an `each` method implemented that yields to a block with an object.
 
-To see map in action, let's see how we could create a new array by multiplying every number on it by `2`:
+To see `map` in action, let's see how we could create a new array by multiplying every number on it by `2`:
 
 {% highlight ruby %}
 it 'maps the numbers multiplying them by 2' do
@@ -84,18 +84,22 @@ Here is what the docs say about `find`:
 
 {% highlight ruby %}
 def find(ifnone = nil, &block)
-  result = ifnone
+  result = nil
+  found = false
   each do |element|
     if block.call(element)
       result = element
+      found = true
       break
     end
   end
-  result
+  found ? result : ifnone && ifnone.call
 end
 {% endhighlight %}
 
-By default, we assume the value returned will be `ifnone`, since the loop itself will leave once there are no more items to test or an item is found (we `break` the loop in case the block call returns `true`).
+First we setup the variables that will contain the result if we find it and a signal variable if we have really found the value. Why don't we just use `result` with `nil` to signal that we have not found anything? Because `nil` might actually be what the user is looking for!
+
+So we really need to know if we have found something (whatever it is) or not before returning. And if we don't find anything, we call `ifnone` and use it's result as the result of the operation, if `ifnone` is `nil` we just return it.
 
 There are many cases for `find`. For instance, we need to be able to `find` an item:
 
@@ -115,7 +119,7 @@ We could want to change the default value if it does not match anything:
 {% highlight ruby %}
 it 'returns the ifnone value if no item is found' do
   items = ArrayWrapper.new(1, 2, 3, 4)
-  result = items.find(0) do |element|
+  result = items.find(lambda {0}) do |element|
     element < 1
   end
   expect(result).to eq(0)
@@ -196,7 +200,7 @@ Let's look at what the docs say about it:
 
 > If you do not explicitly specify an initial value for memo, then the first element of collection is used as the initial value of memo.
 
-So we have to either take a block or a symbol and we might or might not get an initial value, if we don't, assume the first item is the initial value. This implementation will actually be a bit tricky, let's stat with the simple case, we give it a block and an initial value:
+So we have to either take a block or a symbol and we might or might not get an initial value, if we don't, assume the first item is the initial value. This implementation will actually be a bit tricky, let's start with the simple case, we give it a block and an initial value:
 
 {% highlight ruby %}
 def reduce(accumulator, &block)
@@ -394,19 +398,21 @@ What happens now?
 
 The second spec, that expects `nil` to be returned when the collection is empty, fails. Why? Because `each` returns the collection itself once it runs, since the code was never executed (the collection is empty!) `each` just returns itself and not `nil` as our spec expects. So, that's why we need to explicitly declare our return value instead of relying on the iteration.
 
+Now that `first` is also implemented, let's produce the final `reduce` implementation:
+
 {% highlight ruby %}
 def reduce(accumulator = nil, operation = nil, &block)
   if accumulator.nil? && operation.nil? && block.nil?
     raise ArgumentError, "you must provide an operation or a block"
   end
 
+  if operation && block
+    raise ArgumentError, "you must provide either an operation symbol or a block, not both"
+  end
+
   if operation.nil? && block.nil?
     operation = accumulator
     accumulator = nil
-  end
-
-  if operation && block
-    raise ArgumentError, "you must provide either an operation symbol or a block, not both"
   end
 
   block = case operation
@@ -435,7 +441,13 @@ def reduce(accumulator = nil, operation = nil, &block)
 end  
 {% endhighlight %}
 
-Given we don't know exactly how the parameters will be provided or the collection structure, we can't really optimize this call (not unless we duplicate the code a bit, for instance, streamlining the implementation if there is an accumulator). But since we want this code to work for all cases, we will hope subclasses will provide implementations more aligned with their data structures.
+Given we don't know exactly how the parameters will be provided or the collection structure, we can't really optimize this call (not unless we duplicate the code a bit, for instance, streamlining the implementation if there is an accumulator). But since we want this code to work for all cases, we will hope classes that include this module will provide implementations more aligned with their structure.
+
+The code starts by verifying all parameters, if no parameters were provided, give it up, there's nothing to do here. Then it starts checking which case we're taking about here, the first check if `operation` and `block` are `nil`, if both are, it means the `accumulator` field *will have to be the operation* and that we don't have an accumulator.
+
+Then we have the `operation` validation we had before and we reach another new piece, the check for the accumulator. If the accumulator is `nil`, we must pull the first item of the collection and we must also instruct the method to ignore the first iteration (as we have manually navigated to it).
+
+Our new `each` loop now checks these special variables for the empty accumulator case so we can safely process the collection without duplicating the values. This would be a nice place for an optimization were we have the same loop we had before if there is an `accumulator`, you can definitely improve this method by including this change yourself.
 
 And this concludes the `reduce` implementation, see if you can come up with better or faster solutions for this, there are definitely better options.
 
@@ -477,6 +489,6 @@ end
 
 Our `min` and `max` implementations don't even have to care about it, all they have to do is to provide a block that does the comparison and returns the highest or smallest value found, all the looping and special case handling is done by the `reduce` function we wrote before. Quite powerful, isn't it?
 
-There are many other `Enumerable` method you can implement just using `reduce`, like `each_with_index`, `each_with_object`, `count`, `max_by`, `min_by` and others, give it a try and complete the enumerable implementation using `reduce` whenever you can.
+There are many other `Enumerable` methods you can implement just using `reduce`, like `each_with_index`, `each_with_object`, `count`, `max_by`, `min_by` and others, give it a try and complete the enumerable implementation using `reduce` whenever you can.
 
 And here we end our `Enumerable` overview by implementing it in Ruby. The full source code for this example [is available on github](https://github.com/mauricio/enumerable_example).
