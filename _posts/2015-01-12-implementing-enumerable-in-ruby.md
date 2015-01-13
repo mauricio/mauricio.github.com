@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Implementing Enumerable in Ruby
+title: Understanding some Enumerable methods by implementing them in Ruby
 subtitle: an abstraction exercise
 keywords: ruby, collection, enumerable, data structures, array
 tags:
