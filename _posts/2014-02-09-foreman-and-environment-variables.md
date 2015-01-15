@@ -19,9 +19,9 @@ you did something like:
 
 To install it as a service that runs when your machine starts.
 
-But think about it for a bit. You're not actually running this all the time. 
-If you're maintaining a gem that depends on a tool like that you might not even 
-really need it for anything other than running your test suite, why should you 
+But think about it for a bit. You're not actually running this all the time.
+If you're maintaining a gem that depends on a tool like that you might not even
+really need it for anything other than running your test suite, why should you
 have it running all the time like that?
 
 Well, you don't!
@@ -32,14 +32,14 @@ is:
 > a manager for Procfile-based applications. Its aim is to abstract away the details of the Procfile format, and allow you to either run your application directly or export it to some other process management format.
 
 And what is a Procfile-based application? It's an application that has a `Procfile`
-with instructions to start various processes it needs to run correctly. Here's how 
+with instructions to start various processes it needs to run correctly. Here's how
 a `Procfile` might look like:
 
     rails: bundle exec rails s
     postgres: postgres -D /Users/mauricio/databases/postgresql
     elasticsearch: elasticsearch -f
 
-It's a list of `name: command-to-be-run` for the dependencies you have. In this 
+It's a list of `name: command-to-be-run` for the dependencies you have. In this
 case we have the rails app, a PostgreSQL database and then elasticsearch. You could
 have any other process you depend on running from here and never again install
 anything to run as a service in your machine.
@@ -74,10 +74,10 @@ Once it's is installed, to go the Rails app directory and run:
     pg_ctl init -D vendor/postgresql
 
 This creates a full PostgreSQL database (config files and data files) inside
-the `vendor/postgresql` directory (you could even include the db version at 
+the `vendor/postgresql` directory (you could even include the db version at
 the directory name since PG is well known for changing the DB format rather
 frequently). By default, PG allows access to anyone locally, if you would like
-to fine tune the access control, check `vendor/postgresql/pg_hba.conf` and 
+to fine tune the access control, check `vendor/postgresql/pg_hba.conf` and
 update the configuration as needed. Remember, this is a full PosgreSQL install,
 you can change anything here and it will be visible only this app.
 
@@ -87,14 +87,24 @@ content:
 
     postgresql: postgres -D vendor/postgresql
 
+PostgreSQL starts with only your own user included, so if you want to use the default `postgres` user to sign in, you must create it. First, start PostgreSQL from foreman (`foreman start`) and once it's running, sign in:
+
+    psql -p 5432 -h localhost
+
+You must do this as the same user that created the database (your own user). Once you're in, just create the `postgres` user:
+
+    CREATE USER postgres SUPERUSER;
+
+You should now be able to sign in as `postgres` at this server. Stop foreman and let's continue.
+
 ## Redis and a master slave-setup
 
 Now we need some in memory cache, let's get Redis for this app:
 
     brew install redis
 
-Redis is even simpler than PG, you just have to reference it's config file, 
-and override the keys you need to change. The file is usually at `/usr/local/etc/redis.conf`, 
+Redis is even simpler than PG, you just have to reference it's config file,
+and override the keys you need to change. The file is usually at `/usr/local/etc/redis.conf`,
 if it isn't run `brew info redis` and check where it is. Let's prepare the
 redis folder at our app:
 
@@ -115,7 +125,7 @@ Now let's update our `Procfile`:
     redis: redis-server vendor/redis/redis.conf
 
 Since we're at it, why don't we also configure a redis slave? Our app in production
-might need to send reads to a slave redis and we can just get our config to do 
+might need to send reads to a slave redis and we can just get our config to do
 the same here, can't we? Let's create a separate folder:
 
     mkdir -p vendor/redis-slave/db
@@ -154,20 +164,20 @@ So it's just `fs` and everything is running.
 
 Remember to include the `vendor/redis` and `vendor/postgresql` to your `.gitignore`,
 you don't want to push these folders to all your colleagues. And I prefer not
-to force my own `Profile` on the whole team as well, it's simpler to have a 
+to force my own `Profile` on the whole team as well, it's simpler to have a
 `Procfile-example` file at your repo and let people decide to use it at their own
 will.
 
 ## Isolating the configuration
 
-But we're not done yet, there's yet another trick at your disposal when using 
+But we're not done yet, there's yet another trick at your disposal when using
 `foreman`, the `.env` files. If you've heard about [The 12 factor app](http://12factor.net/)
-you probably know there are many uses to environment variables, what you might not 
-know is that there are better ways than to declare all environment variables for 
-all apps and gems that you maintain than at your shell's profile script. 
+you probably know there are many uses to environment variables, what you might not
+know is that there are better ways than to declare all environment variables for
+all apps and gems that you maintain than at your shell's profile script.
 
-With `foreman` you can use `.env` files to declare the environment variables 
-for your app (and it's dependencies) and maintain them isolated from the rest 
+With `foreman` you can use `.env` files to declare the environment variables
+for your app (and it's dependencies) and maintain them isolated from the rest
 of your environment. So, if you're using the `aws-sdk` gem, your `.env` file
 would look like:
 
@@ -186,16 +196,16 @@ all processes started by `foreman` as environment variables.
 And while I used a Rails app for this example, `foreman` doesn't care about what
 is being started. You can run anything that can be called from the command line
 and run in the foreground, so you could possibly use it to run the dependencies
-for your Java, Ruby, Go, Python or any other language. It's an awesome tool to 
+for your Java, Ruby, Go, Python or any other language. It's an awesome tool to
 have under your toolbelt wherever you go.
 
 So, stop installing stuff as services and use `foreman` instead.
 
 Foreman offers a bunch of other cool features like running many instances of
-the same process at the same time, setting automatic values for ports to bind and 
-it also exports your `Procfile` to many other formats (like Ubuntu's upstart), so 
+the same process at the same time, setting automatic values for ports to bind and
+it also exports your `Procfile` to many other formats (like Ubuntu's upstart), so
 it isn't just for development, you can actually use it at your production environment
-as well. Once you're happy with your `Procfile`'s, you should go to the website 
+as well. Once you're happy with your `Procfile`'s, you should go to the website
 and dig deeper into what else it can do to help you out.
 
 The source code for this example [is here](https://github.com/mauricio/foreman-example).
