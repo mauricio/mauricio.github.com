@@ -85,17 +85,9 @@ First service ready, let's create our `Procfile`, at the root
 of the Rails app directory create a file called `Procfile` with the following
 content:
 
-    postgresql: postgres -D vendor/postgresql
+    postgresql: postgres -U postgres -D vendor/postgresql
 
-PostgreSQL starts with only your own user included, so if you want to use the default `postgres` user to sign in, you must create it. First, start PostgreSQL from foreman (`foreman start`) and once it's running, sign in:
-
-    psql -p 5432 -h localhost
-
-You must do this as the same user that created the database (your own user). Once you're in, just create the `postgres` user:
-
-    CREATE USER postgres SUPERUSER;
-
-You should now be able to sign in as `postgres` at this server. Stop foreman and let's continue.
+This creates the database files under `vendor/postgresql` and also creates the `postgres` user as the DB superuser.
 
 ## Redis and a master slave-setup
 
