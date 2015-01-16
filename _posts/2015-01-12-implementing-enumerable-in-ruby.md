@@ -166,7 +166,7 @@ end
 
 Since `find` exists at the very first match, we can't really reuse it here, the method has to be built on top of `each` from scratch. We build an array, then traverse our enumerable checking every item, once an item matches the block, we add it to the result. Once we're done, we return the collection of items that match.
 
-Let's loot at a few examples:
+Let's look at a few examples:
 
 {% highlight ruby %}
 it 'finds all the numbers that are greater than 2' do
