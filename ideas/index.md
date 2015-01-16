@@ -37,3 +37,5 @@ subtitle: my sandbox
 * simple AST interpreter in Scala;
 * type parameters and type bounds in Scala;
 * statistics with small workings sets (inspired by rubyrogues on PL research);
+* numbers and math in ruby;
+* streams in Scala;
