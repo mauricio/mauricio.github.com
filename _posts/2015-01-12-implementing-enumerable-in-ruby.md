@@ -164,7 +164,7 @@ def find_all(&block)
 end
 {% endhighlight %}
 
-Since `find` exists at the very first match, we can't really reuse it here, the method has to be built on top of `each` from scratch. We build an array, then traverse our enumerable checking every item, once an item matches the block, we add it to the result. Once we're done, we return the collection of items that match.
+Since `find` exits at the very first match, we can't really reuse it here, the method has to be built on top of `each` from scratch. We build an array, then traverse our enumerable checking every item, once an item matches the block, we add it to the result. Once we're done, we return the collection of items that match.
 
 Let's look at a few examples:
 
