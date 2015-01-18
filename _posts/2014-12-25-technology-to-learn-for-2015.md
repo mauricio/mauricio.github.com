@@ -38,6 +38,7 @@ The planned resources so far:
 * [Real world machine learning](http://www.manning.com/brink/)
 * [Taming text](http://www.manning.com/ingersoll/)
 * [Data Mining specialization by University of Illinois at Urbana-Champaign](https://www.coursera.org/specialization/datamining/20)
+* [Introduction to Information Retrieval](http://www-nlp.stanford.edu/IR-book/)
 
 ## Rust and systems programming
 
