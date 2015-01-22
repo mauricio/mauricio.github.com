@@ -7,7 +7,7 @@ tags:
 - useful
 ---
 
-*This is part of an assignment for the [Learning how to learn course on Coursera](https://www.coursera.org/course/learning)*
+*This is part 1 of a three parts assignment for the [Learning how to learn course on Coursera](https://www.coursera.org/course/learning)*. Also check [Part 2 - Chunking concepts to solidify and compress topics]({% post_url 2015-01-22-chunking-concepts-to-solidify-and-compress-topics %})
 
 Learning, specially science and math topics, usually ranges from the incredible feeling of understanding to the baffling feeling of _I have no idea what I am doing here_. While the first feeling is amazing, what gets burned in our brains is the feeling of powerlessness when we aren't able to understand a specific subject.
 
