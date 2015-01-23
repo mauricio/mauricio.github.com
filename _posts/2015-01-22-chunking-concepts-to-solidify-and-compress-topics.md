@@ -41,6 +41,12 @@ The movement was learned from a mounted position, but there are many other ways 
 
 Building context around chunks is needed because we must learn *when* they should be applied so we can just not bring it to mind when tackling a problem we know can't be solved using that specific practice. This also helps you file the chunk with other related chunks you already have or, even better, include it inside another chunk that already exists, making it use less _space_ in your mind.
 
+To summarize, the steps to chunking are:
+
+* Focus on what you're trying to chunk, either the information or some martial art movement that you're doing;
+* Understand the idea that you're trying to chunk. If you have trouble, try talking to other people that understand the concept or check how the person who _invented it_ did it;
+* Build the context on when this specific knowlegde is or isn't applicable and how it relates to other concepts you already know;
+
 ## Working memory and chunks
 
 Researchers nowadays believe we have four working memory spots. These spots are the places where you hold chunks when you're focusing on something. When you're learning a new concept, all four spots are usually focused on chunking it, which is why it's hard to learn when you have other distractions going on, they are holding up your working memory spots and leaving less space for your focused mode to grasp and build the chunk.
