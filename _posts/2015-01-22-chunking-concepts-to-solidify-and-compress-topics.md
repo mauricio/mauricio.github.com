@@ -7,7 +7,7 @@ tags:
 - useful
 ---
 
-*This is part 2 of a three parts assignment for the [Learning how to learn course on Coursera](https://www.coursera.org/course/learning)*. Also check [Part 1 - Your brain on thinking and learning]({% post_url 2015-01-17-your-brain-on-thinking-and-learning %}).
+*This is part 2 of a three parts assignment for the [Learning how to learn course on Coursera](https://www.coursera.org/course/learning)*. Also check [Part 1 - Your brain on thinking and learning]({% post_url 2015-01-17-your-brain-on-thinking-and-learning %}) and [Part 3 - Fighting procrastination]({% post_url 2015-01-26-fighting-procrastination%}).
 
 Chunking is the process of filing information in your brain, it's how you turn the text, the classes and the practice into mental patterns that can be recalled later when you're trying to solve a problem. As such, the act of chunking is one of the most important pieces of your learning experience and one that needs careful attention.
 

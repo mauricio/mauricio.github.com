@@ -7,6 +7,8 @@ tags:
 - useful
 ---
 
+*This is part 3 of a three parts assignment for the [Learning how to learn course on Coursera](https://www.coursera.org/course/learning)*. Also check [Part 1 - Your brain on thinking and learning]({% post_url 2015-01-17-your-brain-on-thinking-and-learning %}) and [Part 2 - Chunking concepts to solidify and compress topics]({% post_url 2015-01-22-chunking-concepts-to-solidify-and-compress-topics %}).
+
 Procrastination is one of the biggest woes when we're trying to learn something hard. It's our escape valve when we don't want to do something that looks painful or boring. As Parkinson's law clearly defines it:
 
 > Work expands so as to fill the time available for its completion.
