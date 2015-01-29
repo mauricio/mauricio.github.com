@@ -52,14 +52,14 @@ My main problem back then was focusing on having the essay done, the product. If
 
 How does that work?
 
-Instead of focusing on *I have to write the essay*, I would think *I have an hour to work on the essay every weekday*. Look at how this is reframed now, instead of forcing myself to think I'll have to produce something (which would kick in the procrastination response), I just say that I'll have this whole hour to do work on it, whatever it is. There is no need to produce something out of this hour, but I surely will because there won't be a reason to run away from it.
+Instead of focusing on *I have to write the essay*, I would think *I have an hour to work on the essay every weekday*. Look at how this is reframed, instead of forcing myself to think I'll have to produce something (which would kick in the procrastination response), I just say that I'll have this whole hour to do work on it, whatever it is. There is no need to produce something out of this hour, but I surely will because there won't be a reason to run away from it.
 
 This simple change of perspective removes the pain of _I have to produce an essay_ and turns it into _I have an hour to work on it_. It's like deciding to read a book every month, you´ll fall behind and give up when you see you can't keep up with it, if instead you decide to read fifty pages of a book every day you're much more likely to get it done. How many 1400 pages books do you have hanging around, right?
 
 ## Go small to go big
 
-The main takeaway you should have is that focusing on small, daily or every couple of days tasks is much more productive and causes much less procrastination than having large, hard to achieve, goals. There is nothing that makes you more driven than constant progress, setting up your goals in small pieces gives you this sense of _getting somewhere_ that is really hard to have when is for some future product that feels like it will never be finished.
+The main takeaway you should have is that focusing on small, daily or every couple of days tasks is much more productive and causes much less procrastination than having large, hard to achieve, goals. There is nothing that makes you more driven than constant progress, setting up your goals in small pieces gives you this sense of _getting somewhere_ that is really hard to have when it is about some future product that feels like it will never be finished.
 
 As much as it is hard to fight procrastination, if you start to consciously change your responses to the cues, define clear and quickly attainable goals and give you a couple nice rewards whenever you get stuff done right, you'll definitely be at a better position. Whenever you think your days aren't long enought for what you do, think about what you did, which parts of your day were you doing something that wasn't productive? Could you have used that time in a better way? Could improving your usage of that time give you some more leisure time later to enjoy your friends, family or just hanging around?
 
-Avoiding procrastination isn't only about being more productive at work, but also about having more time for yourself, if you can be more productive and finish your chores faster, you'll end up with much more time to do other enjoyable activities.
+Avoiding procrastination isn't only about being more productive at work, but also about having more time for yourself. If you can be more productive and finish your chores faster, you'll end up with much more time to do other enjoyable activities.
