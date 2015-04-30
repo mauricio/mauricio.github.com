@@ -77,6 +77,7 @@ queue.send_message({ file_id: "some-file-id" }.to_json)
 queue.receive_message(wait_time_seconds: 10) do |received_message|
   message = JSON.parse(received_message.body)
   ## do some processing here
+  received_message.delete
 end
 {% endhighlight %}
 
@@ -86,9 +87,10 @@ And last but not least, you can have a fully functional "forever worker" with ju
 sqs = AWS::SQS.new
 queue = sqs.queues.named(queue_name)
 
-queue.poll(wait_time_seconds: 10) do |message|
+queue.poll(wait_time_seconds: 10) do |received_message|
   message = JSON.parse(received_message.body)
   ## do something with the message
+  received_message.delete
 end  
 {% endhighlight %}
 
