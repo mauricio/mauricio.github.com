@@ -1,7 +1,7 @@
 ---
 layout: post
 title: AWS quick tips - taking out your EC2 trash
-subtitle: finding and deregistering unused AMIs is a bit tricker than expected
+subtitle: finding and deregistering unused AMIs is a bit trickier than expected
 keywords: aws, chef, knife, ruby
 tags:
 - useful
