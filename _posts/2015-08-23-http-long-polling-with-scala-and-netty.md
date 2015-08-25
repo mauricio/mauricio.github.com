@@ -226,7 +226,7 @@ case HttpMethod.GET => {
 }  
 {% endhighlight %}
 
-Since we're going really low level here, there's no such thing as a router for our requests, we need to either build one or just match the routes as we'd like to. In this case it's quite simple, we just use any `GET` or `POST` requests and move on. The `GET` implementation also happens to be the simplest, we just register the client that made it and make sure we provide an error message if we can't register it.
+Since we're going really low level here, there's no such thing as a router for our requests, we need to either build one or just match the routes as we'd like to. In this case it's quite simple, we just use any `GET` or `POST` requests and move on. The `GET` implementation also happens to be the simplest, we just register the client that made it or make sure we provide an error message if we can't.
 
 This sends us to the meat of the handler, the `POST` operation:
 
@@ -256,9 +256,9 @@ case HttpMethod.POST => {
 
 There's a lot of stuff going on. First, we have the use of `ReferenceCountUtil`. In Netty some objects are reference counted inside the framework itself, this is done so they can be reused across different requests, diminishing the pressure at the JVM's garbage collector. And while this improves throughput it requires us, the developers, to do the bookkeeping.
 
-Most of the time you can ignore these objects are reference counted, but in our case the actual implementation of the handler (the one that writes the response to clients) happens in a different thread than the one that is being used by Netty (the `complete` method doesn't return right away, it produces a `Future[Iterable[ClientKey]]`), if we didn't call `retain` here Netty would assume the request was _consumed_ by our code and will gladly reuse it, which would break our server.
+Most of the time you can ignore these objects are reference counted, but in our case the actual implementation of the handler (the one that writes the response to clients) happens in a different thread than the one that is being used by Netty (the `complete` method doesn't return right away, it produces a `Future[Iterable[ClientKey]]`), if we didn't call `retain` here Netty would assume the request was _consumed_ by our code and would gladly reuse it, which would break our server or worse, produce bogus responses.
 
-So, as we need to hold onto this request for a while, we call `retain` on it and only call `release` at the `finally` block of the callback we registered at the future that was produced by the `complete` call. When we actually enter the callback implementation we can see it's quite simple, if it finds a list of clients for the given path, it sends the results for each one of them and sends response to the client, if it fails the client receives an error message.
+So, as we need to hold onto this request for a while, we call `retain` on it and only call `release` at the `finally` block of the callback we registered at the future that was produced by the `complete` call. When we actually enter the callback implementation we can see it's quite simple, if it finds a list of clients for the given path, it sends the results for each one of them and sends response to the `POST` client, if it fails the `POST` client receives an error message.
 
 The interaction between these two HTTP methods (`GET` and `POST`) is what is actually building our long polling client. When a `GET` arrives we don't answer right away, we register the client and wait for someone to provide a `POST`, once it arrives we find all registered clients, remove them from the registry and send the response to them. Dead simple.
 
@@ -277,7 +277,7 @@ def evaluateTimeouts(): Unit = {
 
 Simple as well, just collect the expired clients and write a timeout error to them.
 
-The other helper methods aren't that much special as well:
+The other helper methods aren't that much special:
 
 {% highlight scala %}
 def writeError(ctx : ChannelHandlerContext, e : Throwable): Unit = {
@@ -313,7 +313,7 @@ One writes an exception as an HTTP server error and the other gets the `POST` re
 
 ## HTTP housekeeping
 
-As we're using a low level HTTP framework for our server, it won't really do anything we don't ask it to so stuff like defining the right value for the `Connection` header, setting `Content-Length` for responses and using the same HTTP version as the client needs to be done by us. Fortunately, Netty offers a nice way for us to plug a handler that will do this without polluting our main handler, let's look at it:
+As we're using a low level HTTP framework for our server, it won't really do anything we don't ask it to. Stuff like defining the right value for the `Connection` header, setting `Content-Length` for responses and using the same HTTP version as the client needs to be done by us. Fortunately, Netty offers a nice way for us to plug a handler that will do this without polluting our main handler, let's look at it:
 
 {% highlight scala %}
 object SetHeadersHandler {
@@ -449,7 +449,7 @@ override def initChannel(ch: SocketChannel): Unit = {
 }  
 {% endhighlight %}
 
-This is where we introduce the many pieces that make our pipeline and ordering here is *very important*. If we change the order of any of the pieces here we could be breaking our server. Our pipeline starts with an the `HttpServerCodec`, that parses HTTP requests and produces HTTP responses. It then has an `HttpObjectAggregator`, this aggregator turns the various HTTP messages that Netty produces into the `FullHttpRequest` we have been working with. Without this you would have to manually handle the many HTTP messages you would receive instead.
+This is where we introduce the many pieces that make our pipeline and ordering here is *very important*. If we change the order of any of the pieces here, we could be breaking our server. Our pipeline starts with an `HttpServerCodec`, that parses HTTP requests and produces HTTP responses. It then has an `HttpObjectAggregator`, this aggregator turns the various HTTP messages that Netty produces into the `FullHttpRequest` we have been working with. Without this you would have to manually handle the many HTTP messages you would receive instead.
 
 Then we start to reach application code with the `SetHeadersHandler` and finally our `MainHandler` at the end of the pipeline. This `initChannel` method is called whenever a new channel is created, the Netty provided HTTP codecs can't be reused so we need to have one of them for every channel available but our own handlers are all `@Sharable` so we can just reuse them instead of creating new ones.
 
