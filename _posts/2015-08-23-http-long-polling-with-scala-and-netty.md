@@ -17,9 +17,9 @@ With the dead simple client, all the complication now needs to lie at the server
 
 ## Netty comes to the rescue
 
-To build an HTTP server that will suspend requests you'd either need something like the Servlet 3.0 API or just use a low level networking framework like [Netty](http://netty.io/), which is what we will use here. Our solution is going to be quite simple, clients perform a `GET` request and are suspended, when a `POST` request arrives for that same path, all suspended clients are notified with it's contents as their HTTP response.
+To build an HTTP server that will suspend requests you'd either need something like the Servlet 3.0 API or just use a low level networking framework like [Netty](http://netty.io/), which is what we will use here. Our solution is going to be quite simple, clients perform a `GET` request and are suspended, when a `POST` request arrives for that same path, all suspended clients are notified with its contents as their HTTP response.
 
-The first step here is to build our client's registry, where all clients will be registered when they make a request, let's start with it's skeleton:
+The first step here is to build our client's registry, where all clients will be registered when they make a request, let's start with its skeleton:
 
 {% highlight scala %}
 class ClientsRegistry(timeoutInSeconds: Int) {
@@ -52,7 +52,7 @@ class ClientsRegistry(timeoutInSeconds: Int) {
 
 Our registry contains a lock, two collections and a method to execute a chunk of code, holding the lock, inside an execution context (like a thread pool). The lock exists because this class will be used concurrently by our server, so all access to it has to be thread safe. We could have used concurrent collections here, but it would make the implementation a bit more complicated, so we'll stick with the common ones and use the lock.
 
-As we have a lock, we can't force clients to lock their threads so all operations will happen inside a provided execution context, in background, instead of forcing clients of this code to lock their threads (locking the Netty IO thread is a bad idea, so we avoid doing it at all costs). The method also wraps the function given and turns it into a future, so clients can either compose or wait on the future for it's result.
+As we have a lock, we can't force clients to lock their threads so all operations will happen inside a provided execution context, in background, instead of forcing clients of this code to lock their threads (locking the Netty IO thread is a bad idea, so we avoid doing it at all costs). The method also wraps the function given and turns it into a future, so clients can either compose or wait on the future for its result.
 
 But why do we need two collections here instead of just one?
 
@@ -100,7 +100,7 @@ def registerClient(path: String, ctx: ChannelHandlerContext)(implicit executor: 
   }
 {% endhighlight %}
 
-When registering clients, we first create a new `ClientKey` object calculating it's timeout (we use the value provided by the registry's constructor) and append it to both the map and set inside our class. Since the `withLock` method requires an `ExecutionContext` our `registerClient` method will also need one to be provided.
+When registering clients, we first create a new `ClientKey` object calculating its timeout (we use the value provided by the registry's constructor) and append it to both the map and set inside our class. Since the `withLock` method requires an `ExecutionContext` our `registerClient` method will also need one to be provided.
 
 ## Completing clients
 
@@ -212,9 +212,9 @@ class MainHandler( registry : ClientsRegistry )(implicit executor: ExecutionCont
 }
 {% endhighlight %}
 
-The very first thing here is the `@Sharable` annotation for our handler, this means it can be used by many different channels at the same time and it's *really* important for you to correctly mark your handlers as Netty will use this information to decide if it can reuse your handler in many different channels and threads.
+The very first thing here is the `@Sharable` annotation for our handler, this means it can be used by many different channels at the same time and its *really* important for you to correctly mark your handlers as Netty will use this information to decide if it can reuse your handler in many different channels and threads.
 
-Just like the client's registry takes an execution context for it's methods, our handler takes one when it's being created so it can provide it to the registry methods. You can then provide any thread pool you'd like.
+Just like the client's registry takes an execution context for its methods, our handler takes one when it's being created so it can provide it to the registry methods. You can then provide any thread pool you'd like.
 
 Now let's look at the first case:
 
