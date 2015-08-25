@@ -7,7 +7,7 @@ tags:
 - useful
 ---
 
-[You can find the whole source code for this example here](https://github.com/mauricio/netty-long-polling-example).
+[You can find the whole source code for this example here.](https://github.com/mauricio/netty-long-polling-example)
 
 While messaging solutions are abound, both over HTTP like web sockets and [server sent events](https://developer.mozilla.org/en-US/docs/Web/API/Server-sent_events/Using_server-sent_events) and using other protocols, sometimes you're stuck with an HTTP client that can't really do any of this funky stuff. Firewalls, proxies and many other hurdles along the way between clients and servers will force you to stick with the basic HTTP request-response cycle, but you still need to provide a way for clients to listen to events, this is where long polling comes into play.
 
