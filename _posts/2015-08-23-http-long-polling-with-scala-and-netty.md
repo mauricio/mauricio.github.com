@@ -9,17 +9,17 @@ tags:
 
 [You can find the whole source code for this example here](https://github.com/mauricio/netty-long-polling-example).
 
-While messaging solutions are abound, both over HTTP like web sockets and [server sent events](https://developer.mozilla.org/en-US/docs/Web/API/Server-sent_events/Using_server-sent_events) and using other protocols, sometimes you're stuck with an HTTP client that can't really do any of this funky stuff. Firewals, proxies and many other hurdles along the way between clients and servers will force you to stick with the basic HTTP response cycle, but you still need to provide a way for clients to listen to events, this is where long polling comes into play.
+While messaging solutions are abound, both over HTTP like web sockets and [server sent events](https://developer.mozilla.org/en-US/docs/Web/API/Server-sent_events/Using_server-sent_events) and using other protocols, sometimes you're stuck with an HTTP client that can't really do any of this funky stuff. Firewalls, proxies and many other hurdles along the way between clients and servers will force you to stick with the basic HTTP request-response cycle, but you still need to provide a way for clients to listen to events, this is where long polling comes into play.
 
-The idea of long polling is that the client will perform a request, the server will receive it and leave it hanging for some time until an event arrives or the server decides it was a timeout (last time I checked Dropbox was working on a 20 seconds timeout). Doing something like this means the only thing your HTTP clients have to do is configuring a really long timeout for the HTTP response so they can just pretend this is a common HTTP connection. Proxies and firewalls will also just think this is a slow connection and will leave it be most of the time.
+The idea of long polling is that the client will perform a request, the server will receive it and leave it hanging for some time until an event arrives or the server decides it was a timeout (last time I checked Dropbox was working with a 20 seconds timeout). Doing something like this means the only thing your HTTP clients have to do is configure a really long timeout for the HTTP response, so they can just pretend this is a common HTTP connection. Proxies and firewalls will also just think this is a slow connection and will leave it be most of the time.
 
 With the dead simple client, all the complication now needs to lie at the server.
 
 ## Netty comes to the rescue
 
-To build an HTTP server that will suspend requests you'd either need something like the Servlet 3.0 API or just use a low level networking framework like [Netty](http://netty.io/), which is what we will use here. Our solution is going to be quite simple, clients perform a `GET` request and are suspended, when a `POST` request arrives for that same path, all suspended clients are notified with it's contents with an HTTP response.
+To build an HTTP server that will suspend requests you'd either need something like the Servlet 3.0 API or just use a low level networking framework like [Netty](http://netty.io/), which is what we will use here. Our solution is going to be quite simple, clients perform a `GET` request and are suspended, when a `POST` request arrives for that same path, all suspended clients are notified with it's contents as their HTTP response.
 
-The first step here is to build our clients registry, where all clients will be registered when they make a request, let's start with it's skeleton:
+The first step here is to build our client's registry, where all clients will be registered when they make a request, let's start with it's skeleton:
 
 {% highlight scala %}
 class ClientsRegistry(timeoutInSeconds: Int) {
@@ -52,11 +52,11 @@ class ClientsRegistry(timeoutInSeconds: Int) {
 
 Our registry contains a lock, two collections and a method to execute a chunk of code, holding the lock, inside an execution context (like a thread pool). The lock exists because this class will be used concurrently by our server, so all access to it has to be thread safe. We could have used concurrent collections here, but it would make the implementation a bit more complicated, so we'll stick with the common ones and use the lock.
 
-As we have a lock, we can't force clients to lock their threads to all operations will happen inside a provided execution context, in background, instead of forcing clients of this code to lock their threads (locking the Netty IO thread is a bad idea, so we avoid doing it at all costs). The method also wraps the function given and turns it into a future, so clients can either compose or wait on the future for it's result.
+As we have a lock, we can't force clients to lock their threads so all operations will happen inside a provided execution context, in background, instead of forcing clients of this code to lock their threads (locking the Netty IO thread is a bad idea, so we avoid doing it at all costs). The method also wraps the function given and turns it into a future, so clients can either compose or wait on the future for it's result.
 
 But why do we need two collections here instead of just one?
 
-Because of the timeouts problem. If we only had the map that maps paths to collections of clients, how could we figure out which clients need to be timeouted? We'd have to navigate through each one of them and check and if you happen to have lots of clients this is a pretty bad idea.
+Because of the timeouts problem. If we only had the map that maps paths to collections of clients, how could we figure out which clients need to be timeouted? We'd have to navigate through each one of them, check and if you happen to have lots of clients this is a pretty bad idea.
 
 So we introduce a new collection, a *sorted set* that will return our clients in ascending order so we can quickly figure out which clients are going to timeout without walking through the whole collection.
 
@@ -100,9 +100,7 @@ def registerClient(path: String, ctx: ChannelHandlerContext)(implicit executor: 
   }
 {% endhighlight %}
 
-When registering clients, we first create a new `ClientKey` object calculating it's timeout (we use the value provided by the registry's constructor) and append it to both the map and set inside our class. We also calculate the time the client will expire so we can easily find this client in the future to timeout it.
-
-Since the `withLock` method requires an `ExecutionContext` our `registerClient` method will also need one to be provided.
+When registering clients, we first create a new `ClientKey` object calculating it's timeout (we use the value provided by the registry's constructor) and append it to both the map and set inside our class. Since the `withLock` method requires an `ExecutionContext` our `registerClient` method will also need one to be provided.
 
 ## Completing clients
 
