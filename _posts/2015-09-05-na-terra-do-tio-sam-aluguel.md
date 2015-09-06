@@ -19,11 +19,15 @@ Chego no horário e pra minha surpresa o corretor já estava com outras duas pes
 
 Entramos então no prédio todos juntos e o corretor foi mostrando pra nós o apartamento, achei bizarro, mas como estava realmente interessado nesse lugar segui na linha. Mais tarde o corretor explicou que isso é *normal* (!!!) e as vezes as pessoas até dão _um agrado_ pro dono do imóvel pra _facilitar_ o aluguel. Parece que o jeitinho é uma coisa que não tem nacionalidade.
 
-![Cozinha pronta]({{ site.url }}/images/aluguel/cozinha.jpg)
+<div style="text-align:center">
+<img src="{{ site.url }}/images/aluguel/cozinha.jpg" title="Cozinha pronta"/>
+</div>
 
 Uma coisa que no geral é diferente do Brasil é que praticamente *todos* os apartamentos já vem com a cozinha pronta. Todos os apartamentos/casas tem geladeira, fogão, forno, pia com processador de alimentos e lava-louças, todos embutidos. Nunca vi um anuncio onde isso não estivesse incluso, diferente do que eu via em João Pessoa onde isso no geral é de responsabilidade do locatário.
 
-![Uma banheira!]({{ site.url }}/images/aluguel/banheira.jpg)
+<div style="text-align:center">
+<img src="{{ site.url }}/images/aluguel/banheira.jpg" title="Uma banheira!"/>
+</div>
 
 E as banheiras. *Todos* os banheiros tem banheiras pro chuveiro. Um dia ainda vou perguntar se americanos realmente usam essas banheiras como banheiras (eu suspeito que não, mas nunca se sabe né) e se é um resto cultural que ficou por aí atrapalhando os banhos alheios. As bordas arredondadas da banheira são tiro e queda pra você escorregar e meter a bunda no chão (não, não fui vítima disso, ainda).
 
@@ -52,3 +56,22 @@ Aí perguntei ao corretor como é que eu vou fazer os pagamentos, imaginando que
 Pensei comigo, mas que coisa atrasada, isso nunca daria certo no Brasil. Mas aí pensei de novo e tive que parar de rir. Se eles podem mandar cheques pelos correios, é porque ainda se confia no serviço dos correios e não se assume que existem ladrões por todos os lugares que passamos. Nosso sistema bancário realmente é muito avançado, mas no fim das coisas isso não é exatamente um sinal de que as coisas estão bem, mas o contrário, de que fraudes e crimes são tão comuns que tivemos que avançar na marra.
 
 E assim terminou a minha primeira saga, pra arranjar um lugar pra morar. Vamos ver como é que vão ser as cenas dos próximos capítulos.
+
+## Respostas
+
+E já chegaram algumas explicações sobre os por quês aqui, vejam só:
+
+<blockquote class="twitter-tweet" lang="en"><p lang="pt" dir="ltr"><a href="https://twitter.com/mauriciojr">@mauriciojr</a> banheiras são usadas pra dar banho nos filhos. Banco automatiza o envio do cheque pra você. SSN é como CPF. Histórico é tudo.</p>&mdash; Bruno Miranda (@brupm) <a href="https://twitter.com/brupm/status/640357432686956544">September 6, 2015</a></blockquote>
+<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+Teve da [Gisete](https://twitter.com/gkindahl) também:
+
+> Muito legal! Depois de muito tempo aqui é interessante ver essas experiencias pelos olhos de outra pessoa, o começo é sempre exciting. :D BTW, EU conheco gente que só toma banho de banheira e nunca chuveiro. É util pra quem tem criança tb.
+
+E do [Kung](https://twitter.com/fabiokung):
+
+> a banheira é util para lavar coisas tb (reparou que não tem um tanque?).
+
+> E de pagar com cheque, relaxa. Quando abrir a conta no banco vai poder automatizar online. Ai eles **põem o cheque no correio** para vc todo mês smile emoticon
+
+> hahaha (e não, não é piada)
