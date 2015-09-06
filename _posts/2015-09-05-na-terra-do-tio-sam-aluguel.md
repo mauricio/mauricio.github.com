@@ -13,7 +13,7 @@ Como [a empresa pra quem eu trabalho](http://www.neat.com/) fica na Philadelphia
 
 Quando cheguei, na segunda feira, 31 de agosto, já havia enviado um email pra um corretor pra visitar um apartamento que estava interessado (o mesmo que acabei alugando) e ele marcou a visita pra ver o lugar na terça, 1 de setembro.
 
-== Conhecendo a concorrência
+## Conhecendo a concorrência
 
 Chego no horário e pra minha surpresa o corretor já estava com outras duas pessoas que também iriam visitar o apartamento. Eu estava então conhecendo os meus *concorrentes*, dois japoneses, aparentemente estudantes e só um deles falava inglês, então tudo o que era dito era traduzido pro outro, que parecia ser quem realmente tomava as decisões.
 
@@ -29,7 +29,7 @@ Enquanto isso o seu dinheiro fica preso na corretora (no meu caso, se eu já tiv
 
 Na hora que o corretor explicou isso ficamos todos com aquela cara de *e agora José?* Será que eu já aplico agora mesmo ou espero pra fazer isso amanhã sem os concorrentes? Liguei o foda-se e disse pro corretor que queria já aplicar agora. Os concorrentes acordaram pra jesus e disseram que iam aplicar agora também. Fomos todos naquele silêncio de cemitério até a imobiliária e começamos a preencher os vários papéis.
 
-== Credit e background check
+## Credit e background check
 
 Na hora de preencher os documentos o corretor pergunta como eu vou pagar a aplicação pro aluguel e eu explico a ele que só posso fazer isso em dinheiro porque acabei de chegar no país e não tenho conta em banco e nessa hora a coisa realmente fica interessante. Como eu já havia dito, havia uma taxa de 30 dólares pra uma avaliação do meu crédito (imagine um relatório do SERASA) mas eu ainda não existo oficialmente no país (você precisa de um documento chamado Social Security Number pra entrar no sistema de crédito do país) então qualquer avaliação da minha situação daria _desconhecido_.
 
