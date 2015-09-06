@@ -71,7 +71,5 @@ Teve da [Gisete](https://twitter.com/gkindahl) também:
 E do [Kung](https://twitter.com/fabiokung):
 
 > a banheira é util para lavar coisas tb (reparou que não tem um tanque?).
-
 > E de pagar com cheque, relaxa. Quando abrir a conta no banco vai poder automatizar online. Ai eles **põem o cheque no correio** para vc todo mês smile emoticon
-
 > hahaha (e não, não é piada)
