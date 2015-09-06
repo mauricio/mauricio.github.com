@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Na terra do Tio Sam - Aluguel
+title: Na terra do Tio Sam - Meu primeiro aluguel
 subtitle: Minhas desventuras se mudando pra gringolândia
 keywords: mudança, USA, américa, gringo
 tags:
@@ -19,7 +19,11 @@ Chego no horário e pra minha surpresa o corretor já estava com outras duas pes
 
 Entramos então no prédio todos juntos e o corretor foi mostrando pra nós o apartamento, achei bizarro, mas como estava realmente interessado nesse lugar segui na linha. Mais tarde o corretor explicou que isso é *normal* (!!!) e as vezes as pessoas até dão _um agrado_ pro dono do imóvel pra _facilitar_ o aluguel. Parece que o jeitinho é uma coisa que não tem nacionalidade.
 
+![Cozinha pronta]({{ site.url }}/images/aluguel/cozinha.jpg)
+
 Uma coisa que no geral é diferente do Brasil é que praticamente *todos* os apartamentos já vem com a cozinha pronta. Todos os apartamentos/casas tem geladeira, fogão, forno, pia com processador de alimentos e lava-louças, todos embutidos. Nunca vi um anuncio onde isso não estivesse incluso, diferente do que eu via em João Pessoa onde isso no geral é de responsabilidade do locatário.
+
+![Uma banheira!]({{ site.url }}/images/aluguel/banheira.jpg)
 
 E as banheiras. *Todos* os banheiros tem banheiras pro chuveiro. Um dia ainda vou perguntar se americanos realmente usam essas banheiras como banheiras (eu suspeito que não, mas nunca se sabe né) e se é um resto cultural que ficou por aí atrapalhando os banhos alheios. As bordas arredondadas da banheira são tiro e queda pra você escorregar e meter a bunda no chão (não, não fui vítima disso, ainda).
 
