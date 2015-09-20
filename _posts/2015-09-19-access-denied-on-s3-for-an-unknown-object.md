@@ -22,7 +22,7 @@ rescue AWS::S3::Errors::NoSuchKey
 end
 {% endhighlight %}
 
-To do this, I had the following policy for the key that this app was using (this is part of a CloudFormation template where an IAM policy is declared):
+To do this, I had the following policy for the bucket that this app was using (this is part of a CloudFormation template where an IAM policy is declared):
 
 {% highlight ruby %}
 {
