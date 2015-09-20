@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Access denied on S3 if you don't have listing rights
+title: Access denied instead of Not Found on S3 if you don't have listing rights
 subtitle: stuff you should know about
 keywords: aws, s3, objects, errors, ruby
 tags:
