@@ -39,9 +39,9 @@ subtitle: my sandbox
 * statistics with small workings sets (inspired by rubyrogues on PL research);
 * numbers and math in ruby;
 * streams in Scala;
+* Rails, React and NuclearJS;
 
 Quick stuff:
 
 * pusher doesn't reconnect;
-* S3 access denied when account doesn't have listing rights;
 * expanding environment variables in C#;
