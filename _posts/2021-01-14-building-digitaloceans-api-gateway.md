@@ -53,7 +53,7 @@ Once we had the basic proxy built, we placed it in front of some of the traffic,
 
 As we built these filters, another pattern emerged, instead of having all this code inside the API gateway itself, we thought it would be faster to separate the code into a separate service. The initial goal was mostly to make it reusable by other teams if needed and make it easier for us to deploy smaller changes as deploying the gateway itself was a complicated and slow process (due to the way our internal K8s clusters networking was setup back then, we couldn't run the gateway on them, so it ran on droplets). After that, almost all filters were just glue code to call an external service that actually knew how to get the job done.
 
-![API Gateway simple architecture diagram](images/api-gateway.png "API Gateway simple architecture diagram")
+![API Gateway simple architecture diagram](/images/api-gateway.png "API Gateway simple architecture diagram")
 
 While it was a response to environmental constraints and not really something we planned, this design made the gateway itself smaller and more reliable. A lot of the logic would live in these microservices instead of the gateway and updates to them had a much smaller blast radius when something went awry.
 
