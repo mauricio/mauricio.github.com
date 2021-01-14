@@ -52,3 +52,68 @@ func ScanLines(data []byte, atEOF bool) (advance int, token []byte, err error) {
 	return 0, nil, nil
 }
 ```
+
+So we check the bytes we were given, if there's no CRLF, return and ask for more data, if there is one, return the byte 
+array at the CRLF as that is a full message to be parsed. If there's no CRLF and we're at the end of the stream, fail as 
+this is a broken stream, there should always be a CRLF, even if it's the last message.
+
+Now we'll do some testing for the cases we have here:
+
+```go
+package redis
+
+import (
+	"github.com/stretchr/testify/assert"
+	"testing"
+)
+
+func TestScanLines(t *testing.T) {
+	tt := []struct {
+		data []byte
+		eof bool
+		advance int
+		token []byte
+		err string
+	} {
+		{
+			data: []byte("+PING\r\n"),
+			advance: 7,
+			token: []byte("+PING"),
+		},
+		{
+			data: []byte("+PING"),
+			eof: true,
+			err: "incomplete stream: all redis messages should end with a CRLF but this line did not have it and we're at EOF, this is a broken stream: [+PING]",
+		},
+		{
+			data: []byte("+PING"),
+		},
+		{
+			data: []byte("+PING\r\n+PONG"),
+			advance: 7,
+			token: []byte("+PING"),
+		},
+	}
+
+	for _, ts := range tt {
+		t.Run(string(ts.data), func(t *testing.T) {
+			advance, token, err := ScanLines(ts.data, ts.eof)
+			assert.Equal(t, ts.advance, advance)
+			assert.Equal(t, ts.token, token)
+			if err != nil || ts.err != "" {
+				assert.EqualError(t, err, ts.err)
+			}
+		})
+	}
+}
+```
+
+Now that we can find full messages on streams, we should start to parse full messages, we'll start with simple strings.
+In RESP a simple string is a message that starts with `+` with everything after the `+` and until the CRLF being the value.
+
+```
++PING\r\n
++PONG\r\n
+```
+
+These are both examples of simple strings. 
