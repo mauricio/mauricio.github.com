@@ -9,20 +9,20 @@ tags:
 
 So you've created this awesome API, that offers a feature a lot of customers would be interested in using, but they're
 using it so much you can't handle the load in an effective way for everyone. While scaling up and making
-the service more reliable is an option, many times just doing that is not enough, the load might be uneven, the usage
+the service more reliable is an option, just doing that is not enough, the load might be uneven, the usage
 patterns might not be what your application was made to handle or you might just have limits you can't fix at 
 this point in time, that's where rate-limiting comes in.
 
 The idea behind rate limiting is that you're going to have a maximum amount of requests you'll be taking from a client
 and once that limit is reached, over a defined period of time, you'll start dropping requests until you reach the end
-of the time period and restart the counter. You could say clients are allowed to make 60 requests every minute so once
+of the time period and restart the counter. For instance, clients are allowed to make 60 requests every minute, once
 they go over 60 requests you start denying the requests letting them know they're over their quota and need to wait to 
-continue to serve requests again.
+continue to have their requests served again.
 
 The goal here is to make *your service* more reliable, rate-limiting is a protection you implement on your side to make
 sure bad actors or misconfigured clients can't take the whole service down or cause outages because the service is 
-going over it's expected usage limits. So in an ideal scenario you're not punishing good clients, as you have given
-them enough requests to do their usual work, but you'd block bad clients from wreacking havock on your service.
+going over it's expected usage limits. In an ideal scenario you're not punishing good clients, as you have given
+them enough requests to do their usual work, but you'd block bad clients from wreacking havoc on your service.
 
 You can find the whole source code for the project we'll be discussing below [here on Github](https://github.com/mauricio/redis-rate-limiter).
 
@@ -174,12 +174,12 @@ func (c *counterStrategy) Run(ctx context.Context, r *Request) (*Result, error) 
 
 This implementation is what would usually be called a *fixed window strategy*, it means that once the expiration has 
 been set, a client that reaches the limit will be blocked from making further requests until the expiration time arrives.
-So if a client has a limit of 50 requests every minute and makes all 50 requests in the first 5 seconds of the 
+If a client has a limit of 50 requests every minute and makes all 50 requests in the first 5 seconds of the 
 minute, it will have to wait 55 seconds to make another request. This is also the main downside of this implementation,
 it would still let a client burn through it's whole limit quickly (bursty traffic) and that could still overload 
 your service, as it could be expecting this traffic to be spread out throughout the whole limiting period.
 
-## A sorted set implementation to improve on bursty traffic
+## A sorted set implementation to react better to bursty traffic
 
 A *rolling window strategy* offers better protection for bursty traffic as it doesn't reset the counter completely but 
 keeps the history for the duration of the time window. If you have a 5 minutes window, it will always count the amount
@@ -283,9 +283,9 @@ func (s *sortedSetCounter) Run(ctx context.Context, r *Request) (*Result, error)
 ```
 
 The goal here is to use the sorted set with the current timestamp for the request as the sorting key so we can quickly
-ask for all requests under a specific timestamp to be deleted, cleaning up requests that were already expired. As we're
+ask for all requests under a specific time range to be deleted, cleaning up requests that were already expired. As we're
 using an UUID as the value the odds we'll have these requests conflict with each other on the sorted set are very low and
-having a conflict here and there wouldn't be too much trouble, even with millions of requests being served.
+having a conflict every once in a while wouldn't be too much trouble, even with millions of requests being served.
 
 ## Write heavy solutions
 
@@ -300,12 +300,12 @@ We have to make sure the resource usage here is *bounded*, that is, it has a wel
 anything you're writing is going to be abused in some way (either intetionally or by accident) and make sure that your
 code forces a bound on these resources in some way. On Redis itself, there are many ways to make sure you're not going
 to run out of memory by setting a [maxmemory](https://github.com/redis/redis/blob/ae2f5b7b2e007e4bb7108407d7d41972312d0766/redis.conf#L1071)
-value for how much memory it can use and [maxmemory-policy](https://github.com/redis/redis/blob/ae2f5b7b2e007e4bb7108407d7d41972312d0766/redis.conf#L1100) so a value that is not `no-eviction`.
+value for how much memory it can use and [maxmemory-policy](https://github.com/redis/redis/blob/ae2f5b7b2e007e4bb7108407d7d41972312d0766/redis.conf#L1100) to a value that is not `no-eviction`.
 For a rate limiter like the one we're building here `allkeys-lru` is a pretty decent option.
 
 ## Bounded counter implementations
 
-The updated counter implementation with a read before the write would look like this:
+The updated counter implementation with a read before write would look like this:
 
 ```go
 package redis_rate_limiter
@@ -676,7 +676,7 @@ func (h *httpRateLimiterHandler) ServeHTTP(writer http.ResponseWriter, request *
 So what do we have here? We start with the `Extractor` interface that returns a string to be used as the key to a 
 rate limiting check. You could have multiple implementations of this interface, checking HTTP headers or any other
 fields available on the HTTP request to identify the client, the best way to use this is to have a user/account ID that
-can be pulled from cookies or headers as IPs change with some frequency so, implement a solution that makes sense for your
+can be pulled from cookies or headers as IPs change with some frequency, so implement a solution that makes sense for your
 application.
 
 Then we have the `RateLimiterConfig` struct that wraps all fields needed to perform rate limiting on requests, an `Extractor`,
@@ -693,25 +693,25 @@ giving clients 10_000 requests every hour, give them 160 requests every minute, 
 requests in a short period of time instead of 10_000. 
 
 On the same note, do not set limits for very long periods of time,
-like 100 requests every day, as that makes using the API very frustrating, you make 100 requests and then you now have to 
+like 100 requests every day, as that makes using the API very frustrating, you make 100 requests and you now have to 
 wait a whole day for the limit to expire again, use smaller periods so people can spread out the load more evenly.
 
 Dynamic deny lists that completely block traffic from specific clients are also a must have on a system like this. You
-could make this a configuration you'd use on a proxy that sits before the app that performs rate limiting (like an Nginx/Apache server)
+could make this a configuration you'd use on a proxy that sits before the app that performs rate limiting (like a Nginx/Apache server)
 or at a CDN you're using (like Cloudflare) so you can quickly blackhole all traffic from known abusers.
 
 The implementation we have build here is a *fail closed* solution, which means any error (talking to redis, running extractors)
 causes the request to be denied. This is mostly because a paranoid implementation is generally safer but might not be the 
-best solution or your service, you might want to have a *best effort* solution that *fails open*, once it finds a failure
+best solution for your service, you might want to have a *best effort* solution that *fails open*, once it finds a failure
 somewhere during rate limiting it lets the request happen.
 
 While this might be more user friendly it also adds to the risk that abuses could overload the rate limiter and then
 overload the systems behind it because they now have no protection with the rate limiter down. So before moving completely
 to a *fail open* solution make sure you have other mitigation measures if the rate limiter fails and there is monitoring
-on all pieces of the stack, both the app and the Redis servers, so you're notified fast if any of them start failing
+on all pieces of the stack, both the app and the Redis servers, so you're notified quickly if any of them start failing
 and letting on traffic. You might even add an extra HTTP header to downstream clients to let them know that rate limiting
 failed but the request was still sent so they can make a decision if they want to accept that request or not.
 
 Again, your main goal with rate limiting should be protecting your systems so that you're providing the best service
-possible for most users and prevending that a small number of misbehaving clients wreak havok on your apllications
+possible for most users and prevending that a small number of misbehaving clients wreak havoc on your apllications
 preventing good users from using them.
