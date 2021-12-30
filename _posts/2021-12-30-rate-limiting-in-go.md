@@ -3,6 +3,7 @@ layout: post
 title: Rate limiting HTTP requests in Go using Redis
 subtitle: protecting your API
 keywords: go, http, redis, rate limiting
+tags:
 - useful
 ---
 
