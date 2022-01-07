@@ -9,9 +9,9 @@ tags:
 
 Writing applications that talk to each other over the network is something we do almost daily but we usually don't worry too much about how the data moves along or what the communication protocol looks like, as we use HTTP clients and servers to do most of the work. Still, it's good to get dirty every once in a while with sockets and byte streams and learn a little about how we communicate with other applications. Today we're doing that with Redis.
 
-First, why Redis? Redis is a widely used data structures store that has [a really straightforward](https://redis.io/topics/protocol) protocol format we can cover in a single blog post but that is still very powerful in what it allows us to do. With redis you can deal with the common key-value store use case but you can also use other tools, like lists, sets, maps so the simplicity of the protocol also shows that you don't have to complicate the way you access data even if the implementation you might have on the server side is indeed complex.
+First, why Redis? Redis is a widely used data structures store that has [a straightforward](https://redis.io/topics/protocol) protocol format we can cover in a single blog post but that is still very powerful in what it allows us to do. With Redis, you can deal with the common key-value store use case but you can also use other tools, like lists, sets, maps so the simplicity of the protocol also shows that you don't have to complicate the way you access data even if the implementation you might have on the server-side is indeed complex.
 
-Our main goal here is to understand the basics of network programming in Go, write code that parses messages from and writes them to a Redis server and understand some options we have when writing apps that operate with sockets in the language. We are not going to cover optimizations, TCP/IP or other advanced concepts, we're just going to write a simple Redis client. This client also doesn't work for Redis pub-sub, only for the general request-response interface.
+Our main goal here is to understand the basics of network programming in Go, write code that parses messages from and writes them to a Redis server and understand some options we have when writing apps that operate with sockets in the language. We are not going to cover optimizations, TCP/IP, or other advanced concepts, we're just going to write a simple Redis client. This client also doesn't work for Redis pub-sub, only for the general request-response interface.
 
 [The full source code for this post is available on github](https://github.com/mauricio/redis-client).
 
@@ -31,9 +31,9 @@ But what if the string you want to send has a `\r\n` in it, you might ask, this 
 $6\r\ngolang\r\n
 ```
 
-A *bulk string* stats with the `$` symbol, then a number as string until a `\r\n` that is the length in bytes that you must read until you find another `\r\n` marking the end of the bulk string. Given we have the length we should read, it doesn't really matter what are the contents inside the bulk string as we're not checking anything there, we're just reading everything until the end. So whenever you have to write a string that could possibly have a `\r\n` in it you have to use bulk strings. Bulk strings have a special case that is a `null` bulk string, a bulk string with a `-1` length should be represented by clients as a `null` value and not an empty string, these are returned as `"$-1\r\n"`
+A *bulk string* stats with the `$` symbol, then a number as a string until a `\r\n` that is the length in bytes that you must read until you find another `\r\n` marking the end of the bulk string. Given we have the length we should read, it doesn't matter what are the contents inside the bulk string as we're not checking anything there, we're just reading everything until the end. So whenever you have to write a string that could have a `\r\n` in it you have to use bulk strings. Bulk strings have a special case that is a `null` bulk string, a bulk string with a `-1` length should be represented by clients as a `null` value and not an empty string, these are returned as `"$-1\r\n"`
 
-And last but not least we have the *array* type that is a collection of the previously defined types (including arrays of arrays). They start with a `*` followed by a integer length (the number of items the array holds) and then each item in order, an array of two simple strings would look like `"*2\r\n+foo\r\n+bar\r\n"`, the `*2\r\n` piece says this is a two items array and then we get two simple strings. Any of the previously defined values are valid on arrays, including arrays themselves, if we wanted to have an array that is actually two separate arrays of simple strings we could define it like:
+And last but not least we have the *array* type that is a collection of the previously defined types (including arrays of arrays). They start with a `*` followed by an integer length (the number of items the array holds) and then each item in order, an array of two simple strings would look like `"*2\r\n+foo\r\n+bar\r\n"`, the `*2\r\n` piece says this is a two items array and then we get two simple strings. Any of the previously defined values are valid on arrays, including arrays themselves, if we wanted to have an array that is two separate arrays of simple strings we could define it like:
 
 ```
 *2\r\n*3\r\n+foo\r\n+bar\r\n+sample\r\n*1\r\n+nope\r\n
@@ -52,7 +52,7 @@ So you can mix and match values for arrays as you see fit. Arrays also have a sp
 
 # Reading data
 
-Now that we've covered the protocol basics, we'll start with the reader part of our implementation. Given we know this is mostly a terminator based protocol (with only bulk strings as a special case) we can use a [bufio.Scanner](https://pkg.go.dev/bufio#Scanner) to parse the stream of data, breaking up the lines on `\r\n` and if we do see a bulk string do a bit more magic to return it to the code reading from the scanner as a single line.
+Now that we've covered the protocol basics, we'll start with the reader part of our implementation. Given we know this is mostly a terminator-based protocol (with only bulk strings as a special case) we can use a [bufio.Scanner](https://pkg.go.dev/bufio#Scanner) to parse the stream of data, breaking up the lines on `\r\n` and if we do see a bulk string do a bit more magic to return it to the code reading from the scanner as a single line.
 
 When using a `bufio.Scanner` you provide a `SplitFunction` with the following signature:
 
@@ -60,9 +60,9 @@ When using a `bufio.Scanner` you provide a `SplitFunction` with the following si
 type SplitFunc func(data []byte, atEOF bool) (advance int, token []byte, err error)
 ```
 
-So you get the data in bytes that is available and a `bool` value signaling if we're at the end of the stream or not. You then have to return how many bytes to advance on the stream, the data that should be returned to whoever is reading the scanner and any error if it has happened. If you still don't have enough data to read, you just return a `nil` token value to ask the scanner to read more data (for instance, if there are no `\r\n` anywhere you know right away this isn't a full Redis response). Also, `atEOF` can be true and `data` not be empty, as you could be at the end of the stream because the server has closed the connection but it did write a full response back so even if you're at the end of a stream on a scanner you should make sure you check what the data is and return it to whoever is consuming from the scanner.
+So you get the data in bytes that are available and a `bool` value signaling if we're at the end of the stream or not. You then have to return how many bytes to advance on the stream, the data that should be returned to whoever is reading the scanner, and any error if it has happened. If you still don't have enough data to read, you just return a `nil` token value to ask the scanner to read more data (for instance, if there are no `\r\n` anywhere you know right away this isn't a full Redis response). Also, `atEOF` can be true and `data` not be empty, as you could be at the end of the stream because the server has closed the connection but it did write a full response back so even if you're at the end of a stream on a scanner you should make sure you check what the data is and return it to whoever is consuming from the scanner.
 
-Our implementation here is done in two parts, one is the split function we use for the scanner, that breaks the redis responses in lines and the code that reads the lines, interprets them and turns them into strings, integers or arrays. Here's what it looks like:
+Our implementation here is done in two parts, one is the split function we use for the scanner, which breaks the Redis responses in lines, and the code that reads the lines, interprets them, and turns them into strings, integers, or arrays. Here's what it looks like:
 
 ```go
 package redis_client
@@ -109,7 +109,7 @@ func (r *Reader) Read() (*Result, error) {
 }
 
 // redisSplitter splits a byte stream into full lines in the redis protocol format. it reads a whole item
-// (string, bulk string, error, integer or array) and then returns it as a line. code reading from scanners
+// (string, bulk string, error, integer, or array) and then returns it as a line. code reading from scanners
 // created with this function can safely assume that if they got a line it's a full line that does not need
 // any extra checking.
 func redisSplitter(data []byte, atEOF bool) (advance int, token []byte, err error) {
@@ -176,7 +176,7 @@ func redisSplitter(data []byte, atEOF bool) (advance int, token []byte, err erro
 		if atEOF {
 			return 0, nil, fmt.Errorf("unexpected end of stream, stream ends before bulk string has ended, expected there to be %v total bytes but there were only %v, actual content in base64: %v", expectedEnding, len(data), base64.RawStdEncoding.EncodeToString(data))
 		}
-		
+
 		// not enough data, ask for more data to be read
 		return 0, nil, err
 	}
@@ -451,7 +451,7 @@ func (w *Writer) WriteArray(values []interface{}) error {
 }
 ```
 
-Our writer is a bit strict, it only writes numbers from int8 to int64, strings and arrays with the previous values. We also don't bother with writing simple strings at all, we just assume all strings are always bulk strings as that allows us to ignore if there is a `\r\n` at all inside of them and just write them with the length directly. We also introduce methods to write `null` strings and `null` arrays as those are both valid values for redis. 
+Our writer is a bit strict, it only writes numbers from int8 to int64, strings and arrays with the previous values. We also don't bother with writing simple strings at all, we just assume all strings are always bulk strings as that allows us to ignore if there is a `\r\n` at all inside of them and just write them with the length directly. We also introduce methods to write `null` strings and `null` arrays as those are both valid values for redis.
 
 # The client
 
@@ -484,7 +484,7 @@ func (c *Client) Close() error {
 
 func (c *Client) Send(values []interface{}) (*Result, error) {
 	c.conn.SetDeadline(time.Now().Add(time.Second * 5))
-	
+
 	if err := c.writer.WriteArray(values); err != nil {
 		return nil, errors.Wrapf(err, "failed to execute operation: %v", values[0])
 	}
