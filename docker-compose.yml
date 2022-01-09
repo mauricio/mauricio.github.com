@@ -5,7 +5,9 @@ services:
     build:
       context: .
     restart: on-failure
-    entrypoint: ["bash"]
+    command: ["jekyll", "s", "--host=0.0.0.0"]
+    ports:
+      - 4000:4000
     working_dir: "/blog"
     volumes:
       - "./:/blog"

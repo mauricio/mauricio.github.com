@@ -1,2 +1,3 @@
 run:
-	docker-compose run shell -rm
+	docker-compose down
+	docker-compose up

@@ -2,36 +2,25 @@
 layout: bootstrap
 ---
 
-<div class="container max-width">
+<style>
+	.small-subtitle {
+		color: darkgray;
+	}
+</style>
+
+<div class="container">
 	<h1>
 	{{ page.title }}
 	{% if page.subtitle != empty %}
-	<small> {{page.subtitle}} </small>
+	<small class="small-subtitle"> {{page.subtitle}} </small>
 	{% endif %}
 	</h1>
 </div>
 
-<div class="container max-width">
+<div class="container">
 	<div id="post">
 	{{ content }}
 	</div>
-
-	<div class="well">
-	    <p>Comments or questions? Ping me on Twitter! <a href="https://twitter.com/intent/tweet?screen_name=mauriciojr" class="twitter-mention-button" data-lang="en">Tweet to @mauriciojr</a></p>
-	    <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-	</div>
-
-	<p align="center">
-		<span class='st_facebook_large' displayText='Facebook'></span>
-		<span class='st_twitter_large' displayText='Tweet'></span>
-		<span class='st_linkedin_large' displayText='LinkedIn'></span>
-		<span class='st_email_large' displayText='Email'></span>
-		<span class='st_googleplus_large' displayText='Google +'></span>
-		<span class='st_dzone_large' displayText='DZone'></span>
-		<span class='st_instapaper_large' displayText='Instapaper'></span>
-		<span class='st_reddit_large' displayText='Reddit'></span>
-		<span class='st_yammer_large' displayText='Yammer'></span>
-	</p>
 
 	<div id="related">
 	  <h2>Related Posts</h2>
@@ -43,7 +32,3 @@ layout: bootstrap
 	</div>
 
 </div>
-
-<script type="text/javascript">var switchTo5x=true;</script>
-<script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
-<script type="text/javascript">stLight.options({publisher: "19bdfb4d-d937-40fb-975f-76e8725723d3", doNotHash: true, doNotCopy: true, hashAddressBar: false});</script>

@@ -44,8 +44,8 @@ case we have the rails app, a PostgreSQL database and then elasticsearch. You co
 have any other process you depend on running from here and never again install
 anything to run as a service in your machine.
 
-<div class="bs-callout bs-callout-info">
-    <h4>Procfiles and Heroku</h4>
+<div class="alert alert-success" role="alert">
+  <h4 class="alert-heading">Procfiles and Heroku</h4>
     <p>
     If you're going to deploy your app to Heroku or some other service
     that uses a <code>Procfile</code> to prepare the environment for your app
