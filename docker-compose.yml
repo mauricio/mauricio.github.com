@@ -1,0 +1,11 @@
+version: "3.7"
+
+services:
+  shell:
+    build:
+      context: .
+    restart: on-failure
+    entrypoint: ["bash"]
+    working_dir: "/blog"
+    volumes:
+      - "./:/blog"

@@ -15,7 +15,7 @@ Our main goal here is to understand the basics of network programming in Go, wri
 
 [The full source code for this post is available on github](https://github.com/mauricio/redis-client).
 
-# The protocol
+## The protocol
 
 The Redis wire protocol is what we usually call a terminator-based protocol as you know that a message has ended once you find a `\r\n`. For instance, if you want to define a *simple string* in Redis it's going to be written as:
 
@@ -50,7 +50,7 @@ Which would be equivalent to having:
 
 So you can mix and match values for arrays as you see fit. Arrays also have a special case, the `null` array, which just like the bulk string case is different from having an empty array in Redis, null arrays are defined as `*-1\r\n"`, an array with a `-1` length.
 
-# Reading data
+## Reading data
 
 Now that we've covered the protocol basics, we'll start with the reader part of our implementation. Given we know this is mostly a terminator-based protocol (with only bulk strings as a special case) we can use a [bufio.Scanner](https://pkg.go.dev/bufio#Scanner) to parse the stream of data, breaking up the lines on `\r\n` and if we do see a bulk string do a bit more magic to return it to the code reading from the scanner as a single line.
 
@@ -328,7 +328,7 @@ func (r *Result) Content() interface{} {
 
 It just holds the reponse that was read from redis and makes sure it is the right type before returning it.
 
-# Writer
+## Writer
 
 The writer is a simpler inverse version of the reader. Given we already know the protocol, what we have to do here is to write the data in the correct format:
 
@@ -453,7 +453,7 @@ func (w *Writer) WriteArray(values []interface{}) error {
 
 Our writer is a bit strict, it only writes numbers from int8 to int64, strings and arrays with the previous values. We also don't bother with writing simple strings at all, we just assume all strings are always bulk strings as that allows us to ignore if there is a `\r\n` at all inside of them and just write them with the length directly. We also introduce methods to write `null` strings and `null` arrays as those are both valid values for redis.
 
-# The client
+## The client
 
 So we can read and write the Redis protocol from streams of bytes, the last step is to actually create a client that can open a socket connection given an address and talk to Redis, here's what it would look like:
 
