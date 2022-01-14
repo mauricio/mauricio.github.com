@@ -54,6 +54,22 @@ You might be in for the love of writing code and stuff, but we all want to be pa
 
 Having a known set of activities you have to attain to move up allows you to plan your work accordingly, ticking the boxes that need to be ticked instead of just randomly doing stuff and hoping for the best. That also allows you to decide the crucial pieces of work that need to be done and focus on them instead of over-engineering or investing too much time on stuff that won't matter that much for your career. This gives you some power to decide your path instead of leaving it all in someone else's hands.
 
+## How long does it take for code that is feature complete to reach production in some way?
+
+Here you're looking for *minutes* as the answer. In some businesses, *hours* would be acceptable. More than that is typically bad news unless you're applying for a job at NASA and your code will ship in a satellite. The speed code arrives in production signals maturity of the business development process. The faster it is, [the more mature and uneventful shipping code is](https://charity.wtf/2018/08/19/shipping-software-should-not-be-scary/), and this is what you're looking for at your job. The scarier it is for a team to push changes, the more likely they will cause incidents and break stuff.
+
+Teams with a well-oiled deployment process most likely practice continuous integration, have a considerable mass of automated testing (unit, integration, smoke, black box), observability tools, and ways to rollout code that doesn't update everything all at once. That's why we have the _in some way_ there in the question, you don't have to necessarily update everything to everyone at once (it might even be impossible, given the scale of the work), but you still have a way to put that code in front of actual users and verify it is doing the job. This process should also be fully automated and executed from a CI system instead of a developer's local environment.
+
+Most of the time, not delivering code fast to production happens because the business doesn't trust the team. New processes or steps are added, like change request approvals, manual QA steps, staging environments, so the changes are _less likely_ to break. Unfortunately, adding more processes instead of improving the engineering practices doesn't work. You end up with a very long cycle time to get changes out, with larger changesets that are much more likely to break once deployed, and the cycle begins anew, with even more processes to try to build trust.
+
+## How do you measure and maintain code quality?
+
+How does the team make sure the code shipped is of quality and meets the standards defined? Are there standards well defined? Is there time for code gardening, refactors, improvements, and upgrades? Are there automated tools running on the codebases to ensure standards are kept?
+
+We expect a review process or pair programming, static code analyzers, automated formatters, test coverage requirements (at different levels, it shouldn't just be unit or integration tests), and essential documentation. Coding should also be a group exercise, and people should not be working in a vacuum. The team should be working together to deliver on its commitments.
+
+For instance, if there is a pull request review process, how long does it usually take to review a pull request? Minutes? Hours? Days? The longer it takes, the more time wasted waiting, making conflicts more likely. Long review cycles are also a sign the team might not work very well together, and instead of being a team, it might just be a collection of people that happen to be together.
+
 ## What are the self-development benefits provided?
 
 No tech company survives with a workforce that doesn't improve, so most of them will offer a stipend or access to education related to the work. You want to be at a place that will buy you that book you need for some new project you're working on or pay for a course or event you feel like will be essential for your productivity at work.
