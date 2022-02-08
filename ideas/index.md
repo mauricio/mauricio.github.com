@@ -8,3 +8,6 @@ subtitle: my sandbox
 * building your resume;
 * building a kv store clone with a WAL log; 
 * collections in go with generics;
+* SQL query plans and optimization;
+* transfering projects to other teams;
+* don't use Rails.production?
