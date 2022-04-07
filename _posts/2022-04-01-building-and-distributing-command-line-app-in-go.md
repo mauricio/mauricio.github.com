@@ -295,7 +295,7 @@ If you don't have any native dependencies, you can cross-compile your `go` app t
 # building the program for intel macs
 GOOS=darwin GOARCH=amd64 go build -o gurl-mac-amd64 cmd/gurl/main.go 
 # building the program for M1 macs
-GOOS=darwin GOARCH=amd64 go build -o gurl-mac-arm64 cmd/gurl/main.go 
+GOOS=darwin GOARCH=arm64 go build -o gurl-mac-arm64 cmd/gurl/main.go 
 # building the program for 64 bits amd/intel linux
 GOOS=linux GOARCH=amd64 go build -o gurl-linux-amd64 cmd/gurl/main.go 
 ```
